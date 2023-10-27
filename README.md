@@ -4,7 +4,7 @@
 深圳市灰度科技有限公司设备http api 的java sdk 版本
 
 #### 软件架构
-
+![软件架构](https://gitee.com/-/ide/project/szhuidu/cn.huidu.device.api.sdk.java/edit/master/images/软件架构图.png)
 
 
 #### 安装教程
