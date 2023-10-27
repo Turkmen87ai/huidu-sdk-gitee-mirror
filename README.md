@@ -4,34 +4,23 @@
 深圳市灰度科技有限公司设备http api 的java sdk 版本
 
 #### 软件架构
-软件架构说明
+
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+目前支持下载后导入工程目录即可使用。
+
+#### 前提条件
+请确保您已经注册了灰度开发者。如还未注册，请先完成账号注册。
+注：前期平台尚未搭建，需要联系管理员提供。
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  使用设备前，需要通过灰度科技开发者平台进行注册，获取相应的sdkKey和sdkSecret；
+2.	设备第一次调试时，必须通过“/api/sdkkey/”接口初始化开发者的sdkKey和对应sdkSecret到设备上；
+3.	使用SDK进行开发时，SDK版本必须小于或等于设备的API版本号。
+
 
 #### 参与贡献
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
