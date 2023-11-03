@@ -40,10 +40,10 @@ public class VideoNode extends ContentNode {
 
     @Override
     public FileInfo[] getFilesInfo() {
-        File locFilePath = new File(localPath);
-        if (false == locFilePath.exists()) {
-            return null;
-        }
+        // File locFilePath = new File(localPath);
+        // if (false == locFilePath.exists()) {
+        //     return null;
+        // }
 
         FileInfo fileInfo = new FileInfo();
         fileInfo.localFile = localPath;

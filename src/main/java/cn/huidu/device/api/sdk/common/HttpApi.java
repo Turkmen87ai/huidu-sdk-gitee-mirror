@@ -69,6 +69,14 @@ public class HttpApi {
 
     private String file(String filePath) {
 
+        File locFilePath = new File(filePath);
+        if (false == locFilePath.exists()) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("message", "failed");
+            jsonObject.put("data", "Not found file [" + filePath + "]");
+            return jsonObject.toString();
+        }
+
         String errString = null;
         String responseString = null;
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {

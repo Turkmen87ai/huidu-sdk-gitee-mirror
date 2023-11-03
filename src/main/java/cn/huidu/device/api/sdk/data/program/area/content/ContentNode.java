@@ -1,6 +1,7 @@
 package cn.huidu.device.api.sdk.data.program.area.content;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import cn.huidu.device.api.sdk.data.program.other.FileInfo;
 
@@ -24,10 +25,12 @@ public class ContentNode {
         this.bindType = other.bindType;
     }
     
+    @JSONField(name = "uuid")
     public String getId() {
         return uuid;
     }
 
+    @JSONField(name = "uuid")
     public void setId(String uuid) {
         this.uuid = uuid;
     }

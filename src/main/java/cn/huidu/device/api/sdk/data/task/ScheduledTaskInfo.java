@@ -1,23 +1,26 @@
 package cn.huidu.device.api.sdk.data.task;
 
 public class ScheduledTaskInfo {
-    private Boolean enable;
-    private String begin;
-    private String end;
-    private String value;
+
+    private String timeRange;   ///< hh:mm:ss~hh:mm:ss
+    private String dateRange;   ///< yyyy-MM-DD~yyyy-MM-DD
+    private String weekFilter;  ///< Mon,Tue,Wed,Thu,Fri,Sat,Sun
+    private String montFilter;  ///< Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
+    private String data;        ///< 字段为字符串，具体的协议对应不同的定义，音量、亮度为0-100，开关类为[true/false]
 
     public ScheduledTaskInfo() {
     }
 
-    public ScheduledTaskInfo(Boolean enable, String begin, String end, String value) {
-        this.enable = enable;
-        this.begin = begin;
-        this.end = end;
-        this.value = value;
+    public ScheduledTaskInfo(String data, String timeRange, String dateRange, String weekFilter, String montFilter) {
+        this.data = data;
+        this.timeRange = timeRange;
+        this.dateRange = dateRange;
+        this.weekFilter = weekFilter;
+        this.montFilter = montFilter;
     }
 
     protected ScheduledTaskInfo(ScheduledTaskInfo other) {
-        this(other.enable, other.begin, other.end, other.value);
+        this(other.data, other.timeRange, other.dateRange, other.weekFilter, other.montFilter);
     }
 }
 
