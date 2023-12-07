@@ -121,6 +121,12 @@ public class BaseClient {
         }
 
         for (FileInfo info : fileInfos) {
+            // 如果插入的是url,那么不需要上传文件
+            if ( isURL(info.localFile) && info.md5.length() > 0 && info.size > 0 ) {
+                info.url = info.localFile;
+                continue; // 不需要处理
+            }
+            
             String jsonBody = file(info.localFile);
             JSONObject jsonObject = JSON.parseObject(jsonBody);
             if (!jsonObject.containsKey("message") || !jsonObject.getString("message").equals("ok")) {
@@ -168,6 +174,30 @@ public class BaseClient {
 
         return retJsonObject;
     }
+
+    /**
+     * 判断一个字符串是否为url
+     *
+     * @param str String 字符串
+     * @return boolean 是否为url
+     * @author peng1 chen
+     **/
+    public static boolean isURL(String str) {
+        //转换为小写
+        str = str.toLowerCase();
+        String regex = "^((https|http)?://)"                                    //https、http
+                + "?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?"    //http的user@
+                + "(([0-9]{1,3}\\.){3}[0-9]{1,3}"                               // IP形式的URL- 例如：199.194.52.184
+                + "|"                                                           // 允许IP和DOMAIN（域名）
+                + "([0-9a-z_!~*'()-]+\\.)*"                                     // 域名- www.
+                + "([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\\."                       // 二级域名
+                + "[a-z]{2,6})"                                                 // first level domain- .com or .museum
+                + "(:[0-9]{1,5})?"                                              // 端口号最大为65535,5位数
+                + "((/?)|"                                                      // a slash isn't required if there is no file name
+                + "(/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+/?)$";
+        return str.matches(regex);
+    }
+
 
     private String toJsonObject(String data) {
         JSONObject jsonObject = null;

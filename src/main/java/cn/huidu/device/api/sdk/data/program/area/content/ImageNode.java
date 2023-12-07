@@ -1,6 +1,5 @@
 package cn.huidu.device.api.sdk.data.program.area.content;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -28,6 +27,17 @@ public class ImageNode extends ContentNode {
 
     public ImageNode(String localPath, Fit fit) {
         this(localPath);
+        this.fit = fit;
+    }
+
+    public ImageNode(String localPath, int fileSize, String fileMd5) {
+        this(localPath);
+        this.fileSize = fileSize;
+        this.fileMd5 = fileMd5;
+    }
+
+    public ImageNode(String localPath, int fileSize, String fileMd5, Fit fit) {
+        this(localPath, fileSize, fileMd5);
         this.fit = fit;
     }
 
@@ -60,10 +70,6 @@ public class ImageNode extends ContentNode {
     
     @Override
     public FileInfo[] getFilesInfo() {
-        // File locFilePath = new File(localPath);
-        // if (false == locFilePath.exists()) {
-        //     return null;
-        // }
 
         FileInfo fileInfo = new FileInfo();
         fileInfo.localFile = localPath;

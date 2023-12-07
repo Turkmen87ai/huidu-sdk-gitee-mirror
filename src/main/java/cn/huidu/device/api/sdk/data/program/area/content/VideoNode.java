@@ -1,6 +1,5 @@
 package cn.huidu.device.api.sdk.data.program.area.content;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -24,6 +23,17 @@ public class VideoNode extends ContentNode {
         this.localPath = localPath;
     }
 
+    public VideoNode(String localPath, int fileSize, String fileMd5) {
+        this(localPath);
+        this.fileSize = fileSize;
+        this.fileMd5 = fileMd5;
+    }
+
+    public VideoNode(String localPath, int fileSize, String fileMd5, Boolean aspectRatio) {
+        this(localPath, fileSize, fileMd5);
+        this.aspectRatio = aspectRatio;
+    }
+
     public VideoNode(String localPath, Boolean aspectRatio) {
         this(localPath);
         this.aspectRatio = aspectRatio;
@@ -40,10 +50,6 @@ public class VideoNode extends ContentNode {
 
     @Override
     public FileInfo[] getFilesInfo() {
-        // File locFilePath = new File(localPath);
-        // if (false == locFilePath.exists()) {
-        //     return null;
-        // }
 
         FileInfo fileInfo = new FileInfo();
         fileInfo.localFile = localPath;
