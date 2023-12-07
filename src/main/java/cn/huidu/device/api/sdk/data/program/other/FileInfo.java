@@ -9,20 +9,45 @@ public class FileInfo {
     public int size;
     public String md5;
 
+    public FileInfo(String localFile) {
+        size = 0;
+        this.localFile = localFile;
+    }
+    
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+
+        boolean ret = false;
+        try {
+            do { 
+                if (obj == null) {
+                    break;
+                }
+
+                if (this == obj) {
+                    ret = true;
+                    break;
+                }
+
+                if (getClass() != obj.getClass()) {
+                    break;
+                }
+
+                FileInfo Info = (FileInfo) obj;
+                if (localFile == Info.localFile && !localFile.isEmpty()) {
+                    ret = true;
+                    break;
+                } 
+                
+                Path p1 = Paths.get(localFile);
+                Path p2 = Paths.get(Info.localFile);
+                ret = p1.equals(p2);
+                
+            } while (false);
+        } catch (Exception e) {
+            ret = false;
         }
 
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-
-        FileInfo Info = (FileInfo) obj;
-        Path p1 = Paths.get(localFile);
-        Path p2 = Paths.get(Info.localFile);
-
-        return p1.equals(p2);
+        return ret;
     }
 }

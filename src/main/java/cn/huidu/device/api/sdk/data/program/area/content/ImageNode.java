@@ -1,8 +1,5 @@
 package cn.huidu.device.api.sdk.data.program.area.content;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import cn.huidu.device.api.sdk.data.program.other.Effect;
 import cn.huidu.device.api.sdk.data.program.other.FileInfo;
 
@@ -30,14 +27,14 @@ public class ImageNode extends ContentNode {
         this.fit = fit;
     }
 
-    public ImageNode(String localPath, int fileSize, String fileMd5) {
-        this(localPath);
+    public ImageNode(String url, int fileSize, String fileMd5) {
+        this(url);
         this.fileSize = fileSize;
         this.fileMd5 = fileMd5;
     }
 
-    public ImageNode(String localPath, int fileSize, String fileMd5, Fit fit) {
-        this(localPath, fileSize, fileMd5);
+    public ImageNode(String url, int fileSize, String fileMd5, Fit fit) {
+        this(url, fileSize, fileMd5);
         this.fit = fit;
     }
 
@@ -71,8 +68,7 @@ public class ImageNode extends ContentNode {
     @Override
     public FileInfo[] getFilesInfo() {
 
-        FileInfo fileInfo = new FileInfo();
-        fileInfo.localFile = localPath;
+        FileInfo fileInfo = new FileInfo(localPath);
         fileInfo.md5 = fileMd5;
         fileInfo.size = fileSize;
         fileInfo.url = file;
@@ -81,10 +77,10 @@ public class ImageNode extends ContentNode {
 
     @Override
     public void updateFilesInfo(FileInfo[] filesinfo) {
-        Path locFilePath = Paths.get(localPath);
+
+        FileInfo locfileInfo = new FileInfo(localPath);
         for (FileInfo fileInfo : filesinfo) {
-            Path p2 = Paths.get(fileInfo.localFile);
-            if (locFilePath.equals(p2)) {
+            if (locfileInfo.equals(fileInfo)) {
                 fileMd5 = fileInfo.md5;
                 fileSize = fileInfo.size;
                 file = fileInfo.url;
