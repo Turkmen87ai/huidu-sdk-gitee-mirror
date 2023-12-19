@@ -4,12 +4,12 @@ import cn.huidu.device.api.sdk.data.program.other.Effect;
 import cn.huidu.device.api.sdk.data.program.other.Font;
 
 public class TextNode extends ContentNode {
-    private String string;
-    private Boolean multiLine;
-    private Alignment alignment;
-    private VAlignment valignment;
-    private Effect effect;
-    private Font font;
+    protected String string;
+    protected Boolean multiLine;
+    protected Alignment alignment;
+    protected VAlignment valignment;
+    protected Effect effect;
+    protected Font font;
 
     public TextNode() {
         super();

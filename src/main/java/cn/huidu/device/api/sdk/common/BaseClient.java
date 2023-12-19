@@ -41,7 +41,7 @@ public class BaseClient {
         return toJsonObject(client.device(jsonMethod.toString()));
     }
 
-    protected String program(String[] devIds, String method, ProgramNode[] programNodes) {
+    protected String program(String[] devIds, String method, ProgramNode[] programNodes, Object dataEx) {
 
         JSONObject retJsonObject = uploadAndUpdateFiles(programNodes);
         if (!retJsonObject.getString("message").equals("ok")) {
@@ -51,6 +51,9 @@ public class BaseClient {
         JSONObject jsonMethod = new JSONObject();
         jsonMethod.put("method", method);
         jsonMethod.put("data", programNodes);
+        if (null != dataEx) {
+            jsonMethod.put("dataEx", dataEx);
+        } 
 
         if (devIds.length > 0) {
             // 放在body的id字段
