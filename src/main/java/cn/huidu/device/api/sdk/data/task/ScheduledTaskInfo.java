@@ -22,5 +22,46 @@ public class ScheduledTaskInfo {
     protected ScheduledTaskInfo(ScheduledTaskInfo other) {
         this(other.data, other.timeRange, other.dateRange, other.weekFilter, other.montFilter);
     }
+
+    public String getTimeRange() {
+        return timeRange;
+    }
+
+    public void setTimeRange(String timeRange) {
+        this.timeRange = timeRange;
+    }
+
+    public String getDateRange() {
+        return dateRange;
+    }
+
+    public void setDateRange(String dateRange) {
+        this.dateRange = dateRange;
+    }
+
+    public String getWeekFilter() {
+        return weekFilter;
+    }
+
+    public void setWeekFilter(String weekFilter) {
+        this.weekFilter = weekFilter;
+    }
+
+    public String getMontFilter() {
+        return montFilter;
+    }
+
+    public void setMontFilter(String montFilter) {
+        this.montFilter = montFilter;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+    
 }
 
