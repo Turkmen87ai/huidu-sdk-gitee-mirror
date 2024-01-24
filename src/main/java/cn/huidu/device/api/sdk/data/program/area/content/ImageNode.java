@@ -1,5 +1,7 @@
 package cn.huidu.device.api.sdk.data.program.area.content;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import cn.huidu.device.api.sdk.data.program.other.Effect;
 import cn.huidu.device.api.sdk.data.program.other.FileInfo;
 
@@ -66,6 +68,7 @@ public class ImageNode extends ContentNode {
     }
     
     @Override
+    @JSONField(serialize = false)
     public FileInfo[] getFilesInfo() {
 
         FileInfo fileInfo = new FileInfo(localPath);
@@ -87,14 +90,6 @@ public class ImageNode extends ContentNode {
                 break;
             }
         }
-    }
-
-    public String getLocalPath() {
-        return localPath;
-    }
-
-    public void setLocalPath(String localPath) {
-        this.localPath = localPath;
     }
 
     public String getFile() {
