@@ -1,6 +1,8 @@
 package cn.huidu.device.api.sdk.data.program.area.content;
 
 import cn.huidu.device.api.sdk.data.program.other.Font;
+import cn.huidu.device.api.sdk.data.program.other.ClockParam;
+import cn.huidu.device.api.sdk.data.program.other.ClockParam.FmtStyle;
 import cn.huidu.device.api.sdk.data.program.other.ClockParam.FormatColor;
 import cn.huidu.device.api.sdk.data.program.other.ClockParam.StringColor;
 import cn.huidu.device.api.sdk.data.program.other.ClockParam.Style;
@@ -13,10 +15,16 @@ public class DialClockNode extends ContentNode {
     private FormatColor date;
     private FormatColor week;
     private FormatColor time;
+    private FormatColor ampm;
     private Style style;
+    private int spacing;
+    private boolean enabled12H;
+    private boolean swapWeekAndDay;
 
     public DialClockNode() {
         this.setType("dialClock");
+        title = new ClockParam().new StringColor();
+        title.display = "0";
     }
 
     public DialClockNode(DialClockNode other) {
@@ -28,6 +36,9 @@ public class DialClockNode extends ContentNode {
         this.date = other.date;
         this.week = other.week;
         this.time = other.time;
+        this.ampm = other.ampm;
+        this.style = other.style;
+        this.enabled12H = other.enabled12H;
     }
 
     public String getTimezone() {
@@ -92,5 +103,41 @@ public class DialClockNode extends ContentNode {
 
     public void setStyle(Style style) {
         this.style = style;
+    }
+
+    public FormatColor getAmpm() {
+        return ampm;
+    }
+
+    public void setAmpm(FormatColor ampm) {
+        this.ampm = ampm;
+    }
+
+    public Boolean getEnabled12H() {
+        return enabled12H;
+    }
+
+    public void setEnabled12H(Boolean enabled12h) {
+        enabled12H = enabled12h;
+    }
+
+    public FmtStyle getClockFmtStyle() {
+        FmtStyle style = new ClockParam().new FmtStyle();
+        if (swapWeekAndDay) {
+            style.swap = "1";
+        }
+        if (spacing > 0) {
+            style.space = Integer.toString(spacing);
+        }
+
+        return style;
+    }
+
+    public void setSwapWeekAndDay(Boolean swapWeekAndDay) {
+        this.swapWeekAndDay = swapWeekAndDay;
+    }
+
+    public void setSpacing(int spacing) {
+        this.spacing = spacing;
     }
 }
