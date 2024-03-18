@@ -19,15 +19,15 @@ public class BaseClient {
         client = new HttpApi(hostUrl);
     }
    
-    protected String getDevice() {
+    public String getDevice() {
         return toJsonObject(client.deviceList());
     }
    
-    protected String device(String[] devIds, String method) {
+    public String device(String[] devIds, String method) {
         return device(devIds, method, null);
     }
 
-    protected String device(String[] devIds, String method, Object data) {   
+    public String device(String[] devIds, String method, Object data) {   
         JSONObject jsonMethod = new JSONObject();
         jsonMethod.put("method", method);
         jsonMethod.put("data", data);
@@ -41,7 +41,7 @@ public class BaseClient {
         return toJsonObject(client.device(jsonMethod.toString()));
     }
 
-    protected String program(String[] devIds, String method, ProgramNode[] programNodes, Object dataEx) {
+    public String program(String[] devIds, String method, ProgramNode[] programNodes, Object dataEx) {
 
         JSONObject retJsonObject = uploadAndUpdateFiles(programNodes);
         if (!retJsonObject.getString("message").equals("ok")) {
@@ -64,7 +64,7 @@ public class BaseClient {
         return toJsonObject(client.program(jsonMethod.toString()));
     }
 
-    protected String file(String filePath) {
+    public String file(String filePath) {
         return toJsonObject(client.uploadFile(filePath));
     }
 
