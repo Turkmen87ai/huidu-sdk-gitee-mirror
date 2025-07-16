@@ -55,7 +55,7 @@ sdk/src/main/java/cn/huidu/device/api/
 
 例如：C16L-D00-A000F
 
-![输入图片说明](images/id.png)
+![输入图片说明](doc/images/id.png)
 
 ## 2.2 检查HTTP SDK是否生效
 
@@ -112,7 +112,7 @@ sdk/src/main/java/cn/huidu/device/api/
 
  **前期平台尚未开放，提供以下信息，联系灰度获取sdkKey和sdkSecret** 
 
-![输入图片说明](images/registered.png)
+![输入图片说明](doc/images/registered.png)
 
 
 ## 2.4 配置Apipost 环境
@@ -121,21 +121,21 @@ sdk/src/main/java/cn/huidu/device/api/
 
 ### 2.4.1选择json文件【http Api项目.json】，导入项目
 
-![输入图片说明](images/import1.png)
+![输入图片说明](doc/images/import1.png)
 
-![输入图片说明](images/import2.png)
+![输入图片说明](doc/images/import2.png)
 
 ### 2.4.2 配置环境变量
 
-![输入图片说明](images/Apipost1.png)
+![输入图片说明](doc/images/Apipost1.png)
 
 ### 2.4.3 配置服务器ip,端口以及密钥
 
-![输入图片说明](images/Apipost2.png)
+![输入图片说明](doc/images/Apipost2.png)
 
 ### 2.4.4 编辑预操作
 
-![输入图片说明](images/Apipost3.png)
+![输入图片说明](doc/images/Apipost3.png)
 
 
 ```
@@ -254,13 +254,13 @@ Content-Length: 72
 
 方法一：通过网页初始化（网址：控制卡ip:30080/login/, 如果无法显示该界面，可能和浏览器有关，建议换一个）
 
-![输入图片说明](images/webPageInit.png)
+![输入图片说明](doc/images/webPageInit.png)
 
 方法二：通过接口初始化
 
 以下错误，**已经初始化过了，就不能再次初始化，只能添加一次，防止随意添加** 
 
-![输入图片说明](images/init.png)
+![输入图片说明](doc/images/init.png)
 
 
 # 3 API接口示例
