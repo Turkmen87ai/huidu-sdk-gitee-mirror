@@ -1,0 +1,2608 @@
+{
+	"project": {
+		"name": "HTTP SDK",
+		"description": "",
+		"details": {
+			"variable": [],
+			"servers": [
+				{
+					"server_id": "default",
+					"name": "默认服务"
+				}
+			],
+			"markList": [
+				{
+					"key": "developing",
+					"name": "开发中",
+					"color": "#3A86FF",
+					"is_default": true
+				},
+				{
+					"key": "complated",
+					"name": "已完成",
+					"color": "#2BA58F",
+					"is_default": true
+				},
+				{
+					"key": "modifying",
+					"name": "需修改",
+					"color": "#EC4646",
+					"is_default": true
+				}
+			],
+			"script": {
+				"pre_script": "",
+				"test": ""
+			},
+			"request": {
+				"query": [
+					{
+						"is_checked": "1",
+						"type": "Text",
+						"key": "",
+						"value": "",
+						"description": ""
+					}
+				],
+				"header": [
+					{
+						"is_checked": "1",
+						"type": "Text",
+						"key": "",
+						"value": "",
+						"description": ""
+					}
+				],
+				"body": [
+					{
+						"is_checked": "1",
+						"type": "Text",
+						"key": "",
+						"value": "",
+						"description": ""
+					}
+				]
+			},
+			"mock_rules": []
+		}
+	},
+	"apis": [
+		{
+			"target_type": "folder",
+			"name": "HTTP API",
+			"mark": "developing",
+			"sort": 1,
+			"tags": [],
+			"created_uuid": "U3UHG5DFA172",
+			"request": {
+				"description": "Json格式"
+			},
+			"children": [
+				{
+					"target_type": "folder",
+					"name": "设备通用接口",
+					"mark": "developing",
+					"sort": 3,
+					"tags": [],
+					"created_uuid": "U3UHG5DFA172",
+					"request": {
+						"description": ""
+					},
+					"children": [
+						{
+							"target_type": "api",
+							"name": "获取计划任务(Obtain the scheduled task)",
+							"mark": "complated",
+							"sort": 5,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "0b4e0ff4-3347-406b-9b14-9763e8f0b94b"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n\t\"method\": \"getScheduledTask\",\r\n\t\"data\": [\r\n\t\t\"screen\",\r\n\t\t\"volume\",\r\n\t\t\"luminance\",\r\n\t\t\"relay\"\r\n\t]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"getScheduledTask\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":{}}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "获取设备状态(Obtain device status)",
+							"mark": "complated",
+							"sort": 4,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "29266e11-3aaf-44a9-99fa-718019680f21"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"getDeviceStatus\",\r\n    \"data\": []\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"message\":\"faild\",\n\t\"data\":\"The sdkKey is mismatch!\"\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "关闭屏幕(Turn off the screen)",
+							"mark": "complated",
+							"sort": 12,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "6d6ab339-c5a8-42ac-9cac-f427fc81e49c"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"closeDeviceScreen\",\r\n    \"data\": {}\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"closeDeviceScreen\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "更新定时任务(Update a scheduled task)",
+							"mark": "complated",
+							"sort": 8,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "16173f12-0c39-4604-b030-9b53957bc557"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n\t\"method\": \"setPeriodicTask\",\r\n\t\"data\": [\r\n\t\t{\r\n\t\t\t\"url\": \"http://192.168.90.245/1.html\",\r\n\t\t\t\"rege\": \"(ParkingSpace),([0-9][0-9]{0,})\",\r\n\t\t\t\"interval\": \"30\"\r\n\t\t}\r\n\t]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"setPeriodicTask\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"C16-D00-A000F\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "更新设备属性(Update device attributes)",
+							"mark": "complated",
+							"sort": 3,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "f7a0b436-4272-4a51-ac76-9b74b765850e"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"setDeviceProperty\",\r\n    \"data\": {\r\n        \"time.timeZone\": \"Asia/Shanghai;UTC+08:00;Beijing,Chongqing,HongKong,Urumchi\",// 时区\r\n        \"time.sync\": \"ntp\",//ntp 校时\r\n        \"time.ntp\": \"ntp.huidu.cn\"\r\n    },\r\n    \"id\":\"D16-D22-A073D,C16-D22-A073D\"\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"setDeviceProperty\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"C16-D22-A073D\",\"message\":\"failed\",\"data\":\"device does not exist\"},\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "开启屏幕(Turn on the screen)",
+							"mark": "complated",
+							"sort": 11,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "dabc34f1-76f6-41bd-a1bd-3b44deb3f44f"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"openDeviceScreen\",\r\n    \"data\": {}\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"openDeviceScreen\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "获取设备在线列表(Obtain the online list of devices)",
+							"mark": "complated",
+							"sort": 1,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "GET",
+							"mock": "{}",
+							"mock_url": "/api/device/list/",
+							"request": {
+								"url": "/api/device/list/",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "130cd845-19f0-4493-b0cb-6efa2fe572b5"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "404 page not found",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "更新计划任务(Update the scheduled task)",
+							"mark": "complated",
+							"sort": 6,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "071da32d-e74e-4ebb-a334-228e1454139c"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"setScheduledTask\",\r\n    \"data\": {\r\n        \"screen\": [\r\n            {\r\n                \"timeRange\": \"10:10:00~10:15:00\",\r\n                \"data\": \"true\"\r\n            }\r\n        ]\r\n    }\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"setScheduledTask\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "获取设备属性(Obtain device attributes)",
+							"mark": "complated",
+							"sort": 2,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "7def39da-c73e-4124-80e5-e4289a037b4f"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"getDeviceProperty\",\r\n    \"data\": []\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a817f0cbaaa88244",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"getDeviceProperty\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":{\"name\":\"BoxPlayer\",\"sync\":\"false\",\"screen.width\":\"128\",\"screen.height\":\"64\",\"screen.rotation\":\"0\",\"version.hardware\":\"HD-D16-V1.X\",\"version.fpga\":\"3.22.70.0\",\"version.app\":\"7.10.62.3\",\"time\":\"2025-04-24 15:26:52\",\"time.timeZone\":\"Asia/Shanghai;UTC+08:00;Beijing,Chongqing,HongKong,Urumchi\",\"time.sync\":\"ntp\",\"time.ntp\":\"ntp.huidu.cn\",\"volume\":\"80\",\"volume.mode\":\"default\",\"luminance\":\"80\",\"luminance.mode\":\"default\",\"eth.dhcp\":\"false\",\"eth.ip\":\"192.168.90.254\",\"wifi.enabled\":\"true\",\"wifi.mode\":\"ap\",\"wifi.ap.ssid\":\"D16-D22-A073D\",\"wifi.ap.passwd\":\"!12345678\",\"wifi.ap.channel\":\"5\",\"raw\":\"\\u003c?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?\\u003e\\n\\u003csdk guid=\\\"f993cde768ca21e4b3a8bfe2ea258dde\\\"\\u003e\\n    \\u003cout eventId=\\\"getDeviceProperty\\\" xmlns=\\\"GetDeviceInfo\\\" result=\\\"kSuccess\\\"\\u003e\\n        \\u003cdevice model=\\\"D16\\\" name=\\\"BoxPlayer\\\" id=\\\"D16-D22-A073D\\\" cpu=\\\"RK.px30\\\"/\\u003e\\n        \\u003cversion kernel=\\\"\\\" app=\\\"7.10.62.3\\\" hardware=\\\"HD-D16-V1.X\\\" fpga=\\\"3.22.70.0\\\"/\\u003e\\n        \\u003cscreen height=\\\"64\\\" rotation=\\\"0\\\" width=\\\"128\\\"/\\u003e\\n    \\u003c/out\\u003e\\n    \\u003cout xmlns=\\\"GetMulScreenSync\\\" result=\\\"kSuccess\\\"\\u003e\\n        \\u003cenable value=\\\"false\\\"/\\u003e\\n    \\u003c/out\\u003e\\n    \\u003cout xmlns=\\\"GetTimeInfo\\\" result=\\\"kSuccess\\\"\\u003e\\n        \\u003ctimezone value=\\\"(UTC+08:00)Beijing,Chongqing,HongKong,Urumchi\\\"/\\u003e\\n        \\u003csummer enable=\\\"false\\\"/\\u003e\\n        \\u003csync value=\\\"network\\\"/\\u003e\\n        \\u003ctime value=\\\"2025-04-24 15:26:52\\\"/\\u003e\\n        \\u003cserver list=\\\"ntp.huidu.cn\\\"/\\u003e\\n        \\u003crf\\u003e\\n            \\u003cenable value=\\\"false\\\"/\\u003e\\n            \\u003cmaster value=\\\"false\\\"/\\u003e\\n            \\u003cchannel value=\\\"0\\\"/\\u003e\\n        \\u003c/rf\\u003e\\n    \\u003c/out\\u003e\\n    \\u003cout xmlns=\\\"GetSystemVolume\\\" result=\\\"kSuccess\\\"\\u003e\\n        \\u003cmode value=\\\"default\\\"/\\u003e\\n        \\u003cvolume percent=\\\"80\\\"/\\u003e\\n        \\u003cploy\\u003e\\n            \\u003citem start=\\\"08:00:00\\\" enable=\\\"true\\\" percent=\\\"100\\\"/\\u003e\\n            \\u003citem start=\\\"18:00:00\\\" enable=\\\"true\\\" percent=\\\"60\\\"/\\u003e\\n            \\u003citem start=\\\"22:00:00\\\" enable=\\\"true\\\" percent=\\\"30\\\"/\\u003e\\n        \\u003c/ploy\\u003e\\n    \\u003c/out\\u003e\\n    \\u003cout xmlns=\\\"GetLuminancePloy\\\" result=\\\"kSuccess\\\"\\u003e\\n        \\u003cmode value=\\\"default\\\"/\\u003e\\n        \\u003cdefault value=\\\"80\\\"/\\u003e\\n        \\u003csensor time=\\\"5\\\" min=\\\"1\\\" max=\\\"100\\\" count=\\\"1\\\"/\\u003e\\n        \\u003cploy\\u003e\\n            \\u003citem start=\\\"08:00:00\\\" enable=\\\"true\\\" percent=\\\"100\\\"/\\u003e\\n            \\u003citem start=\\\"18:00:00\\\" enable=\\\"true\\\" percent=\\\"60\\\"/\\u003e\\n            \\u003citem start=\\\"22:00:00\\\" enable=\\\"true\\\" percent=\\\"30\\\"/\\u003e\\n        \\u003c/ploy\\u003e\\n    \\u003c/out\\u003e\\n    \\u003cout xmlns=\\\"GetEth0Info\\\" result=\\\"kSuccess\\\"\\u003e\\n        \\u003ceth valid=\\\"true\\\"\\u003e\\n            \\u003cenable value=\\\"true\\\"/\\u003e\\n            \\u003cdhcp auto=\\\"false\\\"/\\u003e\\n            \\u003caddress ip=\\\"192.168.90.254\\\" gateway=\\\"192.168.90.1\\\" netmask=\\\"255.255.255.0\\\" dns=\\\"8.8.8.8\\\"/\\u003e\\n        \\u003c/eth\\u003e\\n    \\u003c/out\\u003e\\n    \\u003cout xmlns=\\\"GetPppoeInfo\\\" result=\\\"kSuccess\\\"\\u003e\\n        \\u003cpppoe valid=\\\"false\\\"/\\u003e\\n    \\u003c/out\\u003e\\n    \\u003cout xmlns=\\\"GetWifiInfo\\\" result=\\\"kSuccess\\\"\\u003e\\n        \\u003cwifi valid=\\\"true\\\"\\u003e\\n            \\u003cenable value=\\\"true\\\"/\\u003e\\n            \\u003cmode value=\\\"ap\\\"/\\u003e\\n            \\u003cap\\u003e\\n                \\u003cssid value=\\\"D16-D22-A073D\\\"/\\u003e\\n                \\u003cpasswd value=\\\"!12345678\\\"/\\u003e\\n                \\u003cchannel value=\\\"5\\\"/\\u003e\\n                \\u003cencryption value=\\\"WPA-PSK\\\"/\\u003e\\n                \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                \\u003caddress ip=\\\"192.168.6.1\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n            \\u003c/ap\\u003e\\n            \\u003cstation\\u003e\\n                \\u003ccurrent index=\\\"0\\\"/\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"HUIDU-2.4G\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"hd12345678\\\"/\\u003e\\n                        \\u003csignal value=\\\"20\\\"/\\u003e\\n                        \\u003capmac value=\\\"54:46:17:A1:9C:70\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"196.5.164.239\\\" dns=\\\"8.8.8.8\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"C16L-D00-A000F\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"hd123456\\\"/\\u003e\\n                        \\u003csignal value=\\\"0\\\"/\\u003e\\n                        \\u003capmac value=\\\"00:E0:4C:05:5C:90\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"灰度前台_2.4G\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"hd12345678\\\"/\\u003e\\n                        \\u003csignal value=\\\"40\\\"/\\u003e\\n                        \\u003capmac value=\\\"20:DA:22:B3:41:08\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"10.168.4.55\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"\\\"/\\u003e\\n                        \\u003csignal value=\\\"60\\\"/\\u003e\\n                        \\u003capmac value=\\\"00:50:C2:4B:5D:54\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"\\\"/\\u003e\\n                        \\u003csignal value=\\\"20\\\"/\\u003e\\n                        \\u003capmac value=\\\"56:46:17:B1:9C:74\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"H8-00-A5969\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"\\\"/\\u003e\\n                        \\u003csignal value=\\\"60\\\"/\\u003e\\n                        \\u003capmac value=\\\"E2:2F:DB:CD:CA:2A\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"WF4_dcdac37dcd4\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"\\\"/\\u003e\\n                        \\u003csignal value=\\\"40\\\"/\\u003e\\n                        \\u003capmac value=\\\"DC:DA:0C:37:DC:D5\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"ZTE_F20A1C\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"\\\"/\\u003e\\n                        \\u003csignal value=\\\"40\\\"/\\u003e\\n                        \\u003capmac value=\\\"10:3C:59:F2:0A:1C\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"W3A_0050c2a0827d\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"\\\"/\\u003e\\n                        \\u003csignal value=\\\"40\\\"/\\u003e\\n                        \\u003capmac value=\\\"00:50:C2:A0:82:7D\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"A5-D00-A000F\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"\\\"/\\u003e\\n                        \\u003csignal value=\\\"40\\\"/\\u003e\\n                        \\u003capmac value=\\\"00:E0:4C:E1:67:8E\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n                \\u003clist\\u003e\\n                    \\u003citem\\u003e\\n                        \\u003cssid value=\\\"H8-00-A8523\\\"/\\u003e\\n                        \\u003cpasswd value=\\\"\\\"/\\u003e\\n                        \\u003csignal value=\\\"40\\\"/\\u003e\\n                        \\u003capmac value=\\\"66:AF:F6:94:3A:EC\\\"/\\u003e\\n                        \\u003cdhcp auto=\\\"true\\\"/\\u003e\\n                        \\u003caddress ip=\\\"0.0.0.0\\\" gateway=\\\"0.0.0.0\\\" netmask=\\\"0.0.0.0\\\" dns=\\\"0.0.0.0\\\"/\\u003e\\n                    \\u003c/item\\u003e\\n                \\u003c/list\\u003e\\n            \\u003c/station\\u003e\\n        \\u003c/wifi\\u003e\\n        \\u003cisopen value=\\\"\\\"/\\u003e\\n    \\u003c/out\\u003e\\n\\u003c/sdk\\u003e\\n\"}}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "获取定时任务(Obtain scheduled tasks)",
+							"mark": "complated",
+							"sort": 7,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "2fd9fb3c-2ce2-4e47-8423-0399d3afa7f2"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"getPeriodicTask\",\r\n    \"data\": []\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"getPeriodicTask\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"C16L-D22-A7788\",\"message\":\"ok\",\"data\":[]}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "主动推送(Proactive push)",
+							"mark": "complated",
+							"sort": 9,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "698465a4-bc4b-467f-9783-203aa2131e84"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"pushStatus\",\r\n    \"data\": {\r\n        \"ParkingSpace\": \"110\"\r\n    }\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"pushStatus\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "重启设备(Restart the device)",
+							"mark": "complated",
+							"sort": 10,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/device/{{Id}}",
+							"request": {
+								"url": "/api/device/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "73fb87b5-05af-4700-9259-2c72c97a6697"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text",
+											"static": true
+										}
+									],
+									"raw": "{\r\n    \"method\": \"rebootDevice\",\r\n    \"data\": {\r\n        \"delay\": 5\r\n    }\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						}
+					]
+				},
+				{
+					"target_type": "folder",
+					"name": "节目通用接口",
+					"mark": "developing",
+					"sort": 4,
+					"tags": [],
+					"created_uuid": "U3UHG5DFA172",
+					"request": {
+						"description": ""
+					},
+					"children": [
+						{
+							"target_type": "api",
+							"name": "数字时钟节目(Clock program)",
+							"mark": "complated",
+							"sort": 6,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "c64349ff-e427-4bd0-a92d-35bfcfe81d03"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n\t\"method\": \"replace\",\r\n\t\"data\": [{\r\n\t\t\"name\": \"节目1\",\r\n\t\t\"type\": \"normal\",\r\n\t\t\"uuid\": \"A4\",\r\n\t\t\"area\": [{\r\n\t\t\t\"x\": 0,\r\n\t\t\t\"y\": 0,\r\n\t\t\t\"width\": 128,\r\n\t\t\t\"height\": 64,\r\n\t\t\t\"item\": [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"digitalClock\",\r\n\t\t\t\t\t\"timezone\": \"\",\r\n\t\t\t\t\t\"timeOffset\": \"\",\r\n\t\t\t\t\t\"font\": {\r\n\t\t\t\t\t\t\"name\": \"宋体\",\r\n\t\t\t\t\t\t\"size\": 8,\r\n\t\t\t\t\t\t\"underline\": false,\r\n\t\t\t\t\t\t\"bold\": false,\r\n\t\t\t\t\t\t\"italic\": false,\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"title\": {\r\n\t\t\t\t\t\t\"string\": \"0\",\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"date\": {\r\n\t\t\t\t\t\t\"format\": \"6\",\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"week\": {\r\n\t\t\t\t\t\t\"format\": \"0\",\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"time\": {\r\n\t\t\t\t\t\t\"format\": \"0\",\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t}]\r\n\t}]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"replace\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "更新节目(Update the program)",
+							"mark": "complated",
+							"sort": 9,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "dadc1141-4c7a-47a9-8219-42b4c5d20e3d"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"update\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"border\": {\r\n                        \"type\": 0,\r\n                        \"speed\": 5,\r\n                        \"effect\": \"rotate\"\r\n                    },\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"text\",\r\n                            \"string\": \"LED\",\r\n                            \"multiLine\": false,\r\n                            \"font\": {\r\n                                \"name\": \"宋体\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"update\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"failed\",\"data\":\"The program id[A4] does not exist\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "获取节目(Get the program)",
+							"mark": "complated",
+							"sort": 1,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "159dc3f9-f3c9-425c-b218-b1cfb7caa6df"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"getAll\",\r\n    \"data\": [],\r\n    \"id\": \"D16-D22-A073D\"\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "图片节目(Image program) 本地",
+							"mark": "complated",
+							"sort": 4,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "c64349ff-e427-4bd0-a92d-35bfcfe81d03"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "form-data",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"replace\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"item\": [\r\n                        {\r\n                            \"aspectRatio\": false,\r\n\t\t\t\t\t\t\t\"file\": \"https://persuasion.yingkeiot.cn/attachment/screen/2024-07-13/e8b1aa07-fdb4-4b7d-a83d-b0f247c0ab3d.mp4\",\r\n\t\t\t\t\t\t\t\"fileMd5\": \"de8b964d0ec0327d647c64708f0d8291\",\r\n\t\t\t\t\t\t\t\"fileSize\": 12654894,\r\n\t\t\t\t\t\t\t\"type\": \"video\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"replace\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "模拟时钟节目(Clock program)",
+							"mark": "complated",
+							"sort": 7,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "c64349ff-e427-4bd0-a92d-35bfcfe81d03"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n\t\"method\": \"replace\",\r\n\t\"data\": [\r\n\t\t{\r\n\t\t\t\"name\": \"节目1\",\r\n\t\t\t\"type\": \"normal\",\r\n\t\t\t\"uuid\": \"A4\",\r\n\t\t\t\"area\": [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"x\": 0,\r\n\t\t\t\t\t\"y\": 0,\r\n\t\t\t\t\t\"width\": 128,\r\n\t\t\t\t\t\"height\": 64,\r\n\t\t\t\t\t\"item\": [\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\"type\": \"dialClock\",\r\n\t\t\t\t\t\t\t\"timezone\": \"\",\r\n\t\t\t\t\t\t\t\"timeOffset\": \"\",\r\n\t\t\t\t\t\t\t\"font\": {\r\n\t\t\t\t\t\t\t\t\"name\": \"宋体\",\r\n\t\t\t\t\t\t\t\t\"size\": 8,\r\n\t\t\t\t\t\t\t\t\"underline\": false,\r\n\t\t\t\t\t\t\t\t\"bold\": false,\r\n\t\t\t\t\t\t\t\t\"italic\": false,\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"title\": {\r\n\t\t\t\t\t\t\t\t\"string\": \"0\",\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"date\": {\r\n\t\t\t\t\t\t\t\t\"format\": \"6\",\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"week\": {\r\n\t\t\t\t\t\t\t\t\"format\": \"0\",\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"time\": {\r\n\t\t\t\t\t\t\t\t\"format\": \"0\",\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t]\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t}\r\n\t]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"replace\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "图片节目(Image program)",
+							"mark": "complated",
+							"sort": 3,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "c64349ff-e427-4bd0-a92d-35bfcfe81d03"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"replace\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"image\",\r\n                            \"file\": \"https://persuasion.yingkeiot.cn/attachment/violations/11/2024-06-03/80602000-58c6-43b5-adc9-b072ec04c792.jpg\",\r\n                            \"fileSize\": 337460,\r\n                            \"fileMd5\": \"498c7bbab17011a3d257cf0468bcff08\",\r\n                            \"fit\": \"stretch\",\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"replace\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"C16L-D00-A000F\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "文本节目(Text program)",
+							"mark": "complated",
+							"sort": 2,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "c64349ff-e427-4bd0-a92d-35bfcfe81d03"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"replace\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"border\": {\r\n                        \"type\": 0,\r\n                        \"speed\": 5,\r\n                        \"effect\": \"rotate\"\r\n                    },\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"text\",\r\n                            \"string\": \"LED\",\r\n                            \"multiLine\": false,\r\n                            \"font\": {\r\n                                \"name\": \"宋体\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"replace\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "动态区域(Dynamic area)",
+							"mark": "complated",
+							"sort": 8,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "c64349ff-e427-4bd0-a92d-35bfcfe81d03"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目1\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 32,\r\n                    \"width\": 128,\r\n                    \"height\": 32,\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"dynamic\",\r\n                            \"string\": \"{{ParkingSpace}}\",\r\n                            \"keys\": \"ParkingSpace\",\r\n                            \"alignment\": \"center\",\r\n                            \"dataSource\": \"ParkingSpace\",\r\n                            \"dataSourceDefault\": \"002\",\r\n                            \"font\": {\r\n                                \"name\": \"宋体\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 32,\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"text\",\r\n                            \"string\": \"剩余车位：\",\r\n                            \"alignment\": \"left\",\r\n                            \"multiLine\": false,\r\n                            \"font\": {\r\n                                \"name\": \"FZLanTingHeiS-R-GB\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"method\": \"replace\"\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"replace\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"kSuccess\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "视频节目(Video program)",
+							"mark": "complated",
+							"sort": 5,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "c64349ff-e427-4bd0-a92d-35bfcfe81d03"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n\t\"data\": [\r\n\t\t{\r\n\t\t\t\"name\": \"节目1\",\r\n\t\t\t\"type\": \"normal\",\r\n\t\t\t\"uuid\": \"A4\",\r\n\t\t\t\"area\": [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"height\": 32,\r\n\t\t\t\t\t\"item\": [\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\"aspectRatio\": false,\r\n\t\t\t\t\t\t\t\"file\": \"inpaint.mp4\",\r\n\t\t\t\t\t\t\t\"fileMd5\": \"9109ff49d25d2a588d5b24b790b3dcc1\",\r\n\t\t\t\t\t\t\t\"fileSize\": 839227,\r\n\t\t\t\t\t\t\t\"type\": \"video\"\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t],\r\n\t\t\t\t\t\"width\": 128,\r\n\t\t\t\t\t\"x\": 0,\r\n\t\t\t\t\t\"y\": 0\r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\t\"height\": 32,\r\n\t\t\t\t\t\"item\": [\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\"aspectRatio\": false,\r\n\t\t\t\t\t\t\t\"file\": \"https://persuasion.yingkeiot.cn/attachment/screen/2024-03-19/822091ba-f9e7-4096-8baa-318d785a60ef.mp4\",\r\n\t\t\t\t\t\t\t\"fileMd5\": \"46318c4df4968f716061e5fc2ad22401\",\r\n\t\t\t\t\t\t\t\"fileSize\": 33417203,\r\n\t\t\t\t\t\t\t\"type\": \"video\"\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t],\r\n\t\t\t\t\t\"width\": 128,\r\n\t\t\t\t\t\"x\": 0,\r\n\t\t\t\t\t\"y\": 32\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t}\r\n\t],\r\n\t\"method\": \"replace\"\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"replace\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"C16L-D00-A000F\",\"message\":\"failed\",\"data\":\"kDownloadFileFailed\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "追加节目(Additional program)",
+							"mark": "complated",
+							"sort": 10,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "b4186baf-98f7-4630-ab01-080cb7c5a7f3"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"append\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目1\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"text\",\r\n                            \"string\": \"显示屏\",\r\n                            \"multiLine\": false,\r\n                            \"font\": {\r\n                                \"name\": \"宋体\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"append\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"failed\",\"data\":\"The program id[A4] already exists\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "移除节目(Remove the program)",
+							"mark": "complated",
+							"sort": 11,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/program/{{Id}}",
+							"request": {
+								"url": "/api/program/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "d8f5c021-070a-4d01-b6ce-979357558745"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n    \"method\": \"remove\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"uuid\": \"A3\"\r\n        },\r\n        {\r\n            \"name\": \"节目1\",\r\n            \"uuid\": \"A4\"\r\n        }\r\n    ]\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"method\": \"remove\",\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"C16-D00-A000F\",\"message\":\"failed\",\"data\":\"Error method []\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						}
+					]
+				},
+				{
+					"target_type": "folder",
+					"name": "屏幕截图接口",
+					"mark": "developing",
+					"sort": 6,
+					"tags": [],
+					"created_uuid": "U3UHG5DFA172",
+					"request": {
+						"description": ""
+					},
+					"children": [
+						{
+							"target_type": "api",
+							"name": "屏幕截图",
+							"mark": "complated",
+							"sort": 2,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "GET",
+							"mock": "{}",
+							"mock_url": "/api/screenshot/{{Id}}",
+							"request": {
+								"url": "/api/screenshot/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "730a82ae-87cc-427c-b0ce-6874d8fa9459"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "json",
+									"parameter": [],
+									"raw": "{\r\n\t\"method\": \"screenshot\",\r\n\t\"data\": {}\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "����\u0000\u0010JFIF\u0000\u0001\u0001\u0001\u0000d\u0000d\u0000\u0000��\u0000C\u0000\b\u0006\u0006\u0007\u0006\u0005\b\u0007\u0007\u0007\t\t\b\n\f\u0014\r\f\u000b\u000b\f\u0019\u0012\u0013\u000f\u0014\u001d\u001a\u001f\u001e\u001d\u001a\u001c\u001c $.' \",#\u001c\u001c(7),01444\u001f'9=82<.342��\u0000C\u0001\t\t\t\f\u000b\f\u0018\r\r\u00182!\u001c!22222222222222222222222222222222222222222222222222��\u0000\u0011\b\u0000@\u0000�\u0003\u0001\"\u0000\u0002\u0011\u0001\u0003\u0011\u0001��\u0000\u001f\u0000\u0000\u0001\u0005\u0001\u0001\u0001\u0001\u0001\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b��\u0000�\u0010\u0000\u0002\u0001\u0003\u0003\u0002\u0004\u0003\u0005\u0005\u0004\u0004\u0000\u0000\u0001}\u0001\u0002\u0003\u0000\u0004\u0011\u0005\u0012!1A\u0006\u0013Qa\u0007\"q\u00142���\b#B��\u0015R��$3br�\t\n\u0016\u0017\u0018\u0019\u001a%&'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz���������������������������������������������������������������������������\u0000\u001f\u0001\u0000\u0003\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b��\u0000�\u0011\u0000\u0002\u0001\u0002\u0004\u0004\u0003\u0004\u0007\u0005\u0004\u0004\u0000\u0001\u0002w\u0000\u0001\u0002\u0003\u0011\u0004\u0005!1\u0006\u0012AQ\u0007aq\u0013\"2�\b\u0014B����\t#3R�\u0015br�\n\u0016$4�%�\u0017\u0018\u0019\u001a&'()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz��������������������������������������������������������������������������\u0000\f\u0003\u0001\u0000\u0002\u0011\u0003\u0011\u0000?\u0000���(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u0002�(�\u000f��/9j/4AAQSkZJRgABAQEAZABkAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABAAIADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5/ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/9k=",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						}
+					]
+				},
+				{
+					"target_type": "api",
+					"name": "初始化(initialize)",
+					"mark": "complated",
+					"sort": 2,
+					"tags": [],
+					"created_uuid": "U3UHG5DFA172",
+					"method": "POST",
+					"mock": "{}",
+					"mock_url": "/api/sdkkey/{{Id}}",
+					"request": {
+						"url": "/api/sdkkey/{{Id}}",
+						"description": "",
+						"event": {
+							"pre_script": "",
+							"test": ""
+						},
+						"pre_tasks": [
+							{
+								"type": "customScript",
+								"enabled": 1,
+								"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+								"id": "df651ef4-c0c2-409a-afd4-597e32502169"
+							}
+						],
+						"post_tasks": [],
+						"body": {
+							"mode": "json",
+							"parameter": [],
+							"raw": "{\r\n\t\"method\": \"append\",\r\n\t\"data\": {\r\n\t\t\"key\": \"a7fa6795aaa891e2\",\r\n\t\t\"secret\": \"\"\r\n\t}\r\n}",
+							"raw_para": [],
+							"raw_schema": {
+								"type": "object"
+							}
+						}
+					},
+					"response": {
+						"success": {
+							"raw": "{\n\t\"message\":\"failed\",\n\t\"data\":\"Bad request\"\n}",
+							"parameter": [],
+							"expect": {
+								"name": "成功",
+								"isDefault": 1,
+								"code": 200,
+								"contentType": "json",
+								"verifyType": "schema",
+								"mock": "",
+								"schema": []
+							}
+						},
+						"error": {
+							"raw": "",
+							"parameter": [],
+							"expect": {
+								"name": "失败",
+								"isDefault": -1,
+								"code": 404,
+								"contentType": "json",
+								"verifyType": "schema",
+								"mock": "",
+								"schema": []
+							}
+						}
+					},
+					"children": []
+				},
+				{
+					"target_type": "folder",
+					"name": "文件通用接口",
+					"mark": "developing",
+					"sort": 5,
+					"tags": [],
+					"created_uuid": "U3UHG5DFA172",
+					"request": {
+						"description": ""
+					},
+					"children": [
+						{
+							"target_type": "api",
+							"name": "文件操作(File operations)",
+							"mark": "complated",
+							"sort": 1,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/api/file/{{Id}}",
+							"request": {
+								"url": "/api/file/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n  key: \"requestId\",\r\n  value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    } \r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n    \r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    } \r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n    \r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n  console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "bdb711ee-c273-441b-942c-59069bfbf386"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "form-data",
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "data",
+											"value": "",
+											"not_null": 1,
+											"type": "File",
+											"filename": "",
+											"fileBase64": []
+										},
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": -1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text",
+											"static": true
+										}
+									],
+									"raw": "{\r\n    \"method\": \"[append|remove|update|replace|getAll]\",\r\n    \"data\": {},\r\n}",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										},
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text"
+										},
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": -1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text",
+											"static": true
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\"data\":[{\"message\":\"ok\",\"name\":\"Linux_cn.huidu.device.service.PX30.V99.0.0.5.bin\",\"md5\":\"04e3ea22f4fd80d1b58d851e8a37de8b\",\"size\":\"2561524\",\"data\":\"http://192.168.90.254:30080/api/file/Linux_cn.huidu.device.service.PX30.V99.0.0.5.bin?_hdsdk_expired=1745314540\\u0026date=1729589740\\u0026sdkKey=a7fa6795aaa891e2\\u0026sign=9316086546ae33b93a280bd502006b78\\u0026zzzzz=Linux_cn.huidu.device.service.PX30.V99.0.0.5.bin\"}],\"message\":\"ok\"}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						}
+					]
+				},
+				{
+					"target_type": "folder",
+					"name": "其他XML相关接口",
+					"mark": "developing",
+					"sort": 7,
+					"tags": [],
+					"created_uuid": "U3UHG5DFA172",
+					"request": {
+						"description": ""
+					},
+					"children": [
+						{
+							"target_type": "api",
+							"name": "固件升级 ExcuteUpgradeShell",
+							"mark": "complated",
+							"sort": 2,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/raw/{{Id}}",
+							"request": {
+								"url": "/raw/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n    key: \"requestId\",\r\n    value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    }\r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n    console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "058dea87-d5f3-48a3-9731-cafcf80bd442"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "xml",
+									"parameter": [],
+									"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<sdk guid=\"##GUID\">\r\n      <in method=\"FirmwareUpgrade\">\r\n        <file name=\"https://persuasion.yingkeiot.cn/attachment/huidu/Linux_cn.huidu.device.service.PX30.V99.0.0.5.bin\" md5=\"04e3ea22f4fd80d1b58d851e8a37de8b\" size=\"2561524\"/>\r\n      </in>\r\n</sdk>",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"\\u003c?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?\\u003e\\n\\u003csdk guid=\\\"962740ad1b727791ef8caeb6d7b0c93d\\\"\\u003e\\n    \\u003cout method=\\\"FirmwareUpgrade\\\" result=\\\"kDownloadingFile\\\"/\\u003e\\n\\u003c/sdk\\u003e\\n\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": []
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "获取文件",
+							"mark": "complated",
+							"sort": 3,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/raw/{{Id}}",
+							"request": {
+								"url": "/raw/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n  key: \"requestId\",\r\n  value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    } \r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n    \r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    } \r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n    \r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n  console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "a69f7e23-6b60-464b-816c-a5ec325d0cfe"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "xml",
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text",
+											"static": true
+										}
+									],
+									"raw": "<?xml version='1.0' encoding='utf-8'?>\r\n<sdk guid=\"##GUID\">\r\n<in method=\"GetFiles\"/>\r\n</sdk>",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										},
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": -1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text"
+										},
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": -1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text",
+											"static": true
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"\\u003c?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?\\u003e\\n\\u003csdk guid=\\\"a6f77b6986cec5cd60d21e2f137b4912\\\"\\u003e\\n    \\u003cout method=\\\"GetFiles\\\" result=\\\"kSuccess\\\"\\u003e\\n        \\u003cfiles\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"simsun.ttc\\\" md5=\\\"simsun\\\" size=\\\"18214472\\\" existSize=\\\"18214472\\\"/\\u003e\\n            \\u003cfile type=\\\"image\\\" name=\\\"output2.jpg\\\" md5=\\\"7f20373290ef99d54b782fdf2dbe60df\\\" size=\\\"5717037\\\" existSize=\\\"5717037\\\"/\\u003e\\n            \\u003cfile type=\\\"image\\\" name=\\\"samegame.png\\\" md5=\\\"a93baec6979250c52321d9cfa57dec9b\\\" size=\\\"127909\\\" existSize=\\\"127909\\\"/\\u003e\\n            \\u003cfile type=\\\"image\\\" name=\\\"image2.png\\\" md5=\\\"3092ce2b51f72f249368e3a1e4a371d0\\\" size=\\\"864\\\" existSize=\\\"864\\\"/\\u003e\\n            \\u003cfile type=\\\"image\\\" name=\\\"image1.png\\\" md5=\\\"17577d8d59497fba7dfe8efb1683943c\\\" size=\\\"639\\\" existSize=\\\"639\\\"/\\u003e\\n            \\u003cfile type=\\\"image\\\" name=\\\"image.png\\\" md5=\\\"2b45dd10c4909ee5f8432582073f33fe\\\" size=\\\"1015\\\" existSize=\\\"1015\\\"/\\u003e\\n            \\u003cfile type=\\\"image\\\" name=\\\"image.png\\\" md5=\\\"4f97a6b90a2d5a219014eedb334fb57a\\\" size=\\\"981\\\" existSize=\\\"981\\\"/\\u003e\\n            \\u003cfile type=\\\"image\\\" name=\\\"image3.png\\\" md5=\\\"84e07c340eb0334f9099999e5658470a\\\" size=\\\"886\\\" existSize=\\\"886\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"Ubuntu_18.04_SimHei.ttf\\\" md5=\\\"3e20b41f97836e43b9f5d13fab964397\\\" size=\\\"10044356\\\" existSize=\\\"10044356\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"GenKiMin2-SB.ttc\\\" md5=\\\"99b2f416450165d712e6955ec874ed2c\\\" size=\\\"16638472\\\" existSize=\\\"16638472\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"GenKiMin2-H.ttc\\\" md5=\\\"c8b4be8190178b4095ff9eb8fe69fcb3\\\" size=\\\"16514424\\\" existSize=\\\"16514424\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"GenKiMin2-L.ttc\\\" md5=\\\"2989704f6239533f1e55a3bbc225b0c3\\\" size=\\\"16628060\\\" existSize=\\\"16628060\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"GenKiMin2-M.ttc\\\" md5=\\\"615b55c7f436c62c55be24866d48b0d5\\\" size=\\\"16618436\\\" existSize=\\\"16618436\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"GenKiMin2-R.ttc\\\" md5=\\\"155ff21226773e4e4472546cfe34bf84\\\" size=\\\"16613680\\\" existSize=\\\"16613680\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"GenKiMin2-EL.ttc\\\" md5=\\\"97e5e6ee75ef77e05e97f186ba0d96ae\\\" size=\\\"16642136\\\" existSize=\\\"16642136\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"GenKiMin2-B.ttc\\\" md5=\\\"218c17e437f850fe97c3a4d3f2f2f083\\\" size=\\\"16605624\\\" existSize=\\\"16605624\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"SourceHanSerifSC-Regular.otf\\\" md5=\\\"58a82d5069a5969b0c9398a447ade505\\\" size=\\\"24543332\\\" existSize=\\\"24543332\\\"/\\u003e\\n            \\u003cfile type=\\\"image\\\" name=\\\"sample.png\\\" md5=\\\"e97cc4244fde53112170b59e4cf6c9de\\\" size=\\\"840\\\" existSize=\\\"840\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"caton0590.ttf\\\" md5=\\\"3c35280326a4d3e8dae353bf5e94bca3\\\" size=\\\"4039536\\\" existSize=\\\"4039536\\\"/\\u003e\\n            \\u003cfile type=\\\"setting\\\" name=\\\"libHDSet.so\\\" md5=\\\"2c21aca97af27f81ba53148005190d17\\\" size=\\\"1076400\\\" existSize=\\\"1076400\\\"/\\u003e\\n            \\u003cfile type=\\\"video\\\" name=\\\"e8b1aa07-fdb4-4b7d-a83d-b0f247c0ab3d.mp4\\\" md5=\\\"de8b964d0ec0327d647c64708f0d8291\\\" size=\\\"12654894\\\" existSize=\\\"12654894\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"simsun90.ttf\\\" md5=\\\"4f5acab0b46e7a08eeb7caa3a66f6c43\\\" size=\\\"15662144\\\" existSize=\\\"15662144\\\"/\\u003e\\n            \\u003cfile type=\\\"font\\\" name=\\\"malgun.ttf\\\" md5=\\\"7ffc78f7f8f4d1dc45f84785d3077905\\\" size=\\\"13457164\\\" existSize=\\\"13457164\\\"/\\u003e\\n            \\u003cfile type=\\\"projectResources\\\" name=\\\"config.xml\\\" md5=\\\"35913ba733e9ba2046f3aa8d3252d040\\\" size=\\\"3037\\\" existSize=\\\"3037\\\"/\\u003e\\n            \\u003cfile type=\\\"fpga\\\" name=\\\"fpga.xml\\\" md5=\\\"7bec2c721957cbf79ef6db4f54d07206\\\" size=\\\"10057\\\" existSize=\\\"10057\\\"/\\u003e\\n        \\u003c/files\\u003e\\n    \\u003c/out\\u003e\\n\\u003c/sdk\\u003e\\n\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": {
+											"type": "object"
+										}
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": {
+											"type": "object"
+										}
+									}
+								}
+							},
+							"children": []
+						},
+						{
+							"target_type": "api",
+							"name": "设置倒计时功能",
+							"mark": "complated",
+							"sort": 1,
+							"tags": [],
+							"created_uuid": "U3UHG5DFA172",
+							"method": "POST",
+							"mock": "{}",
+							"mock_url": "/raw/{{Id}}",
+							"request": {
+								"url": "/raw/{{Id}}",
+								"description": "",
+								"event": {
+									"pre_script": "",
+									"test": ""
+								},
+								"pre_tasks": [
+									{
+										"type": "customScript",
+										"enabled": 1,
+										"data": "pm.request.headers.upsert({\r\n  key: \"requestId\",\r\n  value: pm.variables.get(\"requestId\")\r\n});\r\n\r\nif (pm.request.headers.has(\"sdkKey\")) {\r\n\r\n    pm.request.headers.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.headers.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    } \r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n    \r\n    pm.request.headers.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n} else if (pm.request.url.query.has(\"sdkKey\")) {\r\n\r\n    pm.request.url.query.upsert({\r\n        key: \"sdkKey\",\r\n        value: pm.environment.get(\"sdkKey\")\r\n    });\r\n\r\n    var dateData = new Date()\r\n    pm.request.url.query.upsert({\r\n        key: \"date\",\r\n        value: dateData.toUTCString()\r\n    });\r\n\r\n    var signText = pm.environment.get(\"sdkKey\") + dateData.toUTCString()\r\n    if (pm.request.body != undefined && pm.request.body.raw != undefined) {\r\n        signText = pm.request.body.raw + signText\r\n    } \r\n    var sign = CryptoJS.HmacMD5(signText, pm.environment.get(\"sdkSecret\")).toString();\r\n    \r\n    pm.request.url.query.upsert({\r\n        key: \"sign\",\r\n        value: sign\r\n    });\r\n}\r\n// 获取 Header 参数对象\r\nvar headers = pm.request.headers;\r\n// 遍历整个 header\r\nheaders.each((item) => {\r\n  console.log(item.key + \":\" + item.value);\r\n});",
+										"id": "a69f7e23-6b60-464b-816c-a5ec325d0cfe"
+									}
+								],
+								"post_tasks": [],
+								"body": {
+									"mode": "xml",
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text",
+											"static": true
+										}
+									],
+									"raw": "<?xml version='1.0' encoding='UTF-8'?>\r\n<sdk guid=\"##GUID\">\r\n    <in method=\"AddProgram\">\r\n        <screen timeStamps=\"1725853586971\">\r\n            <program guid=\"{9c3cf8be-323f-41f6-b4e0-0b463beae08d}\" type=\"normal\">\r\n                <playControl count=\"1\" disabled=\"false\"/>\r\n                <area alpha=\"255\" guid=\"{761a4907-4bdc-473c-a2b5-ba816363a950}\">\r\n                    <rectangle height=\"64\" width=\"128\" y=\"0\" x=\"0\"/>\r\n                    <resources>\r\n                        <time guid=\"##guid\">\r\n                            <displayStyleMessage TargetTime=\"2024/09/14 09:49:00\" DispalyStyle=\"0\" Space=\"0\" TimeZone=\"+08:00\" DisplayMode=\"0\" TimeMode=\"0\" TopText=\"距离\"/>\r\n                            <checkShow Year=\"0\" Minute=\"1\" Hour=\"0\" SetSecond=\"1\" Day=\"0\"/>\r\n\t\t\t\t\t\t\t<style display=\"dd日hh时mm分ss秒\" mode=\"sub\" targetTime=\"120000\"/>\r\n                        </time>\r\n                    </resources>\r\n                </area>\r\n            </program>\r\n        </screen>\r\n    </in>\r\n</sdk>",
+									"raw_para": [],
+									"raw_schema": {
+										"type": "object"
+									}
+								},
+								"header": {
+									"parameter": [
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": 1,
+											"key": "sdkKey",
+											"value": "a7fa6795aaa891e2",
+											"not_null": 1,
+											"type": "Text"
+										},
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": -1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text"
+										},
+										{
+											"description": "",
+											"field_type": "String",
+											"is_checked": -1,
+											"key": "",
+											"value": "",
+											"not_null": 1,
+											"type": "Text",
+											"static": true
+										}
+									]
+								}
+							},
+							"response": {
+								"success": {
+									"raw": "{\n\t\"message\":\"ok\",\n\t\"data\":[\r\n\t\t{\"id\":\"D16-D22-A073D\",\"message\":\"ok\",\"data\":\"\\u003c?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?\\u003e\\n\\u003csdk guid=\\\"4be60e569e7a89f35d62446dce4e8196\\\"\\u003e\\n    \\u003cout result=\\\"kSuccess\\\" method=\\\"AddProgram\\\"/\\u003e\\n\\u003c/sdk\\u003e\\n\"}\n\t]\n}",
+									"parameter": [],
+									"expect": {
+										"name": "成功",
+										"isDefault": 1,
+										"code": 200,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": {
+											"type": "object"
+										}
+									}
+								},
+								"error": {
+									"raw": "",
+									"parameter": [],
+									"expect": {
+										"name": "失败",
+										"isDefault": -1,
+										"code": 404,
+										"contentType": "json",
+										"verifyType": "schema",
+										"mock": "",
+										"schema": {
+											"type": "object"
+										}
+									}
+								}
+							},
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"target_type": "doc",
+			"name": "ReadMe",
+			"mark": "complated",
+			"sort": 1,
+			"tags": [],
+			"created_uuid": "U3UHG5DFA172",
+			"request": {
+				"description": "# 1 文档简介\n\n## 1.1特别声明\n未得到本公司的书面许可，不得为任何目的、以任何形式或手段（包括但不限于机械的或电子的）复制或传播本文档的任何部分。对于本文档涉及的技术和产品，本公司拥有其专利（或正在申请专利）、商标、版权或其它知识产权。除非得到本公司的书面许可协议，本文档不授予这些专利、商标、版权或其它知识产权的许可。\n## 1.2阅读对象\n贵公司的技术部门的开发、维护及管理人员，应具备以下基本知识：\n\n1.了解HTTPS/HTTP协议等内容。\n\n2.了解信息安全的基本概念。\n\n3.了解计算机至少一种编程语言。\n\n## 1.3产品概述\n本开发手册对该系统功能接口进行详细的描述，通过该指南可以对本系统有全面的了解，使技术人员尽快掌握本系统的接口，并能够在本系统上进行开发。\n灰度科技的设备二次开发，流程图如下\n  \n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5aabd619aa.png \"image.png\")\n\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5aac5460e3.png \"image.png\")\n\n# 2 使用流程\n## 2.1注意事项\n1.设备第一次调试时，必须通过“/api/sdkkey/”接口初始化开发者的sdkKey和对应sdkSecret到设备上；\n\n2.使用SDK进行开发时，SDK版本必须小于或等于设备的API版本号；\n\n## 2.2平台注册\n当客户需要操作设备时，需要通过灰度科技开发者平台进行注册，获取相应的sdkKey和sdkSecret。\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5ac386be82.png \"image.png\")\n:::note\n前期平台尚未搭建，需要联系管理员提供\n:::\n\n## 2.3签名机制\n所有api接口调用均使用sdkKey和sdkSecret（密钥不参与传输）进行签名，保证数据完整性和合法性，便以日志追查;签名有两种规则如下：\n\n规则1(通用)：\n\nsign = HMACMD5(body+sdkKey+date, sdkSecret)\n\n```js\n其中：\n    body：请求的数据body所有内容； \n    date：当前客户端的时间，http头部字段；\n    sdkKey：开发注册的开发者sdkId，http头部字段;    \n    sdkSecret：开发注册的开发者sdkId对应的key(密钥)，不参与传输（请勿泄露他人）;\n    sign：计算的处理的签名字段添加看请求头里，http头部字段;\n```\n\n\n\n\n规则2（仅文件接口使用）：\n\nsign = HMACMD5(sdkKey+date, sdkSecret)\n\n```js\n其中： \n     date：当前客户端的时间，http头部字段；\n     sdkKey：开发注册的开发者sdkId，http头部字段;\n     sdkSecret：开发注册的开发者sdkId对应的key(密钥)，不参与传输（请勿泄露他人）;\n     sign：计算的处理的签名字段添加看请求头里，http头部字段;\n```\n\n签名示例请求头，如：\n\n```js\nrequestId: da7ddf89-c102-4fb4-95e7-a8f7a72e697e\nsdkKey: xxxxxxxxxxxxxxxxxxxxx\ndate: Wed, 09 Aug 2023 07:27:44 GMT\nsign: 371b45207ecc8ea993a1468caf7d8bec\nContent-Type: application/json\nAccept: */*\nHost: sdk.huidu.cn\nAccept-Encoding: gzip, deflate, br\nConnection: keep-alive\nContent-Length: 72\n```\n\n## 2.4检查http SDK状态\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5ae332a291.png \"image.png\")\n\n获取http SDK 状态\n\n请求：\n```js\n<?xml version='1.0' encoding='utf-8'?>\n<sdk guid=\"##GUID\">\n    <in method=\"GetHttpApiEnable\"/>\n</sdk>\n```\n响应：\n```js\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"19aa000a54d79ce835655d855f109a97\">\n    <out result=\"kSuccess\" method=\"GetHttpApiEnable\">\n        <func enable=\"true\"/>\n    </out>\n</sdk>\n```\n\n\n设置http SDK 状态\n\n请求：\n```js\n<?xml version='1.0' encoding='utf-8'?>\n<sdk guid=\"##GUID\">\n    <in method=\"SetHttpApiEnable\">\n        <func enable=\"true\"/>\n    </in>\n</sdk>\n```\n响应：\n```js\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"7b1b1e7dba5363fc651dc1dc72f949d5\">\n    <out method=\"SetHttpApiEnable\" result=\"kSuccess\"/>\n</sdk>\n```\n# 3 API概览\n初次使用设时，必须初始化设备的sdkkey和对应的sdksecret；\n\n[初始化(initialize)](api-13699c89-d324-40bd-b0c2-1b0ddd416832)\n\n:::caution\n已经初始化过了，就不能再次初始化，只能添加，防止随意添加\n:::\n\n## 3.1 设备通用接口\n请求：POST /api/device/\n\n不同的方法对应不同的参数,“method”为方法名，“data”对应的参数；\n\n操作的设备id,可以在url里或body json数据里,规则如下：\n\n1.没有指定id： /api/device/ 表示操作本机设备\n\n2.url： /api/device/C16-D23-A0001,C16-D23-A0002\n\n3.url： /api/device/?id=C16-D23-A0001,C16-D23-A0002\n\n### 3.1.1获取设备在线列表\n\n[获取设备在线列表(Obtain the online list of devices)](api-1041b10f-4575-479f-b54d-dde071168e7e)\n\n\n### 3.1.2获取设备属性\n\n\n[获取设备属性(Obtain device attributes)](api-023cd946-d3a3-4fcb-b6cc-ca453f5ee63f)\n\n```js\nname                  // 设备名称\nscreen.width          // 屏幕宽\nscreen.height         // 屏幕高\nversion.hardware      // 硬件版本\nversion.fpga          // FPGA版本\nversion.kernel        // 内核版本\nversion.app           // 应用版本（固件版本）\ntime                  // 时间\ntime.timeZone         // 时区\nvolume                // 音量\nvolume.mode           // 音量模式\nluminance             // 亮度\nluminance.mode        // 亮度模式\neth.dhcp                // dhcp\neth.ip                  // ip地址\ngsm.apn                 // 移动网络的apn\nwifi.valid              // 是否有Wi-Fi模块接入\nwifi.enabled            // 是否启用Wi-Fi\nwifi.mode               // Wi-Fi模式\nwifi.ap.ssid            // Wi-Fi ap 模式的名称\nwifi.ap.passwd          // Wi-Fi ap 模式的密码\nwifi.ap.channel         // Wi-Fi ap 模式的信道\n…\n```\n\n\n### 3.1.3更新设备属性\n\n[更新设备属性(Update device attributes)](api-9c8cd5fe-8814-48d2-bb13-763f92e7414e)\n\n:::caution\n部分属性不可以更改（只读属性）\n:::\n\n\n### 3.1.4获取设备状态\n\n\n[获取设备状态(Obtain device status)](api-21cac1d8-bef6-4df3-ad58-502ce5b10ac9)\n\n```js\nscreen.openStatus     // 屏幕打开状态{\"true\": 已经打开, \"false\" 关闭}\neth.valid               // 有线网络是否接入 {\"true\": 接入, \"false\" 未接入}, 为false时无详细信息\neth.dhcp                // \"true\"(dhcp获取ip地址), \"false\"(静态ip地址)\neth.ip                  // ip地址\n\ngsm.valid               // 是否使用移动网络联网\ngsm.apn                 // 移动网络的apn\ngsm.manufacturer        // 模块产商\ngsm.version             // 模块版本\ngsm.model               // 模块型号\ngsm.imei                // 模块IMEI\ngsm.imsi                // SIM卡imsi\ngsm.iccid               // SIM卡iccid\ngsm.number              // SIM卡电话号码\ngsm.operators           // 运营商\ngsm.signal              // 信号强度, 取值范围[1, 5]; 1表示信号强度最差; 5表示信号强度最好\ngsm.dbm                 // 信号强度 (单位dbm)\ngsm.insert              // SIM卡是否插入\ngsm.status              // 网络注册状态\ngsm.network             // 网络制式取值范围 {\"init\"(初始化状态), \"unknow\"(未知网络), \"2G\"(2G), \"2.5G\"(2.5G), \"3GPP\"(3GPP家族), \"3G TD\"(移动3G), \"3.5G HSDPA\", \"3.5G HSUPA\", \"3.5G HSPAPlus\", \"4G LTE\", \"4G TDD\", \"4G FDD\"}\nwifi.valid              // 是否有Wi-Fi模块接入\nwifi.enabled            // 是否启用Wi-Fi\nwifi.mode               // Wi-Fi模式\nwifi.ap.ssid            // Wi-Fi ap 模式的名称\nwifi.ap.passwd          // Wi-Fi ap 模式的密码\nwifi.ap.channel         // Wi-Fi ap 模式的信道\nwifi.ap.encryption      // Wi-Fi ap 模式的加密方式（固定值\"WPA-PSK\"）\n\n…\n```\n\n### 3.1.5获取计划任务\n\n[获取计划任务(Obtain the scheduled task)](api-c404bdca-9d8f-4941-bf1a-86f58a851bc5)\n\n\n### 3.1.6更新计划任务\n\n[更新计划任务(Update the scheduled task)](api-ae7c68ed-30cc-4cd4-9578-f8293dedc5e3)\n\n更新任务请求：\n\nmethod:\n\n“setScheduledTask”,替换原来的所有项\n\n“updateScheduledTask”，更新传输的项\n\n\n### 3.1.7获取定时任务\n\n\n[获取定时任务(Obtain scheduled tasks)](api-7bcd5ad0-6d0b-447a-bb85-83027b8b2ce9)\n\n轮询任务，主要是用来获取外部数据来更新设备的相关状态，用来切换节目和区域、更新区域数据等等\n\n\n### 3.1.8更新定时任务\n\n[更新定时任务(Update a scheduled task)](api-05f8d19c-daa6-4fa3-907d-f53e455f3d83)\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c112f2e96.png \"image.png\")\n\n\n### 3.1.9主动推送\n\n\n[主动推送(Proactive push)](api-aa8c33af-19b4-433b-8698-9b57c264a453)\n\n主动推送任务，用来切换节目和区域、更新区域数据等等；\n\n\n### 3.1.10重启设备\n\n[重启设备(Restart the device)](api-74dc88fb-ce05-498c-a75f-49e2c0dea9f6)\n\n\n### 3.1.11开启屏幕\n\n[开启屏幕(Turn on the screen)](api-b784905f-ef54-4d26-a80f-82cbec59867e)\n\n\n### 3.1.12关闭屏幕\n\n\n[关闭屏幕(Turn off the screen)](api-efe0af7e-528b-4987-8058-b926e43ba80d)\n\n\n## 3.2节目通用接口\n\n节目接口主要是操作节目相关内容\n\n所有节目操作的相关接口都基于此接口；\n\n请求：POST /api/program/\n\n不同的方法对应不同的参数,“method”为方法名，“data”对应的参数；\n\n操作的设备id,可以在url里或body json数据里,规则如下：\n\n1.没有指定id： /api/program/ 表示操作本机设备\n\n2.url： /api/program/C16-D23-A0001,C16-D23-A0002\n\n3.url： /api/program/?id=C16-D23-A0001,C16-D23-A0002\n\n```js\n{\n    \"method\": \"[append|remove|update|replace|getAll]\",\n    \"data\": {},\n    \"id\": \"C16-D23-A0001,C16-D23-A0001\"\n}\n```\n\n**节目结构**\n\n节目数据使用json形式进行承载表示；节目的对象主要由：program、area、image、video、text、digitalClock等组成。对象之间的关系如下请求数据所示；\n\n1.多个节目，由多个program对象数组构成；\n\n2.program 对象由一个或多个area对象组成，节目的作用是用来控制内容的切换、指定时间、日期等播控信息；\n\n3.area对象由一个或多个内容对象（目前支持image、text、video、digitalClock、dialClock、dynamic）组成，area的作用是用来指定显示的位置和大小。\n\n4.内容对象是最终显示的对象，不同的对象作用不一样，如：text，显示文本内容，image，显示图片内容等等。\n\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c7878ca42.png \"image.png\")\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c79943916.png \"image.png\")\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c7d6303ee.png \"image.png\")\n\n### 3.2.1获取节目\n\n[获取节目(Get the program)](api-47445998-de9e-4ab5-9951-ab0b15250f39)\n\n\n### 3.2.2文本节目\n\n[文本节目(Text program)](api-c7f1a721-944f-44f4-83c9-c9d8d4439ce3)\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c54ec9128.png \"image.png\")\n\n\n### 3.2.3图片节目\n\n[图片节目(Image program)](api-7257e882-8df2-4dfc-9436-68b6a42b0a33)\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c590d0283.png \"image.png\")\n\n\n### 3.2.4视频节目\n\n[视频节目(Video program)](api-f51c06b9-b86b-4548-89dd-965c899906f7)\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c5d3094b7.png \"image.png\")\n\n\n### 3.2.5数字时钟节目\n\n[数字时钟节目(Clock program)](api-d940d699-b7c7-4d13-b026-9a65f95ba262)\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c6d78da86.png \"image.png\")\n\n\n### 3.2.6模拟时钟节目\n\n[模拟时钟节目(Clock program)](api-48c8ce45-adf6-490c-8b74-c3a02299fc88)\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c6feed6c4.png \"image.png\")\n\n\n### 3.2.7动态区域\n\n[动态区域(Dynamic area)](api-d2f1b2ae-4d6c-4c1a-91c6-2e389545eb14)\n\n![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5c75eac0b4.png \"image.png\")\n\n\n## 3.3文件通用接口\n\n[文件操作(File operations)](api-93f6a286-42cb-42e8-8093-a9063c365575)\n\n文件接口，主要是用来操作资源文件相关内容；\n文件上传接口 ： /api/file/\n请求：使用“form-data”方式上传文件\n\n\n## 3.4屏幕截图接口\n\nApi /api/screenshot/ 此接口中直接返回图片或图片地址。\n\n1.post 方法支持多个设备截图，返回图片对应的url\n\n2.get 方法，一次只能支持一个设备，返回图片内容，此方法不需要验证签名，但是也需要添上sdkkey；\n\n:::caution\n使用设备通用接口进行截图时，返回的是图片的base64数据\n:::\n\n\n[屏幕截图(只支持一个设备)](api-407bff5a-7381-4a83-968a-48829879c54c)\n\n[屏幕截图(支持多个设备)](api-9feca3b4-4f44-4019-87cf-459ce3d0b0da)\n\n\n\n\n# 4 源代码\n\nhttps://gitee.com/szhuidu/cn.huidu.device.api.sdk.java\n\n"
+			},
+			"children": []
+		}
+	],
+	"envs": [
+		{
+			"env_id": "-1",
+			"list": {
+				"sdkKey": {
+					"current_value": "a7fa6795aaa891e2",
+					"type": "1",
+					"value": "a7fa6795aaa891e2",
+					"description": ""
+				},
+				"sdkSecret": {
+					"current_value": "",
+					"type": "1",
+					"value": "",
+					"description": ""
+				},
+				"Id": {
+					"current_value": "C16L-D00-A000F",
+					"type": "1",
+					"value": "C16L-D00-A000F",
+					"description": ""
+				}
+			},
+			"name": "默认环境",
+			"pre_url": "http://192.168.90.153:30080",
+			"pre_urls": {
+				"default": "http://192.168.90.153:30080"
+			}
+		},
+		{
+			"env_id": "-2",
+			"list": {},
+			"name": "Mock环境",
+			"pre_url": "https://console-mock.apipost.cn/mock/ffd7bf98-3dbd-4fd9-95fb-8e1fe0aa7264/",
+			"pre_urls": {
+				"default": "https://console-mock.apipost.cn/mock/ffd7bf98-3dbd-4fd9-95fb-8e1fe0aa7264/"
+			}
+		},
+		{
+			"env_id": "6e55e6c2-7f06-4cee-aec3-c62f4f99cbf0",
+			"list": {},
+			"name": "空",
+			"pre_url": "",
+			"pre_urls": {
+				"default": ""
+			}
+		}
+	],
+	"models": []
+}
