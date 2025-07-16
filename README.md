@@ -268,7 +268,7 @@ Content-Length: 72
 https://console-docs.apipost.cn/preview/07ce80dbc607d40d/7b80fbbde771e7ba
 
 
-# 4 API接口说明
+# 4 API接口说明（json）
 
 ## 4.1 设备通用接口
 请求：POST /api/device/
@@ -1963,3 +1963,44 @@ Content-Type：application/json
 ```
 
 
+# 5 API接口说明（xml）
+
+ **xml内容详情请参考SDK XML帮助文档** 
+
+接口URL：127.0.0.1:30080/raw/{{Id}}
+
+Content-Type：application/xml
+
+请求方式：POST
+
+请求头参数说明：
+
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
+| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+
+请求(Body)示例：
+
+
+```
+<?xml version='1.0' encoding='utf-8'?>
+<sdk guid="##GUID">
+    <in method="GetBootLogo"/>
+</sdk>
+```
+
+
+返回示例：
+
+```
+{
+	"message": "ok",
+	"data": [
+		{
+			"id": "C16-D00-A000F",
+			"message": "ok",
+			"data": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"b1c8d8d5f6bc49791147d584150996ff\">\n    <out method=\"GetBootLogo\" result=\"kSuccess\">\n        <logo md5=\"\" exist=\"true\" name=\"\"/>\n    </out>\n</sdk>\n"
+		}
+	]
+}
+```
