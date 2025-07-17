@@ -186,7 +186,7 @@ Content-Length: 72
 
 2. 安装jdk,推荐使用jdk21(https://release-assets.githubusercontent.com/github-production-release-asset/602574963/86891b60-d9eb-45a1-af09-7f8c326d3daa?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-07-16T07%3A31%3A13Z&rscd=attachment%3B+filename%3DOpenJDK21U-jdk_x64_windows_hotspot_21.0.7_6.msi&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-07-16T06%3A31%3A08Z&ske=2025-07-16T07%3A31%3A13Z&sks=b&skv=2018-11-09&sig=Yyb%2Fzp%2BLqotUFG%2FVSbNgdYe8DRFKcw94EqEgnKIX278%3D&jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc1MjY0ODc5NywibmJmIjoxNzUyNjQ4NDk3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.hojrDrTpgyNv9D6lQU9csUqywwjXEwJn4iIevTgcBIM&response-content-disposition=attachment%3B%20filename%3DOpenJDK21U-jdk_x64_windows_hotspot_21.0.7_6.msi&response-content-type=application%2Foctet-stream);
 
-3. 安装maven， 推荐apache-maven-3.9.10以上版本(https://mirrors.aliyun.com/apache/maven/maven-3/)
+3. 安装maven，推荐apache-maven-3.9.10以上版本(https://mirrors.aliyun.com/apache/maven/maven-3/)
 
 4. 配置maven路径；
 
