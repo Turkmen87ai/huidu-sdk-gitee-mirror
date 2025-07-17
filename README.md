@@ -1921,10 +1921,8 @@ Content-Type：application/xml
 
 # 5 接口模拟调试
 
-接口示例:https://console-docs.apipost.cn/preview/07ce80dbc607d40d/7b80fbbde771e7ba
+接口示例：https://console-docs.apipost.cn/preview/07ce80dbc607d40d/7b80fbbde771e7ba
 
-
-## 5.1 配置Apipost 环境
 
 下载网址：https://www.apipost.cn/
 
