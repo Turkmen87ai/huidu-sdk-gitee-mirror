@@ -22,32 +22,34 @@
 ![image.png](https://img.cdn.apipost.cn/client/user/1172252/avatar/78805a221a988e79ef3f42d7c5bfd41867a5aac5460e3.png "image.png")
 
 ## 1.3 目录结构
-
 ~~~
-sdk/src/main/java/cn/huidu/device/api/
-├── demo                                             // 示例代码
-│       └── demo0_based                              // 获取在线设备
-│       └── demo1_deviceInfod                        // 设备操作（获取设备信息，修改设备信息，重启设备）
-│       └── demo2_task                               // 任务接口（主动推送，计划任务）
-│       └── demo3_baseProgram                        // 节目（文本，图片，视频，数字时钟，模拟时钟）
-│       └── demo4_multiProgram                       // 多节目
-│       └── demo5_dynamicContent                     // 动态更新（频繁更新）
-│       └── demo6_multiAreaProgramSwitch             // 多区域
-├── sdk                                              // 接口模块
-│       └── common                                   // 通用模块
+cn/huidu/device/sdk
+├── doc                                              // 工程文件
+├── java                                             // java开发包
+│       └── demo/src/main/java/cn/huidu/device/demo  // 示例代码
+│           └── demo0_based                          // 获取在线设备
+│           └── demo1_deviceInfod                    // 设备操作（获取设备信息，修改设备信息，重启设备）
+│           └── demo2_task                           // 任务接口（主动推送，计划任务）
+│           └── demo3_baseProgram                    // 节目（文本，图片，视频，数字时钟，模拟时钟）
+│           └── demo4_multiProgram                   // 多节目
+│           └── demo5_dynamicContent                 // 动态更新（频繁更新）
+│           └── demo6_multiAreaProgramSwitch         // 多区域
+│       └── sdk/src/main/java/cn/huidu/device/sdk    // 接口模块                                            
+│           └── common                               // 通用模块
 │               └── BaseClient.java                  // 核心模块
 │               └── Config.java                      // 启动配置
 │               └── HttpApi.java                     // http接口（POST、GET、MD5等）
-│       └── data                                     // 数据内容
+│           └── data                                 // 数据内容
 │               └── program                          // 节目相关
 │               └── task                             // 任务相关
-│       └── deviceTask                        	     // 设备任务
+│           └── deviceTask                           // 设备任务
 │               └── PeriodicTask.java                // 定时任务
 │               └── PushStatusTask.java              // 主动推送
 │               └── ScheduledTask.java               // 计划任务
-│       └── Device.java                              // 设备接口
-│       └── File.java                                // 文件接口
-│       └── Program.java                             // 节目接口
+│           └── Device.java                          // 设备接口
+│           └── File.java                            // 文件接口
+│           └── Program.java                         // 节目接口
+├── tools                                            // 辅助工具
 ~~~
 
 # 2 前期准备
@@ -1924,7 +1926,7 @@ Content-Type：application/xml
 
 下载网址：https://www.apipost.cn/
 
-## 5.2选择json文件【http Api项目.json】，导入项目
+## 5.2 选择json文件【http Api项目.json】，导入项目
 
 ![输入图片说明](doc/images/import1.png)
 
