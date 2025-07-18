@@ -182,9 +182,9 @@ Content-Length: 72
 
 ### 2.5.1 Java开发包
 
-1. 安装开发环境，推荐使用vscode
+1. 安装开发环境，推荐使用[vscode](https://vscode.js.cn/Download)
 
-2. 安装jdk,推荐使用[jdk21](https://www.oracle.com/cn/java/technologies/downloads/);
+2. 安装jdk，推荐使用[jdk21](https://www.oracle.com/cn/java/technologies/downloads/);
 
 3. 安装maven，推荐使用[apache-maven-3.9.10](https://mirrors.aliyun.com/apache/maven/maven-3/)以上版本;
 
