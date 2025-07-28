@@ -49,6 +49,7 @@ cn/huidu/device/sdk
 │           └── Device.java                          // 设备接口
 │           └── File.java                            // 文件接口
 │           └── Program.java                         // 节目接口
+├── c                                                // c开发包
 ├── tools                                            // 辅助工具
 ~~~
 
@@ -192,7 +193,9 @@ Content-Length: 72
 
  **注:运行demo前先，构建sdk库 "mvn clean install"** 
 
+### 2.5.2 C开发包
 
+1. 官网下载[CMake](https://cmake.org/download/)
 
 # 3 API接口说明（json）
 
