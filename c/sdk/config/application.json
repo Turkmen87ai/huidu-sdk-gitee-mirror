@@ -1,0 +1,5 @@
+{
+    "host": "${YourHost}",
+    "sdkKey": "${YourSdkKey}",
+    "sdkSecret": "${YourSdkSecret}"
+}
