@@ -204,7 +204,7 @@ Content-Length: 72
 
 2. 安装Python,推荐使用[Python 3.9.1](https://www.python.org/downloads/)
 
-3. 安装模块[pip install requests; pip install requests-toolbelt]
+3. 安装依赖包/库[pip install requests; pip install requests-toolbelt]
 
 # 3 API接口说明（json）
 
