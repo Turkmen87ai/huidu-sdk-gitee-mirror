@@ -24,7 +24,7 @@
 ## 1.3 目录结构
 ~~~
 cn/huidu/device/sdk
-├── doc                                              // 工程文件
+├── doc                                              // 帮助文档、调试接口项目文件
 ├── java                                             // java开发包
 │       └── demo/src/main/java/cn/huidu/device/demo  // 示例代码
 │           └── demo0_based                          // 获取在线设备
@@ -50,6 +50,7 @@ cn/huidu/device/sdk
 │           └── File.java                            // 文件接口
 │           └── Program.java                         // 节目接口
 ├── c                                                // c开发包
+├── python                                           // python开发包
 ├── tools                                            // 辅助工具
 ~~~
 
@@ -196,6 +197,14 @@ Content-Length: 72
 ### 2.5.2 C开发包
 
 1. 官网下载[CMake](https://cmake.org/download/)
+
+### 2.5.3 Python开发包
+
+1. 安装开发环境，推荐使用[PyCharm](https://www.jetbrains.com.cn/pycharm/)
+
+2. 安装Python,推荐使用[Python 3.9.1](https://www.python.org/downloads/)
+
+3. 安装模块[pip install requests; pip install requests-toolbelt]
 
 # 3 API接口说明（json）
 
