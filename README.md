@@ -3,7 +3,8 @@
 
 | 更新时间   | 修改人 | 说明     | 备注                                            |
 | ---------- | ------ | -------- | ----------------------------------------------- |
-| 2025/08/05        | tanglin    |   3.2 节目通用接口<br>4 API接口说明（xml）    | effect节点新增闪烁特效<br>新增xml格式的通用功能【详细内容见SDK XML帮助文档】                 |
+| 2025/08/05        | tanglin    |   3.2 节目通用接口<br>4 API接口说明（xml）    | effect节点新增闪烁特效<br>新增xml格式的通用功能【详细内容见SDK XML帮助文档】<br> 补充支持型号：<br>常规系列 (ARM/Linux平台)： A3, A4, A5, C16L, C08L, D16, D36, ...<br>安卓系列 (Android平台)： A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8, ... <br> 安卓系列需要升级固件MagicPlayer_V2.10.7.400.bin                |
+
 
 # 1 文档简介
 
@@ -65,7 +66,7 @@ cn/huidu/device/sdk
 
 ![输入图片说明](doc/images/id.png)
 
-## 2.2 检查HTTP SDK是否生效
+## 2.2 检查HTTP SDK是否生效【安卓系列升级固件MagicPlayer_V2.10.7.400.bin即可，跳过这一步】
 
 
 通过SDK test工具，发送以下指令，查询状态
