@@ -3,7 +3,7 @@
 
 | 更新时间   | 修改人 | 说明     | 备注                                            |
 | ---------- | ------ | -------- | ----------------------------------------------- |
-| ...        | ...    | ...      | ...                                             |
+| 2025/08/05        | tanglin    |   3.2 节目通用接口<br>4 API接口说明（xml）    | effect节点新增闪烁特效<br>新增xml格式的通用功能【详细内容见SDK XML帮助文档】                 |
 
 # 1 文档简介
 
@@ -1016,7 +1016,7 @@ Content-Type：application/json
 effect特效节点说明
 | 参数名  | 参数类型  | 是否必填  | 参数描述  |
 |---|---|---|---|
-| type  |  Int <br>0  : 直接显示.<br>1  : 向左平移.<br>2  : 向右平移.<br>3  : 向上平移.<br>4  : 向下平移.<br>5  : 向左覆盖.<br>6  : 向右覆盖.<br>7  : 向上覆盖.<br>8  : 向下覆盖.<br>9  : 左上覆盖.<br>10 : 左下覆盖.<br>11 : 右上覆盖.<br>12 : 右下覆盖.<br>13 : 水平对开.<br>14 : 垂直对开.<br>15 : 水平闭合.<br>16 : 垂直闭合.<br>17 : 淡入淡出.<br>18 : 垂直百叶窗.<br>19 : 水平百叶窗.<br>20 : 不清屏.<br>25 : 随机特效.<br>// 以下特效只有文本插件支持 <br>26 : 首尾相接连续左移.<br>27 : 首尾相接连续右移.<br>28 : 首尾相接连续上移.<br>29 : 首尾相接连续下移.   | 是  | 特效类型 |
+| type  |  Int <br>0  : 直接显示.<br>1  : 向左平移.<br>2  : 向右平移.<br>3  : 向上平移.<br>4  : 向下平移.<br>5  : 向左覆盖.<br>6  : 向右覆盖.<br>7  : 向上覆盖.<br>8  : 向下覆盖.<br>9  : 左上覆盖.<br>10 : 左下覆盖.<br>11 : 右上覆盖.<br>12 : 右下覆盖.<br>13 : 水平对开.<br>14 : 垂直对开.<br>15 : 水平闭合.<br>16 : 垂直闭合.<br>17 : 淡入淡出.<br>18 : 垂直百叶窗.<br>19 : 水平百叶窗.<br>20 : 不清屏.<br>25 : 随机特效.<br>// 以下特效只有文本插件支持 <br>26 : 首尾相接连续左移.<br>27 : 首尾相接连续右移.<br>28 : 首尾相接连续上移.<br>29 : 首尾相接连续下移.<br>30 : 闪烁.   | 是  | 特效类型 |
 | speed |  Int[0-8] 0最快，8最慢    | 是  | 文件的md5值 |
 | hold |  Int[0-9999999] 单位为毫秒   | 是  | 停留时间 |
 
@@ -1907,7 +1907,68 @@ Content-Type：application/json
 
 # 4 API接口说明（xml）
 
+- 获取开机画面GetBootLogo【安卓系列不支持】
+- 设置开机画面SetBootLogoName【安卓系列不支持】
+- 清除开机画面ClearBootLogo【安卓系列不支持】
+- 获取网络信息GetNetworkInfo
+- 仅获取eth0信息GetEth0Info
+- 仅获取pppoe(3/4G)信息GetPppoeInfo
+- 仅获取wifi信息GetWifiInfo
+- 设置eth0信息SetEth0Info【慎操作，导致网络断开】
+- 设置wifi信息SetWifiInfo【慎操作，导致网络断开】
+- 设置Apn SetApn（慎操作）
+- 获取设备信息GetDeviceInfo
+- 获取设备名GetDeviceName
+- 设置设备名SetDeviceName
+- 设置系统音量SetSystemVolume
+- 获取系统音量GetSystemVolume
+- 重启设备Reboot
+- 获取Tcp服务器信息GetSDKTcpServer
+- 设置Tcp服务器SetSDKTcpServer
+- 获取Socket信息GetSocketTimeInfo
+- 设置Socket信息SetSocketTimeInfo【慎操作，导致网络断开】
+- 获取许可证GetLicense
+- 获取亮度配置GetLuminancePloy
+- 设置亮度配置SetLuminancePloy
+- 获取时间校正数据GetTimeInfo
+- 设置时间校正数据SetTimeInfo【安卓系列支持部分，时区协议不通用】
+- 固件升级ExcuteUpgradeShell
+- 固件升级ExcuteUpgradeShellHttp
+- 固件升级FirmwareUpgrade
+- 获取固件升级状态GetUpgradeResult
+- 删除设备文件DeleteFiles
+- 添加设备文件AddFiles
+- 获取设备文件GetFiles
+- 获取字体信息GetAllFontInfo
+- 重新加载所有字体ReloadAllFonts
+- 屏幕旋转ScreenRotation
+- 异步操作截图GetScreenshot2
+- 获取开关屏信息GetSwitchTime
+- 设置开关屏信息SetSwitchTime
+- 开屏OpenScreen
+- 关屏CloseScreen
+- 获取传感器信息GetSensorInfo
+- 获取GPS信息GetGPSInfo
+- 获取当前传感器的值GetCurrentSensorValue【安卓系列不支持】
+- 获取串口SDK配置GetSerialSDK【安卓系列不支持】
+- 设置串口SDK配置SetSerialSDK【安卓系列不支持】
+- 获取继电器信息GetRelayInfo
+- 设置继电器信息SetRelayInfo
+- 检查U盘是否接入CheckUDiskInsert【安卓系列不支持】
+- 获取U盘功能配置GetEnableUDiskFunction【安卓系列不支持】
+- 开启或设置U盘功能配置SetEnableUDiskFunction【安卓系列不支持】
+- 关闭U盘功能配置DisableUDiskFunction【安卓系列不支持】
+- 获取GPS信息上报使能标志GetGpsRespondEnable
+- 设置GPS信息上报使能标志SetGpsRespondEnable
+- 获取多屏同步标志GetMulScreenSync
+- 设置多屏同步标志SetMulScreenSync
+- 获取节目播放统计标志GetPlayProgramCountsEnable【安卓系列不支持】
+- 设置节目播放统计SetPlayProgramCountsEnable【安卓系列不支持】
+- 获取节目播放统计文件名GetPlayProgramCountsFileName【安卓系列不支持】
+
  **xml内容详情请参考SDK XML帮助文档** 
+
+## 4.1 获取开机画面
 
 接口URL：127.0.0.1:30080/raw/{{Id}}
 
@@ -1942,6 +2003,88 @@ Content-Type：application/xml
 			"id": "C16-D00-A000F",
 			"message": "ok",
 			"data": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"b1c8d8d5f6bc49791147d584150996ff\">\n    <out method=\"GetBootLogo\" result=\"kSuccess\">\n        <logo md5=\"\" exist=\"true\" name=\"\"/>\n    </out>\n</sdk>\n"
+		}
+	]
+}
+```
+
+## 4.2 设置开机画面
+
+接口URL：127.0.0.1:30080/raw/{{Id}}
+
+Content-Type：application/xml
+
+请求方式：POST
+
+请求头参数说明：
+
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
+| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  ##md5 开机图片的md5值, 可为空<br>##name 开机图片名 |
+
+请求(Body)示例：
+
+
+```
+<?xml version='1.0' encoding='utf-8'?>
+<sdk guid="##GUID">
+   <in method="SetBootLogoName">
+        <logo md5="##value" name="##name"/>
+   </in>
+</sdk>
+```
+
+
+返回示例：
+
+```
+{
+	"message": "ok",
+	"data": [
+		{
+			"id": "C16-D00-A000F",
+			"message": "ok",
+			"data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="SetBootLogoName" result="kSuccess"/>\n</sdk>\n"
+		}
+	]
+}
+```
+
+## 4.3 清除开机画面
+
+接口URL：127.0.0.1:30080/raw/{{Id}}
+
+Content-Type：application/xml
+
+请求方式：POST
+
+请求头参数说明：
+
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
+| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  ##md5 开机图片的md5值, 可为空<br>##name 开机图片名 |
+
+请求(Body)示例：
+
+
+```
+<?xml version='1.0' encoding='utf-8'?>
+<sdk guid="##GUID">
+    <in method="ClearBootLogo"/>
+</sdk>
+```
+
+
+返回示例：
+
+```
+{
+	"message": "ok",
+	"data": [
+		{
+			"id": "C16-D00-A000F",
+			"message": "ok",
+			"data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="ClearBootLogo" result="kSuccess"/>\n</sdk>\n"
 		}
 	]
 }
