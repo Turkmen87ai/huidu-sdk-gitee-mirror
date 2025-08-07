@@ -4,6 +4,7 @@
 | 更新时间   | 修改人 | 说明     | 备注                                            |
 | ---------- | ------ | -------- | ----------------------------------------------- |
 | 2025/08/05        | tanglin    |   3.2 节目通用接口<br>4 API接口说明（xml）    | effect节点新增闪烁特效<br>新增xml格式的通用功能【详细内容见SDK XML帮助文档】<br> 补充支持型号：<br>常规系列 (ARM/Linux平台)： A3, A4, A5, C16L, C08L, D16, D36, ...<br>安卓系列 (Android平台)： A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8, ... <br> 安卓系列需要升级固件MagicPlayer_V2.10.7.400.bin                |
+| 2025/08/07        | tanglin    |   3.2.6 文本节目    | 新增语音播报节点                |
 
 
 # 1 文档简介
@@ -702,6 +703,10 @@ Content-Type：application/json
 | 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
 |---|---|---|---|---|
 | sdkKey  | a7fa6795aaa891e2 | String                |     是 | 暂无描述  |
+
+请求(Body)说明：
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
 | url     | xxxxxxxxxxxx     | String                |     是 | 数据源的地址 |
 | rege    |                  | String  默认值：空     |     否 | 正在表达式<br>解析数据成键值对的表达式，键值以逗号“,”隔开<br>多组键值使用换行符“\n”隔开 |
 | interval|                  | Int[3 – 3600秒]默认值：30 |  否 | 轮询间隔，单位位秒 |
@@ -758,6 +763,10 @@ Content-Type：application/json
 | 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
 |---|---|---|---|---|
 | sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+
+请求(Body)说明：
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
 | url     | xxxxxxxxxxxx     | String                |     是 | 数据源的地址 |
 | rege    |                  | String  默认值：空     |     否 | 正在表达式<br>解析数据成键值对的表达式，键值以逗号“,”隔开<br>多组键值使用换行符“\n”隔开 |
 | interval|                  | Int[3 – 3600秒]默认值：30 |  否 | 轮询间隔，单位位秒 |
@@ -1326,7 +1335,12 @@ Content-Type：application/json
 | 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
 |---|---|---|---|---|
 | sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+
+请求(Body)说明：
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
 | type     |   text   | String                |     是 | 文本类型 |
+| PlayText|   false   | Bool  |     否 | 是否语音播报 |
 | multiLine|   false   | Bool  |     否 | 是否是多行文本 |
 | alignment|   left  | String <br>center：居中对齐 <br>left：左对齐 <br>right：右对齐|  否 | 水平对齐方式 |
 | valignment|  top  | String <br>middle：居中对齐 <br>top：顶对齐 <br>bottom：底对齐|  否 | 垂直对齐方式 |
@@ -1407,6 +1421,10 @@ Content-Type：application/json
 | 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
 |---|---|---|---|---|
 | sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+
+请求(Body)说明：
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
 | type    |  image    | String | 是 | 图片类型 |
 | fit     |  stretch | String fill: 填充，先将图片等比放大能覆盖完整区域的比例，再截取中间部分显示。<br>center: 居中，将图片等比缩小至区域大小，比例不一致时会显示黑边。<br>stretch: 拉伸，可能导致图片变形。<br>tile: 平铺  |  否 | 图片的填充属性 |
 | file |     |  String   | 是  | 文件在设备中的文件名或者有效的url |
@@ -1482,6 +1500,10 @@ Content-Type：application/json
 | 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
 |---|---|---|---|---|
 | sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+
+请求(Body)说明：
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
 | type    |  video            | String  | 是  | 视频类型 |
 | aspectRatio |  false        | Bool    | 否  | 保持宽高比 |
 | file |     |  String   | 是  | 文件在设备中的文件名或者有效的url |
@@ -1552,6 +1574,10 @@ Content-Type：application/json
 | 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
 |---|---|---|---|---|
 | sdkKey  | a7fa6795aaa891e2  | String  | 是  | 暂无描述 |
+
+请求(Body)说明：
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
 | type    |  digitalClock     | String  | 是  | 数字时钟 |
 | timezone |  以 “+8:00” 的格式        | String    | 否  | 时区 |
 | timeOffset | “+00:05:00” 向前调时间 或 “-00:05:00” 向后调时间 <br>默认值：0  | String  | 否  | 时间微调 |
@@ -1646,6 +1672,10 @@ Content-Type：application/json
 | 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
 |---|---|---|---|---|
 | sdkKey  | a7fa6795aaa891e2    | String  | 是  | 暂无描述 |
+
+请求(Body)说明：
+| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
+|---|---|---|---|---|
 | type    |  dialClock          | String  | 是  | 模拟时钟 |
 | timezone |  以 “+8:00” 的格式        | String    | 否  | 时区 |
 | timeOffset | “+00:05:00” 向前调时间 或 “-00:05:00” 向后调时间 <br>默认值：0  | String  | 否  | 时间微调 |
