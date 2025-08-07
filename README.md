@@ -4,7 +4,7 @@
 | 更新时间   | 修改人 | 说明     | 备注                                            |
 | ---------- | ------ | -------- | ----------------------------------------------- |
 | 2025/08/05        | tanglin    |   3.2 节目通用接口<br>4 API接口说明（xml）    | effect节点新增闪烁特效<br>新增xml格式的通用功能【详细内容见SDK XML帮助文档】<br> 补充支持型号：<br>常规系列 (ARM/Linux平台)： A3, A4, A5, C16L, C08L, D16, D36, ...<br>安卓系列 (Android平台)： A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8, ... <br> 安卓系列需要升级固件MagicPlayer_V2.10.7.400.bin                |
-| 2025/08/07        | tanglin    |   3.2.6 文本节目    | 新增语音播报属性                |
+| 2025/08/07        | tanglin    |   3.2.6 文本节目    | 新增语音播报属性PlayText                |
 
 
 # 1 文档简介
@@ -1369,7 +1369,7 @@ Content-Type：application/json
 			"type": "text",
 			"string": "LED",
 			"multiLine": false,
-                        "PlayText": false,
+			"PlayText": false,
 			"font": {
 				"name": "宋体",
 				"size": 14,
