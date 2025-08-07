@@ -1369,6 +1369,7 @@ Content-Type：application/json
 			"type": "text",
 			"string": "LED",
 			"multiLine": false,
+                        "PlayText": false,
 			"font": {
 				"name": "宋体",
 				"size": 14,
