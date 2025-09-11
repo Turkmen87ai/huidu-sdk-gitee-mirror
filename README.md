@@ -198,7 +198,7 @@ Content-Length: 72
 
 4. 配置maven路径；
 
- **注:运行demo前先，构建sdk库 "mvn clean install"** 
+ **注:运行demo前，先构建sdk库 "mvn clean install"** 
 
 ### 2.5.2 C开发包
 
