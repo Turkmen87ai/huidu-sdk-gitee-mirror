@@ -1,0 +1,2276 @@
+{
+	"info": {
+		"name": "HTTP API项目",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [],
+	"auth": {
+		"type": "noauth",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "",
+				"type": "string"
+			}
+		],
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		],
+		"basic": [
+			{
+				"key": "username",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"env": [],
+	"item": [
+		{
+			"name": "HTTP API",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"item": [
+				{
+					"name": "节目通用接口",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"item": [
+						{
+							"name": "更新节目(Update the program)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"update\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"border\": {\r\n                        \"type\": 0,\r\n                        \"speed\": 5,\r\n                        \"effect\": \"rotate\"\r\n                    },\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"text\",\r\n                            \"string\": \"LED\",\r\n                            \"multiLine\": false,\r\n                            \"font\": {\r\n                                \"name\": \"宋体\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "获取节目(Get the program)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"getAll\",\r\n    \"data\": [],\r\n    \"id\": \"D16-D22-A073D\"\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "图片节目(Image program)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"replace\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"image\",\r\n                            \"file\": \"https://persuasion.yingkeiot.cn/attachment/violations/11/2024-06-03/80602000-58c6-43b5-adc9-b072ec04c792.jpg\",\r\n                            \"fileSize\": 337460,\r\n                            \"fileMd5\": \"498c7bbab17011a3d257cf0468bcff08\",\r\n                            \"fit\": \"stretch\",\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "动态区域(Dynamic area)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目1\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 32,\r\n                    \"width\": 128,\r\n                    \"height\": 32,\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"dynamic\",\r\n                            \"string\": \"{{ParkingSpace}}\",\r\n                            \"keys\": \"ParkingSpace\",\r\n                            \"alignment\": \"center\",\r\n                            \"dataSource\": \"ParkingSpace\",\r\n                            \"dataSourceDefault\": \"002\",\r\n                            \"font\": {\r\n                                \"name\": \"宋体\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 32,\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"text\",\r\n                            \"string\": \"剩余车位：\",\r\n                            \"alignment\": \"left\",\r\n                            \"multiLine\": false,\r\n                            \"font\": {\r\n                                \"name\": \"FZLanTingHeiS-R-GB\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"method\": \"replace\"\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "追加节目(Additional program)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"append\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目1\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"text\",\r\n                            \"string\": \"显示屏\",\r\n                            \"multiLine\": false,\r\n                            \"font\": {\r\n                                \"name\": \"宋体\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "数字时钟节目(Clock program)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"method\": \"replace\",\r\n\t\"data\": [{\r\n\t\t\"name\": \"节目1\",\r\n\t\t\"type\": \"normal\",\r\n\t\t\"uuid\": \"A4\",\r\n\t\t\"area\": [{\r\n\t\t\t\"x\": 0,\r\n\t\t\t\"y\": 0,\r\n\t\t\t\"width\": 128,\r\n\t\t\t\"height\": 64,\r\n\t\t\t\"item\": [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"digitalClock\",\r\n\t\t\t\t\t\"timezone\": \"\",\r\n\t\t\t\t\t\"timeOffset\": \"\",\r\n\t\t\t\t\t\"font\": {\r\n\t\t\t\t\t\t\"name\": \"宋体\",\r\n\t\t\t\t\t\t\"size\": 8,\r\n\t\t\t\t\t\t\"underline\": false,\r\n\t\t\t\t\t\t\"bold\": false,\r\n\t\t\t\t\t\t\"italic\": false,\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"title\": {\r\n\t\t\t\t\t\t\"string\": \"0\",\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"date\": {\r\n\t\t\t\t\t\t\"format\": \"6\",\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"week\": {\r\n\t\t\t\t\t\t\"format\": \"0\",\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"time\": {\r\n\t\t\t\t\t\t\"format\": \"0\",\r\n\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t}]\r\n\t}]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "视频节目(Video program)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"replace\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"item\": [\r\n                        {\r\n                            \"aspectRatio\": false,\r\n\t\t\t\t\t\t\t\"file\": \"https://persuasion.yingkeiot.cn/attachment/screen/2024-07-13/e8b1aa07-fdb4-4b7d-a83d-b0f247c0ab3d.mp4\",\r\n\t\t\t\t\t\t\t\"fileMd5\": \"de8b964d0ec0327d647c64708f0d8291\",\r\n\t\t\t\t\t\t\t\"fileSize\": 12654894,\r\n\t\t\t\t\t\t\t\"type\": \"video\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "移除节目(Remove the program)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"remove\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"uuid\": \"A3\"\r\n        },\r\n        {\r\n            \"name\": \"节目1\",\r\n            \"uuid\": \"A4\"\r\n        }\r\n    ]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "文本节目(Text program)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"replace\",\r\n    \"data\": [\r\n        {\r\n            \"name\": \"节目2\",\r\n            \"type\": \"normal\",\r\n            \"uuid\": \"A4\",\r\n            \"area\": [\r\n                {\r\n                    \"x\": 0,\r\n                    \"y\": 0,\r\n                    \"width\": 128,\r\n                    \"height\": 64,\r\n                    \"border\": {\r\n                        \"type\": 0,\r\n                        \"speed\": 5,\r\n                        \"effect\": \"rotate\"\r\n                    },\r\n                    \"item\": [\r\n                        {\r\n                            \"type\": \"text\",\r\n                            \"string\": \"LED\",\r\n                            \"multiLine\": false,\r\n                            \"font\": {\r\n                                \"name\": \"宋体\",\r\n                                \"size\": 14,\r\n                                \"underline\": false,\r\n                                \"bold\": false,\r\n                                \"italic\": false,\r\n                                \"color\": \"#ffff00\"\r\n                            },\r\n                            \"effect\": {\r\n                                \"type\": 0,\r\n                                \"speed\": 5,\r\n                                \"hold\": 5000\r\n                            }\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "模拟时钟节目(Clock program)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/program/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"program",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"method\": \"replace\",\r\n\t\"data\": [\r\n\t\t{\r\n\t\t\t\"name\": \"节目1\",\r\n\t\t\t\"type\": \"normal\",\r\n\t\t\t\"uuid\": \"A4\",\r\n\t\t\t\"area\": [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"x\": 0,\r\n\t\t\t\t\t\"y\": 0,\r\n\t\t\t\t\t\"width\": 128,\r\n\t\t\t\t\t\"height\": 64,\r\n\t\t\t\t\t\"item\": [\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\"type\": \"dialClock\",\r\n\t\t\t\t\t\t\t\"timezone\": \"\",\r\n\t\t\t\t\t\t\t\"timeOffset\": \"\",\r\n\t\t\t\t\t\t\t\"font\": {\r\n\t\t\t\t\t\t\t\t\"name\": \"宋体\",\r\n\t\t\t\t\t\t\t\t\"size\": 8,\r\n\t\t\t\t\t\t\t\t\"underline\": false,\r\n\t\t\t\t\t\t\t\t\"bold\": false,\r\n\t\t\t\t\t\t\t\t\"italic\": false,\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"title\": {\r\n\t\t\t\t\t\t\t\t\"string\": \"0\",\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"date\": {\r\n\t\t\t\t\t\t\t\t\"format\": \"6\",\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"week\": {\r\n\t\t\t\t\t\t\t\t\"format\": \"0\",\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"time\": {\r\n\t\t\t\t\t\t\t\t\"format\": \"0\",\r\n\t\t\t\t\t\t\t\t\"color\": \"#ff0000\"\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t]\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t}\r\n\t]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						}
+					]
+				},
+				{
+					"name": "文件通用接口",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"item": [
+						{
+							"name": "文件操作(File operations)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/file/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"file",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"raw": "{\r\n    \"method\": \"[append|remove|update|replace|getAll]\",\r\n    \"data\": {},\r\n}",
+									"formdata": [
+										{
+											"key": "data",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						}
+					]
+				},
+				{
+					"name": "设备通用接口",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"item": [
+						{
+							"name": "主动推送(Proactive push)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"pushStatus\",\r\n    \"data\": {\r\n        \"ParkingSpace\": \"110\"\r\n    }\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "获取设备在线列表(Obtain the online list of devices)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "/api/device/list/",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"list"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "关闭屏幕(Turn off the screen)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"closeDeviceScreen\",\r\n    \"data\": {}\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "更新计划任务(Update the scheduled task)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"setScheduledTask\",\r\n    \"data\": {\r\n        \"screen\": [\r\n            {\r\n                \"timeRange\": \"10:10:00~10:15:00\",\r\n                \"data\": \"true\"\r\n            }\r\n        ]\r\n    }\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "更新定时任务(Update a scheduled task)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"method\": \"setPeriodicTask\",\r\n\t\"data\": [\r\n\t\t{\r\n\t\t\t\"url\": \"http://192.168.90.245/1.html\",\r\n\t\t\t\"rege\": \"(ParkingSpace),([0-9][0-9]{0,})\",\r\n\t\t\t\"interval\": \"30\"\r\n\t\t}\r\n\t]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "获取设备属性(Obtain device attributes)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a817f0cbaaa88244",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"getDeviceProperty\",\r\n    \"data\": []\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "更新设备属性(Update device attributes)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"setDeviceProperty\",\r\n    \"data\": {\r\n        \"time.timeZone\": \"Asia/Shanghai;UTC+08:00;Beijing,Chongqing,HongKong,Urumchi\",// 时区\r\n        \"time.sync\": \"ntp\",//ntp 校时\r\n        \"time.ntp\": \"ntp.huidu.cn\"\r\n    },\r\n    \"id\":\"D16-D22-A073D,C16-D22-A073D\"\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "获取计划任务(Obtain the scheduled task)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"method\": \"getScheduledTask\",\r\n\t\"data\": [\r\n\t\t\"screen\",\r\n\t\t\"volume\",\r\n\t\t\"luminance\",\r\n\t\t\"relay\"\r\n\t]\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "获取设备状态(Obtain device status)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"getDeviceStatus\",\r\n    \"data\": []\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "重启设备(Restart the device)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"rebootDevice\",\r\n    \"data\": {\r\n        \"delay\": 5\r\n    }\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "开启屏幕(Turn on the screen)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"openDeviceScreen\",\r\n    \"data\": {}\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						},
+						{
+							"name": "获取定时任务(Obtain scheduled tasks)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"url": {
+									"raw": "/api/device/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"device",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"method\": \"getPeriodicTask\",\r\n    \"data\": []\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						}
+					]
+				},
+				{
+					"name": "初始化(initialize)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "/api/sdkkey/{{Id}}",
+							"host": [
+								"api"
+							],
+							"query": [],
+							"variable": [],
+							"path": [
+								"sdkkey",
+								"%7B%7BId%7D%7D"
+							]
+						},
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"method\": \"append\",\r\n\t\"data\": {\r\n\t\t\"key\": \"a7fa6795aaa891e2\",\r\n\t\t\"secret\": \"\"\r\n\t}\r\n}"
+						},
+						"auth": {
+							"type": "noauth",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "",
+									"type": "string"
+								}
+							],
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							],
+							"basic": [
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"description": ""
+					}
+				},
+				{
+					"name": "屏幕截图接口",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"item": [
+						{
+							"name": "屏幕截图",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "/api/screenshot/{{Id}}",
+									"host": [
+										"api"
+									],
+									"query": [],
+									"variable": [],
+									"path": [
+										"screenshot",
+										"%7B%7BId%7D%7D"
+									]
+								},
+								"header": [
+									{
+										"key": "sdkKey",
+										"value": "a7fa6795aaa891e2",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"method\": \"screenshot\",\r\n\t\"data\": {}\r\n}"
+								},
+								"auth": {
+									"type": "noauth",
+									"apikey": [
+										{
+											"key": "value",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "key",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									],
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"description": ""
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
