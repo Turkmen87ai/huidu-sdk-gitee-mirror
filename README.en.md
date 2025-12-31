@@ -3,8 +3,8 @@
 
 | Update Time| Modified by | illustrate                               | Remark                                            |
 | ---------- | ------      | --------                                 | ----------------------------------------------- |
-| 2025/08/05 | tanglin     |   3.2 节目通用接口<br>4 API接口说明（xml）   | effect节点新增闪烁特效<br>新增xml格式的通用功能【详细内容见SDK XML帮助文档】<br> 补充支持型号：<br>常规系列 (ARM/Linux平台)： A3, A4, A5, C16L, C08L, D16, D36, ...<br>安卓系列 (Android平台)： A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8, ... <br> 安卓系列需要升级固件MagicPlayer_V2.10.7.400.bin                |
-| 2025/08/07 | tanglin     |   3.2.6 文本节目                          | 新增语音播报属性PlayText|
+| 2025/08/05 | tanglin     |   3.2 Program General Interface<br>4 API Interface Description (xml)   | Added blinking effect to effect node<br>Added general functions in xml format [See SDK XML help document for details]<br>Supplementary supported models:<br>Regular series (ARM/Linux platform): A3, A4, A5, C16L, C08L, D16, D36, ...<br>Android series (Android platform): A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8, ...<br>Android series requires firmware upgrade MagicPlayer_V2.10.7.400.bin |
+| 2025/08/07 | tanglin     |   3.2.6 Text Program                          | Added a new voice broadcast attribute, PlayText|
 
 
 # 1 Document Introduction
@@ -266,7 +266,7 @@ Return to Example：
 
 ### 3.1.2 Retrieve device properties
 
-Interface URL：127.0.0.1:30080/api/{{Id}}
+Interface URL：127.0.0.1:30080/api/device/{{Id}}
 
 Content-Type：application/json
 
@@ -321,8 +321,7 @@ Return to Example：
 				"wifi.mode": "ap",
 				"wifi.ap.ssid": "C16L-D00-A000F",
 				"wifi.ap.passwd": "hd12345678",
-				"wifi.ap.channel": "5",
-				"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"331a61827a1d7707208524bba7c2ed84\">\n    <out result=\"kSuccess\" xmlns=\"GetDeviceInfo\" eventId=\"getDeviceProperty\">\n        <device model=\"C16L\" cpu=\"RK.px30\" name=\"BoxPlayer\" id=\"C16L-D00-A000F\"/>\n        <version kernel=\"\" hardware=\"HD-C16L-V1.X\" fpga=\"16.12.0.0\" app=\"7.10.78.1\"/>\n        <screen rotation=\"0\" width=\"128\" height=\"64\"/>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetMulScreenSync\">\n        <enable value=\"false\"/>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetTimeInfo\">\n        <timezone value=\"(UTC+08:00)Beijing,Chongqing,HongKong,Urumchi\"/>\n        <summer enable=\"false\"/>\n        <sync value=\"none\"/>\n        <time value=\"2025-07-08 17:05:06\"/>\n        <server list=\"\"/>\n        <rf>\n            <enable value=\"false\"/>\n            <master value=\"false\"/>\n            <channel value=\"-1\"/>\n        </rf>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetSystemVolume\">\n        <mode value=\"default\"/>\n        <volume percent=\"100\"/>\n        <ploy/>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetLuminancePloy\">\n        <mode value=\"default\"/>\n        <default value=\"100\"/>\n        <sensor max=\"100\" count=\"0\" min=\"1\" time=\"5\"/>\n        <ploy/>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetEth0Info\">\n        <eth valid=\"true\">\n            <enable value=\"true\"/>\n            <dhcp auto=\"false\"/>\n            <address netmask=\"255.255.255.0\" gateway=\"192.168.90.1\" dns=\"192.168.90.1\" ip=\"192.168.90.153\"/>\n        </eth>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetPppoeInfo\">\n        <pppoe valid=\"true\">\n            <enable value=\"true\"/>\n            <apn value=\"3gnet\"/>\n            <manufacturer value=\"Quectel\"/>\n            <version value=\"EC200TCNDAR02A15M16\"/>\n            <model value=\"EC200T\"/>\n            <imei value=\"862815031598210\"/>\n            <imsi value=\"\"/>\n            <iccid value=\"\"/>\n            <number value=\"\"/>\n            <operators value=\"\"/>\n            <signal value=\"0\"/>\n            <dbm value=\"0\"/>\n            <insert value=\"false\"/>\n            <status value=\"init\"/>\n            <network value=\"init\"/>\n            <code value=\"128\"/>\n        </pppoe>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetWifiInfo\">\n        <wifi valid=\"true\">\n            <enable value=\"true\"/>\n            <mode value=\"ap\"/>\n            <ap>\n                <ssid value=\"C16L-D00-A000F\"/>\n                <passwd value=\"hd12345678\"/>\n                <channel value=\"5\"/>\n                <encryption value=\"WPA-PSK\"/>\n                <dhcp auto=\"true\"/>\n                <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"192.168.9.1\"/>\n            </ap>\n            <station>\n                <current index=\"0\"/>\n                <list>\n                    <item>\n                        <ssid value=\"TP-LINK_9CA7\"/>\n                        <passwd value=\"huidu123456\"/>\n                        <signal value=\"0\"/>\n                        <apmac value=\"\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"56:46:17:B1:9C:74\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"H8-00-A5969\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"E2:2F:DB:CD:CA:2A\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"ChinaNet-38oh\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"22:1F:54:55:E0:E7\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"D16-D22-A073D\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"86:DD:BC:2F:52:21\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"0.0\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"C2:FB:78:86:C5:A6\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"Huaqi\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"80:8F:1D:4D:20:E8\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"W3A_0050c2a0827d\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"00:50:C2:A0:82:7D\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"ZTE_F20A1C\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"10:3C:59:F2:0A:1C\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"HUIDU-2.4G\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"54:46:17:A1:9C:74\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"H8-00-A8523\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"66:AF:F6:94:3A:EC\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"WF1_68b6b31534be\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"68:B6:B3:15:34:BF\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"ZTE\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"10:3C:59:F3:0A:1C\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n            </station>\n        </wifi>\n        <isopen value=\"\"/>\n    </out>\n</sdk>\n"
+				"wifi.ap.channel": "5"
 			}
 		}
 	]
@@ -468,7 +467,7 @@ Return example:
 ```
 
 ```js
-screen.openStatus     // Screen open status: {“true”: Opened, “false”: Closed}
+screen.openStatus       // Screen open status: {“true”: Opened, “false”: Closed}
 eth.valid               // Is the wired network connected? {“true”: Connected, “false”: Not connected}, no details provided when false
 eth.dhcp                // “true” (DHCP-obtained IP address), “false” (static IP address)
 eth.ip                  // IP address
@@ -1041,30 +1040,41 @@ font node description
 | color | Color #RRGGBB | No | Font color |
 | name | String | No | Font name |
 
+border node description
+| Parameter name | Example value  | Parameter Type  | Is this field required?  | Parameter Description  |
+|---|---|---|---|
+| index | String| Yes | Built-in border image index |
+| effect | String| Yes| Border effects (rotate, twinkle, static)|
+| speed | String| Yes | Border speed (1~10) |
+
 ### 3.2.1 Playback Controls
 
 ```
 "playControl": {
-            "duration" : "00:00:30",
-            "time" : {
-                "start" : "00:00:00",
-                "end" : "06:00:00"
-            },
-            "week" : {
-                "enable" : "Mon, Tue, Wed, Thur"
-            },
-            "date" : [{
-                "start" : "2023-10-01",
-                "end" : "2024-10-01"
-            }],
-            "time" : [{
-                "start" : "00:00:00",
-                "end" : "16:27:00"
-            },
-            {
-                "start" : "16:28:00",
-                "end" : "18:00:00"
-            }]
+    "duration": "00:00:30",
+    "time": {
+        "start": "00:00:00",
+        "end": "06:00:00"
+    },
+    "week": {
+        "enable": "Mon, Tue, Wed, Thur"
+    },
+    "date": [
+        {
+            "start": "2023-10-01",
+            "end": "2024-10-01"
+        }
+    ],
+    "time": [
+        {
+            "start": "00:00:00",
+            "end": "16:27:00"
+        },
+        {
+            "start": "16:28:00",
+            "end": "18:00:00"
+        }
+    ]
 }
 ```
 
@@ -1099,22 +1109,22 @@ Return to example：
 
 ```
 {
-	"method": "getAll",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": {
-				"item": [
-					{
-						"id": "2A7C2C2C-B2E3-475C-A501-0A3B7E6451E3",
-						"name": "新节目2"
-					}
-				]
-			}
-		}
-	]
+    "method": "getAll",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": {
+                "item": [
+                    {
+                        "uuid": "2A7C2C2C-B2E3-475C-A501-0A3B7E6451E3",
+                        "name": "节目2"
+                    }
+                ]
+            }
+        }
+    ]
 }
 ```
 
@@ -1145,6 +1155,7 @@ Request (Body) example:
             "uuid": "A4",
             "area": [
                 {
+                    "uuid": "B3",
                     "x": 0,
                     "y": 0,
                     "width": 128,
@@ -1156,6 +1167,7 @@ Request (Body) example:
                     },
                     "item": [
                         {
+                            "uuid": "C2",
                             "type": "text",
                             "string": "LED",
                             "multiLine": false,
@@ -1186,15 +1198,15 @@ Return example:
 
 ```
 {
-	"method": "update",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "update",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -1261,15 +1273,15 @@ Return example:
 
 ```
 {
-	"method": "append",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "append",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -2134,7 +2146,7 @@ Download URL：https://www.apipost.cn/
 
 ## 5.2 Importing Project Files
 
-Select the json file【http Api项目.json】
+Select the json file【HD_HttpApi1.0_Apipost_Collection.json】
 
 ![输入图片说明](doc/images/import1.png)
 
