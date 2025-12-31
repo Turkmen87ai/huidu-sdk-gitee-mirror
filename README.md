@@ -256,7 +256,7 @@ Content-Type：application/json
     "total": "1",
     "message": "ok",
     "data": [
-    "C16-D00-A000F"
+        "C16-D00-A000F"
     ]
 }
 ```
@@ -265,7 +265,7 @@ Content-Type：application/json
 
 ### 3.1.2 获取设备属性
 
-接口URL：127.0.0.1:30080/api/{{Id}}
+接口URL：127.0.0.1:30080/api/device/{{Id}}
 
 Content-Type：application/json
 
@@ -320,8 +320,7 @@ Content-Type：application/json
 				"wifi.mode": "ap",
 				"wifi.ap.ssid": "C16L-D00-A000F",
 				"wifi.ap.passwd": "hd12345678",
-				"wifi.ap.channel": "5",
-				"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"331a61827a1d7707208524bba7c2ed84\">\n    <out result=\"kSuccess\" xmlns=\"GetDeviceInfo\" eventId=\"getDeviceProperty\">\n        <device model=\"C16L\" cpu=\"RK.px30\" name=\"BoxPlayer\" id=\"C16L-D00-A000F\"/>\n        <version kernel=\"\" hardware=\"HD-C16L-V1.X\" fpga=\"16.12.0.0\" app=\"7.10.78.1\"/>\n        <screen rotation=\"0\" width=\"128\" height=\"64\"/>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetMulScreenSync\">\n        <enable value=\"false\"/>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetTimeInfo\">\n        <timezone value=\"(UTC+08:00)Beijing,Chongqing,HongKong,Urumchi\"/>\n        <summer enable=\"false\"/>\n        <sync value=\"none\"/>\n        <time value=\"2025-07-08 17:05:06\"/>\n        <server list=\"\"/>\n        <rf>\n            <enable value=\"false\"/>\n            <master value=\"false\"/>\n            <channel value=\"-1\"/>\n        </rf>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetSystemVolume\">\n        <mode value=\"default\"/>\n        <volume percent=\"100\"/>\n        <ploy/>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetLuminancePloy\">\n        <mode value=\"default\"/>\n        <default value=\"100\"/>\n        <sensor max=\"100\" count=\"0\" min=\"1\" time=\"5\"/>\n        <ploy/>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetEth0Info\">\n        <eth valid=\"true\">\n            <enable value=\"true\"/>\n            <dhcp auto=\"false\"/>\n            <address netmask=\"255.255.255.0\" gateway=\"192.168.90.1\" dns=\"192.168.90.1\" ip=\"192.168.90.153\"/>\n        </eth>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetPppoeInfo\">\n        <pppoe valid=\"true\">\n            <enable value=\"true\"/>\n            <apn value=\"3gnet\"/>\n            <manufacturer value=\"Quectel\"/>\n            <version value=\"EC200TCNDAR02A15M16\"/>\n            <model value=\"EC200T\"/>\n            <imei value=\"862815031598210\"/>\n            <imsi value=\"\"/>\n            <iccid value=\"\"/>\n            <number value=\"\"/>\n            <operators value=\"\"/>\n            <signal value=\"0\"/>\n            <dbm value=\"0\"/>\n            <insert value=\"false\"/>\n            <status value=\"init\"/>\n            <network value=\"init\"/>\n            <code value=\"128\"/>\n        </pppoe>\n    </out>\n    <out result=\"kSuccess\" xmlns=\"GetWifiInfo\">\n        <wifi valid=\"true\">\n            <enable value=\"true\"/>\n            <mode value=\"ap\"/>\n            <ap>\n                <ssid value=\"C16L-D00-A000F\"/>\n                <passwd value=\"hd12345678\"/>\n                <channel value=\"5\"/>\n                <encryption value=\"WPA-PSK\"/>\n                <dhcp auto=\"true\"/>\n                <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"192.168.9.1\"/>\n            </ap>\n            <station>\n                <current index=\"0\"/>\n                <list>\n                    <item>\n                        <ssid value=\"TP-LINK_9CA7\"/>\n                        <passwd value=\"huidu123456\"/>\n                        <signal value=\"0\"/>\n                        <apmac value=\"\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"56:46:17:B1:9C:74\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"H8-00-A5969\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"E2:2F:DB:CD:CA:2A\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"ChinaNet-38oh\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"22:1F:54:55:E0:E7\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"D16-D22-A073D\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"86:DD:BC:2F:52:21\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"0.0\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"C2:FB:78:86:C5:A6\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"Huaqi\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"80:8F:1D:4D:20:E8\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"W3A_0050c2a0827d\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"00:50:C2:A0:82:7D\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"ZTE_F20A1C\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"10:3C:59:F2:0A:1C\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"HUIDU-2.4G\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"54:46:17:A1:9C:74\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"H8-00-A8523\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"66:AF:F6:94:3A:EC\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"WF1_68b6b31534be\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"68:B6:B3:15:34:BF\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n                <list>\n                    <item>\n                        <ssid value=\"ZTE\"/>\n                        <passwd value=\"\"/>\n                        <signal value=\"100\"/>\n                        <apmac value=\"10:3C:59:F3:0A:1C\"/>\n                        <dhcp auto=\"true\"/>\n                        <address netmask=\"0.0.0.0\" gateway=\"0.0.0.0\" dns=\"0.0.0.0\" ip=\"0.0.0.0\"/>\n                    </item>\n                </list>\n            </station>\n        </wifi>\n        <isopen value=\"\"/>\n    </out>\n</sdk>\n"
+				"wifi.ap.channel": "5"
 			}
 		}
 	]
@@ -378,11 +377,11 @@ Content-Type：application/json
 {
     "method": "setDeviceProperty",
     "data": {
-    "name": "BoxPlayer1",
-    "screen.width": "512",
-    "screen.height": "320",
-    "volume": "60",
-    "luminance": "80"
+        "name": "BoxPlayer1",
+        "screen.width": "512",
+        "screen.height": "320",
+        "volume": "60",
+        "luminance": "80"
     }
 }
 ```
@@ -434,44 +433,43 @@ Content-Type：application/json
 
 ```
 {
-	"method": "getDeviceStatus",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": {
-				"screen.openStatus": "true",
-				"eth.valid": "true",
-				"eth.dhcp": "false",
-				"eth.ip": "192.168.90.153",
-				"gsm.valid": "true",
-				"gsm.apn": "3gnet",
-				"gsm.manufacturer": "Quectel",
-				"gsm.version": "EC200TCNDAR02A15M16",
-				"gsm.model": "EC200T",
-				"gsm.imei": "862815031598210",
-				"gsm.signal": "0",
-				"gsm.dbm": "0",
-				"gsm.insert": "false",
-				"gsm.status": "init",
-				"gsm.network": "init",
-				"gsm.code": "128",
-				"wifi.valid": "true",
-				"wifi.enabled": "true",
-				"wifi.mode": "ap"
-			}
-		}
-	]
+    "method": "getDeviceStatus",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": {
+                "screen.openStatus": "true",
+                "eth.valid": "true",
+                "eth.dhcp": "false",
+                "eth.ip": "192.168.90.153",
+                "gsm.valid": "true",
+                "gsm.apn": "3gnet",
+                "gsm.manufacturer": "Quectel",
+                "gsm.version": "EC200TCNDAR02A15M16",
+                "gsm.model": "EC200T",
+                "gsm.imei": "862815031598210",
+                "gsm.signal": "0",
+                "gsm.dbm": "0",
+                "gsm.insert": "false",
+                "gsm.status": "init",
+                "gsm.network": "init",
+                "gsm.code": "128",
+                "wifi.valid": "true",
+                "wifi.enabled": "true",
+                "wifi.mode": "ap"
+            }
+        }
+    ]
 }
 ```
 
 ```js
-screen.openStatus     // 屏幕打开状态{"true": 已经打开, "false" 关闭}
+screen.openStatus       // 屏幕打开状态{"true": 已经打开, "false" 关闭}
 eth.valid               // 有线网络是否接入 {"true": 接入, "false" 未接入}, 为false时无详细信息
 eth.dhcp                // "true"(dhcp获取ip地址), "false"(静态ip地址)
 eth.ip                  // ip地址
-
 gsm.valid               // 是否使用移动网络联网
 gsm.apn                 // 移动网络的apn
 gsm.manufacturer        // 模块产商
@@ -526,14 +524,14 @@ Content-Type：application/json
 
 ```
 {
-	"method": "getScheduledTask",
-	"id": "C16-D00-A000F",
-	"data": [
-		"screen",
-		"volume",
-		"luminance",
-		"relay"
-	]
+    "method": "getScheduledTask",
+    "id": "C16-D00-A000F",
+    "data": [
+        "screen",
+        "volume",
+        "luminance",
+        "relay"
+    ]
 }
 ```
 
@@ -677,13 +675,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "setScheduledTask",
-	"message": "ok",
-	"data": [{
-		"id": "C16-D00-A000F",
-		"message": "ok",
-		"data": "kSuccess"
-	}]
+    "method": "setScheduledTask",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -716,8 +716,7 @@ Content-Type：application/json
 ```
 {
     "method": "getPeriodicTask",
-    "data": [
-    ]
+    "data": []
 }
 ```
 
@@ -777,17 +776,17 @@ Content-Type：application/json
 {
     "method": "setPeriodicTask",
     "data": [
-    		{
-    			"url": "xxxxxxxxxxxx",
-    			"rege": "",
-    			"interval": "29"
-    		},
-    		{
-    			"url": "xxxxxxxxxxxx",
-    			"rege": "",
-    			"interval": "29"
-    		}
-    	]
+        {
+            "url": "xxxxxxxxxxxx",
+            "rege": "",
+            "interval": "29"
+        },
+        {
+            "url": "xxxxxxxxxxxx",
+            "rege": "",
+            "interval": "29"
+        }
+    ]
 }
 ```
 
@@ -796,13 +795,13 @@ Content-Type：application/json
 
 ```
 {
-	"method": "setPeriodicTask",
-	"message": "ok",
-	"data": {
-		"id": "C16-D00-A000F",
-		"message": "ok",
-		"data": "kSuccess"
-	}
+    "method": "setPeriodicTask",
+    "message": "ok",
+    "data": {
+        "id": "C16-D00-A000F",
+        "message": "ok",
+        "data": "kSuccess"
+    }
 }
 ```
 
@@ -842,15 +841,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "pushStatus",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "pushStatus",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -877,7 +876,7 @@ Content-Type：application/json
 {
     "method": "rebootDevice",
     "data": {
-    	"delay": 5
+        "delay": 5
     }
 }
 ```
@@ -887,15 +886,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "rebootDevice",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "rebootDevice",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -929,15 +928,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "openDeviceScreen",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "openDeviceScreen",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -972,15 +971,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "closeDeviceScreen",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "closeDeviceScreen",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -1040,30 +1039,42 @@ font字体节点说明
 | color |  Color #RRGGBB   | 否  | 字体颜色 |
 | name |  String   | 否  | 字体名字 |
 
+border边框节点说明
+
+| 参数名   | 参数类型   | 是否必填 | 参数描述           |
+|--------|--------|------|--------------|
+| index  | String | 必选   | 内置边框图片索引     |
+| effect | String | 必选   | 边框特效（rotate, twinkle, static）   |
+| speed  | int    | 必选   | 边框速度（1~10）   |
+
 ### 3.2.1 播放控制
 
 ```
 "playControl": {
-            "duration" : "00:00:30",
-            "time" : {
-                "start" : "00:00:00",
-                "end" : "06:00:00"
-            },
-            "week" : {
-                "enable" : "Mon, Tue, Wed, Thur"
-            },
-            "date" : [{
-                "start" : "2023-10-01",
-                "end" : "2024-10-01"
-            }],
-            "time" : [{
-                "start" : "00:00:00",
-                "end" : "16:27:00"
-            },
-            {
-                "start" : "16:28:00",
-                "end" : "18:00:00"
-            }]
+    "duration": "00:00:30",
+    "time": {
+        "start": "00:00:00",
+        "end": "06:00:00"
+    },
+    "week": {
+        "enable": "Mon, Tue, Wed, Thur"
+    },
+    "date": [
+        {
+            "start": "2023-10-01",
+            "end": "2024-10-01"
+        }
+    ],
+    "time": [
+        {
+            "start": "00:00:00",
+            "end": "16:27:00"
+        },
+        {
+            "start": "16:28:00",
+            "end": "18:00:00"
+        }
+    ]
 }
 ```
 
@@ -1098,22 +1109,22 @@ Content-Type：application/json
 
 ```
 {
-	"method": "getAll",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": {
-				"item": [
-					{
-						"id": "2A7C2C2C-B2E3-475C-A501-0A3B7E6451E3",
-						"name": "新节目2"
-					}
-				]
-			}
-		}
-	]
+    "method": "getAll",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": {
+                "item": [
+                    {
+                        "uuid": "2A7C2C2C-B2E3-475C-A501-0A3B7E6451E3",
+                        "name": "节目2"
+                    }
+                ]
+            }
+        }
+    ]
 }
 ```
 
@@ -1133,6 +1144,7 @@ Content-Type：application/json
 
 请求(Body)示例：
 
+注意：uuid必须要对应
 
 ```
 {
@@ -1144,6 +1156,7 @@ Content-Type：application/json
             "uuid": "A4",
             "area": [
                 {
+                    "uuid": "B3",
                     "x": 0,
                     "y": 0,
                     "width": 128,
@@ -1155,6 +1168,7 @@ Content-Type：application/json
                     },
                     "item": [
                         {
+                            "uuid": "C2",
                             "type": "text",
                             "string": "LED",
                             "multiLine": false,
@@ -1185,15 +1199,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "update",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "update",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -1260,15 +1274,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "append",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "append",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -1310,15 +1324,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "remove",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "remove",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -1351,42 +1365,47 @@ Content-Type：application/json
 ```
 {
     "method": "replace",
-    "data": [{
-	"name": "节目1",
-	"type": "normal",
-	"uuid": "A3",
-	"area": [{
-		"x": 0,
-		"y": 0,
-		"width": 128,
-		"height": 80,
-        "border": {
-		"type": 0,
-		"speed": 5,
-		"effect":"rotate"
-        },
-		"item": [{
-			"type": "text",
-			"string": "LED",
-			"multiLine": false,
-			"PlayText": false,
-			"font": {
-				"name": "宋体",
-				"size": 14,
-				"underline": false,
-				"bold": false,
-				"italic": false,
-				"color": "#ffff00"
-			},
-                    
-			"effect": {
-				"type": 0,
-				"speed": 5,
-				"hold": 5000
-			}
-		}]
-	}]
-}],
+    "data": [
+        {
+            "name": "节目1",
+            "type": "normal",
+            "uuid": "A3",
+            "area": [
+                {
+                    "x": 0,
+                    "y": 0,
+                    "width": 128,
+                    "height": 80,
+                    "border": {
+                        "type": 0,
+                        "speed": 5,
+                        "effect": "rotate"
+                    },
+                    "item": [
+                        {
+                            "type": "text",
+                            "string": "LED",
+                            "multiLine": false,
+                            "PlayText": false,
+                            "font": {
+                                "name": "宋体",
+                                "size": 14,
+                                "underline": false,
+                                "bold": false,
+                                "italic": false,
+                                "color": "#ffff00"
+                            },
+                            "effect": {
+                                "type": 0,
+                                "speed": 5,
+                                "hold": 5000
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "id": "C16-D00-A000F"
 }
 ```
@@ -1396,15 +1415,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "replace",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "replace",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -1516,31 +1535,31 @@ Content-Type：application/json
 
 ```
 {
-	"data": [
-		{
-			"name": "节目1",
-			"type": "normal",
-			"uuid": "A4",
-			"area": [
-				{
-					"height": 32,
-					"item": [
-						{
-							"aspectRatio": false,
-							"file": "https://persuasion.yingkeiot.cn/attachment/screen/2024-03-19/822091ba-f9e7-4096-8baa-318d785a60ef.mp4",
-							"fileMd5": "46318c4df4968f716061e5fc2ad22401",
-							"fileSize": 33417203,
-							"type": "video"
-						}
-					],
-					"width": 128,
-					"x": 0,
-					"y": 32
-				}
-			]
-		}
-	],
-	"method": "replace"
+    "data": [
+        {
+            "name": "节目1",
+            "type": "normal",
+            "uuid": "A4",
+            "area": [
+                {
+                    "height": 32,
+                    "item": [
+                        {
+                            "aspectRatio": false,
+                            "file": "https://persuasion.yingkeiot.cn/attachment/screen/2024-03-19/822091ba-f9e7-4096-8baa-318d785a60ef.mp4",
+                            "fileMd5": "46318c4df4968f716061e5fc2ad22401",
+                            "fileSize": 33417203,
+                            "type": "video"
+                        }
+                    ],
+                    "width": 128,
+                    "x": 0,
+                    "y": 32
+                }
+            ]
+        }
+    ],
+    "method": "replace"
 }
 ```
 
@@ -1592,53 +1611,53 @@ Content-Type：application/json
 
 ```
 {
-	"method": "replace",
-	"data": [
-		{
-			"name": "节目1",
-			"type": "normal",
-			"uuid": "A4",
-			"area": [
-				{
-					"x": 0,
-					"y": 0,
-					"width": 128,
-					"height": 64,
-					"item": [
-						{
-							"type": "digitalClock",
-							"timezone": "",
-							"timeOffset": "",
-							"font": {
-								"name": "宋体",
-								"size": 8,
-								"underline": false,
-								"bold": false,
-								"italic": false,
-								"color": "#ff0000"
-							},
-							"title": {
-								"string": "0",
-								"color": "#ff0000"
-							},
-							"date": {
-								"format": "6",
-								"color": "#ff0000"
-							},
-							"week": {
-								"format": "0",
-								"color": "#ff0000"
-							},
-							"time": {
-								"format": "0",
-								"color": "#ff0000"
-							}
-						}
-					]
-				}
-			]
-		}
-	]
+    "method": "replace",
+    "data": [
+        {
+            "name": "节目1",
+            "type": "normal",
+            "uuid": "A4",
+            "area": [
+                {
+                    "x": 0,
+                    "y": 0,
+                    "width": 128,
+                    "height": 64,
+                    "item": [
+                        {
+                            "type": "digitalClock",
+                            "timezone": "",
+                            "timeOffset": "",
+                            "font": {
+                                "name": "宋体",
+                                "size": 8,
+                                "underline": false,
+                                "bold": false,
+                                "italic": false,
+                                "color": "#ff0000"
+                            },
+                            "title": {
+                                "string": "0",
+                                "color": "#ff0000"
+                            },
+                            "date": {
+                                "format": "6",
+                                "color": "#ff0000"
+                            },
+                            "week": {
+                                "format": "0",
+                                "color": "#ff0000"
+                            },
+                            "time": {
+                                "format": "0",
+                                "color": "#ff0000"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -1647,15 +1666,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "replace",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "replace",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -1695,53 +1714,53 @@ Content-Type：application/json
 
 ```
 {
-	"method": "replace",
-	"data": [
-		{
-			"name": "节目1",
-			"type": "normal",
-			"uuid": "A4",
-			"area": [
-				{
-					"x": 0,
-					"y": 0,
-					"width": 128,
-					"height": 64,
-					"item": [
-						{
-							"type": "dialClock",
-							"timezone": "",
-							"timeOffset": "",
-							"font": {
-								"name": "宋体",
-								"size": 8,
-								"underline": false,
-								"bold": false,
-								"italic": false,
-								"color": "#ff0000"
-							},
-							"title": {
-								"string": "0",
-								"color": "#ff0000"
-							},
-							"date": {
-								"format": "6",
-								"color": "#ff0000"
-							},
-							"week": {
-								"format": "0",
-								"color": "#ff0000"
-							},
-							"time": {
-								"format": "0",
-								"color": "#ff0000"
-							}
-						}
-					]
-				}
-			]
-		}
-	]
+    "method": "replace",
+    "data": [
+        {
+            "name": "节目1",
+            "type": "normal",
+            "uuid": "A4",
+            "area": [
+                {
+                    "x": 0,
+                    "y": 0,
+                    "width": 128,
+                    "height": 64,
+                    "item": [
+                        {
+                            "type": "dialClock",
+                            "timezone": "",
+                            "timeOffset": "",
+                            "font": {
+                                "name": "宋体",
+                                "size": 8,
+                                "underline": false,
+                                "bold": false,
+                                "italic": false,
+                                "color": "#ff0000"
+                            },
+                            "title": {
+                                "string": "0",
+                                "color": "#ff0000"
+                            },
+                            "date": {
+                                "format": "6",
+                                "color": "#ff0000"
+                            },
+                            "week": {
+                                "format": "0",
+                                "color": "#ff0000"
+                            },
+                            "time": {
+                                "format": "0",
+                                "color": "#ff0000"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -1750,15 +1769,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "replace",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "replace",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -1856,15 +1875,15 @@ Content-Type：application/json
 
 ```
 {
-	"method": "replace",
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16L-D00-A000F",
-			"message": "ok",
-			"data": "kSuccess"
-		}
-	]
+    "method": "replace",
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16L-D00-A000F",
+            "message": "ok",
+            "data": "kSuccess"
+        }
+    ]
 }
 ```
 
@@ -1924,8 +1943,8 @@ Content-Type：application/json
 
 ```
 {
-	"method": "screenshot",
-	"data": {}
+    "method": "screenshot",
+    "data": {}
 }
 ```
 
@@ -1933,7 +1952,7 @@ Content-Type：application/json
 返回示例：
 
 ```
-**使用设备通用接口进行截图时，返回的是图片的base64数据** 
+**使用设备通用接口进行截图时，v返回的是图片的base64数据** 
 ```
 
 
@@ -2029,14 +2048,14 @@ Content-Type：application/xml
 
 ```
 {
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16-D00-A000F",
-			"message": "ok",
-			"data": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"b1c8d8d5f6bc49791147d584150996ff\">\n    <out method=\"GetBootLogo\" result=\"kSuccess\">\n        <logo md5=\"\" exist=\"true\" name=\"\"/>\n    </out>\n</sdk>\n"
-		}
-	]
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16-D00-A000F",
+            "message": "ok",
+            "data": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"b1c8d8d5f6bc49791147d584150996ff\">\n    <out method=\"GetBootLogo\" result=\"kSuccess\">\n        <logo md5=\"\" exist=\"true\" name=\"\"/>\n    </out>\n</sdk>\n"
+        }
+    ]
 }
 ```
 
@@ -2071,14 +2090,14 @@ Content-Type：application/xml
 
 ```
 {
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16-D00-A000F",
-			"message": "ok",
-			"data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="SetBootLogoName" result="kSuccess"/>\n</sdk>\n"
-		}
-	]
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16-D00-A000F",
+            "message": "ok",
+            "data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="SetBootLogoName" result="kSuccess"/>\n</sdk>\n"
+        }
+    ]
 }
 ```
 
@@ -2111,14 +2130,14 @@ Content-Type：application/xml
 
 ```
 {
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16-D00-A000F",
-			"message": "ok",
-			"data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="ClearBootLogo" result="kSuccess"/>\n</sdk>\n"
-		}
-	]
+    "message": "ok",
+    "data": [
+        {
+            "id": "C16-D00-A000F",
+            "message": "ok",
+            "data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="ClearBootLogo" result="kSuccess"/>\n</sdk>\n"
+        }
+    ]
 }
 ```
 
@@ -2133,7 +2152,7 @@ Content-Type：application/xml
 
 ## 5.2 导入项目文件
 
-选择json文件【http Api项目.json】
+选择json文件【HD_HttpApi1.0_Apipost_Collection.json】
 
 ![输入图片说明](doc/images/import1.png)
 
@@ -2205,11 +2224,12 @@ if (pm.request.headers.has("sdkKey")) {
         value: sign
     });
 }
+
 // 获取 Header 参数对象
 var headers = pm.request.headers;
 // 遍历整个 header
 headers.each((item) => {
     console.log(item.key + ":" + item.value);
 });
-```
 
+```
