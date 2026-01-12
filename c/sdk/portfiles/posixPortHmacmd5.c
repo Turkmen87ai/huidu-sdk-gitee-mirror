@@ -301,7 +301,7 @@ void hdhmacmd5(const void* data, uint32_t dataLen, const void* key, uint32_t key
     memset(k_opad, 0, sizeof(k_opad));
 
     if (keyLen > sizeof(k_opad)) {
-        // 超过64个字节时，取md5
+        // When exceeding 64 bytes, take MD5
         hdmd5(keyData, keyLen, out);
         keyData = out;
         keyLen = 16;

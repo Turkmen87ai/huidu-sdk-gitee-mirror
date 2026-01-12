@@ -13,75 +13,75 @@ import cn.huidu.device.sdk.data.program.area.content.VideoNode;
 
 public class Main {
         public static void main(String[] args) {
-                // 替换成你自己的参数
+                // Replace with your own parameters
                 // String host = "${YourHost}";
                 // String sdkKey = "${YourSdkKey}";
                 // String sdkSecret = "${YourSdkSecret}";
                 // Config.InitSdk(host, sdkKey, sdkSecret);
 
                 /**
-                 * 本示例展示了2个节目，其中第二个节目包括两个区域的左右组合
+                 * This example demonstrates 2 programs, where the second program includes left-right combination of two areas
                  */
 
-                // 1. 创建第一个节目的文本、动态、图片、视频等内容
+                // 1. Create text, dynamic, image, video content for the first program
                 ArrayList<ContentNode> nodes = new ArrayList<ContentNode>();
-                // 2. 创建文本内容
+                // 2. Create text content
                 ContentNode node = new TextNode("测试文本内容区域: 0123456789abcdefg");
                 nodes.add(node);
-                // 3. 创建动态内容
+                // 3. Create dynamic content
                 node = new DynamicNode("测试动态内容区域:<br> 当前的温度:{{temperature}}<br>剩余车位:{{ParkingSpace}}",
                                 "temperature,ParkingSpace");
 
                 nodes.add(node);
-                // 4. 创建图片内容
+                // 4. Create image content
                 node = new ImageNode("D:/WorkSpace/TestFiles/Images/15秒.gif");
                 nodes.add(node);
-                // 5. 创建视频内容
+                // 5. Create video content
                 node = new VideoNode("D:/WorkSpace/TestFiles/Video/[1080P]周杰伦-超跑女神.mp4");
                 nodes.add(node);
 
-                // 6. 构建第一个节目数据节点
+                // 6. Build first program data node
                 ProgramNode programNode = new ProgramNode(nodes.toArray(new ContentNode[nodes.size()]));
 
-                // 7. 创建第二个节目的第一个区域的文本、动态等内容
+                // 7. Create text, dynamic content for the first area of the second program
                 nodes.clear();
-                // 8. 创建文本内容
+                // 8. Create text content
                 node = new TextNode("第二个节目的第一个区域的文本内容区域: 0123456789abcdefg");
                 nodes.add(node);
-                // 9. 创建动态内容
+                // 9. Create dynamic content
                 node = new DynamicNode("第二个节目的第一个区域的动态内容区域:<br> 当前的温度:{{temperature}}<br>剩余车位:{{ParkingSpace}}",
                                 "temperature,ParkingSpace");
                 nodes.add(node);
-                // 10. 构建第一个区域数据节点
+                // 10. Build first area data node
                 AreaNode areaNode = new AreaNode(nodes.toArray(new ContentNode[nodes.size()]));
                 areaNode.setWidth(64);
                 areaNode.setHeight(64);
 
-                // 11. 创建第二个节目的第一个区域的文本、动态等内容
+                // 11. Create text, dynamic content for the second area of the second program
                 nodes.clear();
-                // 12. 创建文本内容
+                // 12. Create text content
                 node = new TextNode("第二个节目的第二个区域的文本内容区域: 0123456789abcdefg");
                 nodes.add(node);
-                // 13. 创建动态内容
+                // 13. Create dynamic content
                 node = new DynamicNode("第二个节目的第二个区域的动态内容区域:<br> 当前的温度:{{temperature}}<br>剩余车位:{{ParkingSpace}}",
                                 "temperature,ParkingSpace");
                 nodes.add(node);
-                // 14. 构建第一个区域数据节点
+                // 14. Build second area data node
                 AreaNode areaNode2 = new AreaNode(nodes.toArray(new ContentNode[nodes.size()]));
                 areaNode2.setX(64);
                 areaNode2.setY(0);
                 areaNode2.setWidth(64);
                 areaNode2.setHeight(64);
 
-                // 15. 创建第二个节目的数据节点
+                // 15. Create second program data node
                 ProgramNode programNode2 = new ProgramNode(new AreaNode[] { areaNode, areaNode2 });
 
-                // 16. 实例化节目接口对象
+                // 16. Instantiate program interface object
                 Program program = new Program();
-                // 17. 添加节目到设备
+                // 17. Add program to device
                 String jsonResult = program.replace(new String[] { "" },
                                 new ProgramNode[] { programNode, programNode2 });
-                // 18. 打印结果
+                // 18. Print result
                 System.out.println(jsonResult);
         }
 

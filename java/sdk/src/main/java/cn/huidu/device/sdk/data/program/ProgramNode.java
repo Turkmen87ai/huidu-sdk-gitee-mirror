@@ -63,7 +63,7 @@ public class ProgramNode extends ContentNode {
 
     public ProgramNode(JSONObject jsonObj) {
         this(jsonObj.toJavaObject(ProgramNode.class));
-        // 初始化区域
+        // Initialize area
         JSONArray jsons = jsonObj.getJSONArray("area");
         if (jsons.size() == area.length) {
             for (int i = 0; i < area.length; i++) {

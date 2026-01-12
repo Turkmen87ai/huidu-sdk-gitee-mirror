@@ -10,14 +10,14 @@ import cn.huidu.device.sdk.data.program.other.Font;
 
 public class Main {
         public static void main(String[] args) {
-                // 替换成你自己的参数
+                // Replace with your own parameters
                 // String host = "${YourHost}";
                 // String sdkKey = "${YourSdkKey}";
                 // String sdkSecret = "${YourSdkSecret}";
                 // Config.InitSdk(host, sdkKey, sdkSecret);
 
                 /**
-                 * 本示例展示了节目包括两4区域，每个区域有多个内容，默认播放第一个，其他需要通过状态变化来切换(配合任务推送使用，内容变化有任务推送接口更新)。
+                 * This example demonstrates a program with 4 areas, each area has multiple contents, the first one plays by default, others need to be switched through state changes (used with task push, content changes are updated via task push interface).
                  */
 
                 String[] areaNames = new String[] {
@@ -30,18 +30,18 @@ public class Main {
 
                 ArrayList<AreaNode> areas = new ArrayList<AreaNode>();
 
-                // 1. 创建多个区域和多个状态
+                // 1. Create multiple areas and multiple states
                 for (int index = 0; index < areaNames.length; index++) {
 
                         String bindString = areaNames[index];
 
-                        // 每个区域创建内容资源
+                        // Create content resources for each area
                         ArrayList<ContentNode> nodes = new ArrayList<ContentNode>();
                         for (int index2 = 0; index2 < colors.length; index2++) {
-                                // 构建区域数据节点
-                                String text = areaNames[index] + String.valueOf(index2);// 对应需要显示的内容
+                                // Build area data node
+                                String text = areaNames[index] + String.valueOf(index2);// Content to be displayed
                                 TextNode node = new TextNode(text);
-                                node.setBindType(String.valueOf(index2)); // 绑定区域类型
+                                node.setBindType(String.valueOf(index2)); // Bind area type
 
                                 Font font = new Font(30, colors[index2]);
                                 node.setFont(font);
@@ -49,26 +49,26 @@ public class Main {
                                 nodes.add(node);
                         }
 
-                        // 构建区域数据节点
+                        // Build area data node
                         AreaNode areaNode = new AreaNode(nodes.toArray(new ContentNode[nodes.size()]));
-                        areaNode.setX(index * 64); // 依次往后排
+                        areaNode.setX(index * 64); // Arrange sequentially
                         areaNode.setY(0);
                         areaNode.setWidth(64);
                         areaNode.setHeight(64);
 
-                        areaNode.setBindType(bindString); // 绑定区域类型
+                        areaNode.setBindType(bindString); // Bind area type
 
                         areas.add(areaNode);
                 }
 
-                // 2. 创建节目的数据节点
+                // 2. Create program data node
                 ProgramNode programNode = new ProgramNode(areas.toArray(new AreaNode[areas.size()]));
 
-                // 3. 实例化节目接口对象
+                // 3. Instantiate program interface object
                 Program program = new Program();
-                // 4. 添加节目到设备
+                // 4. Add program to device
                 String jsonResult = program.replace(new String[] { "" }, programNode);
-                // 5. 打印结果
+                // 5. Print result
                 System.out.println(jsonResult);
         }
 

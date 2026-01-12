@@ -31,9 +31,9 @@ public class Border {
     }
 
     public enum Speed {
-        Slow("slow"), /// < 慢
-        Middle("middle"), /// < 适中
-        Fast("fast"); /// < 快
+        Slow("slow"), /// < Slow
+        Middle("middle"), /// < Medium
+        Fast("fast"); /// < Fast
 
         private final String value;
 
@@ -47,9 +47,9 @@ public class Border {
     }
 
     public enum Effect {
-        Rotate("rotate"), /// < 旋转
-        Blink("blink"), /// < 闪烁
-        Static("null"); /// < 静止
+        Rotate("rotate"), /// < Rotate
+        Blink("blink"), /// < Blink
+        Static("null"); /// < Static
 
         private final String value;
 

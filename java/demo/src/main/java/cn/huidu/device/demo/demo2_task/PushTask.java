@@ -7,17 +7,17 @@ import cn.huidu.device.sdk.deviceTask.PushStatusTask;
 
 public class PushTask {
     public static void main(String[] args) {
-        // 替换成你自己的参数
+        // Replace with your own parameters
         // String host = "${YourHost}";
         // String sdkKey = "${YourSdkKey}";
         // String sdkSecret = "${YourSdkSecret}";
         // Config.InitSdk(host, sdkKey, sdkSecret);
 
-        // 1. 实例化任务接口对象
+        // 1. Instantiate task interface object
         PushStatusTask pushStatusTask = new PushStatusTask();
 
-        // 2. 调用接口
-        // 切换四个区域为0
+        // 2. Call interface
+        // Switch four areas to 0
         Map<String, String> keyValues = new HashMap<String, String>() {
             {
                 put("东", "0");
@@ -35,7 +35,7 @@ public class PushTask {
 
         }
 
-        // 切换东区域为2
+        // Switch east area to 2
         jsonResult = pushStatusTask.PushStatus("", "东", "2");
         System.out.println(jsonResult);
 
@@ -45,7 +45,7 @@ public class PushTask {
 
         }
 
-        // 切换南区域为1
+        // Switch south area to 1
         jsonResult = pushStatusTask.PushStatus("", "南", "1");
         System.out.println(jsonResult);
     }

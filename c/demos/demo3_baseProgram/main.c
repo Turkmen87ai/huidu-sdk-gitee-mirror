@@ -11,7 +11,7 @@
 #include "ContentNode.h"
 
 int main() {
-    // 替换成你自己的参数
+    // Replace with your own parameters
     char* host = "${YourHost}";
     char* sdkKey = "${YourSdkKey}";
     char* sdkSecret = "${YourSdkSecret}";

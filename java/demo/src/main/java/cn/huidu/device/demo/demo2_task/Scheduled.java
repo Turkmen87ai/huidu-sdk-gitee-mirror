@@ -8,13 +8,13 @@ import cn.huidu.device.sdk.deviceTask.ScheduledTask;
 
 public class Scheduled {
     public static void main(String[] args) {
-        // 替换成你自己的参数
+        // Replace with your own parameters
         // String host = "${YourHost}";
         // String sdkKey = "${YourSdkKey}";
         // String sdkSecret = "${YourSdkSecret}";
         // Config.InitSdk(host, sdkKey, sdkSecret);
 
-        // 1. 实例化任务接口对象
+        // 1. Instantiate task interface object
         ScheduledTask scheduledTask = new ScheduledTask();
 
         Map<String, ScheduledTaskInfo[]> taskInfos = new HashMap<>();
@@ -22,9 +22,9 @@ public class Scheduled {
         ScheduledTaskInfo taskInfo = new ScheduledTaskInfo();
         taskInfo.setTimeRange("06:00:00~19:00:00");
         taskInfos.put("screen", new ScheduledTaskInfo[] { taskInfo });
-        // 2. 调用接口
+        // 2. Call interface
 
-        // 切换南区域为1
+        // Switch south area to 1
         String jsonResult = scheduledTask.setScheduledTask("", taskInfos);
         System.out.println(jsonResult);
     }

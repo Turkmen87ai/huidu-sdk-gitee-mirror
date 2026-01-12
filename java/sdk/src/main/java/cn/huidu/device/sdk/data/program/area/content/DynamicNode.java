@@ -10,7 +10,7 @@ public class DynamicNode extends TextNode {
         super();
         this.effect = new Effect(EffectType.IMMEDIATE_SHOW);
         this.effect.setHold(360000);
-        setType("dynamic"); // 动态内容
+        setType("dynamic"); // Dynamic content
         // multiLine = false;
     }
 

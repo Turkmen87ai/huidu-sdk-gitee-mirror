@@ -178,7 +178,7 @@ char* fileBaseClient(BaseClient* client, const char* filePath) {
         return toJsonObject("{\"message\":\"failed\",\"data\":\"Invalid client\"}");
     }
 
-    // 检查文件是否存在
+    // Check if file exists
     FILE* file = fopen(filePath, "rb");
     if (!file) {
         cJSON* error = cJSON_CreateObject();

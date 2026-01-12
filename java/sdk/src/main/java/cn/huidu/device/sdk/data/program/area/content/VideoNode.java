@@ -13,8 +13,8 @@ public class VideoNode extends ContentNode {
 
     public VideoNode() {
         super();
-        setType("video"); // 视频内容
-        aspectRatio = false; // 默认值：false
+        setType("video"); // Video content
+        aspectRatio = false; // Default value: false
     }
 
     public VideoNode(String localPath) {

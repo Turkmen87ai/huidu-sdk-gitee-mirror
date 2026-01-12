@@ -6,21 +6,21 @@ import cn.huidu.device.sdk.data.program.area.content.ImageNode;
 
 public class image {
     public static void main(String[] args) {
-        // 替换成你自己的参数
+        // Replace with your own parameters
         // String host = "${YourHost}";
         // String sdkKey = "${YourSdkKey}";
         // String sdkSecret = "${YourSdkSecret}";
         // Config.InitSdk(host, sdkKey, sdkSecret);
 
-        // 1. 构建节目数据节点，只有一个图片区域
+        // 1. Build program data node with only one image area
         ProgramNode programNode = new ProgramNode(
                 new ImageNode("D:/WorkSpace/TestFiles/Images/1600829925_1836547993.dat.gif"));
-        // 2. 实例化节目接口对象
+        // 2. Instantiate program interface object
         Program program = new Program();
 
-        // 3. 添加节目到设备
+        // 3. Add program to device
         String jsonResult = program.replace(new String[] { "" }, programNode);
-        // 4. 打印结果
+        // 4. Print result
         System.out.println(jsonResult);
     }
 

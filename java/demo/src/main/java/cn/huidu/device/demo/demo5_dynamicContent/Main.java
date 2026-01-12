@@ -6,26 +6,26 @@ import cn.huidu.device.sdk.data.program.area.content.DynamicNode;
 
 public class Main {
     public static void main(String[] args) {
-        // 替换成你自己的参数
+        // Replace with your own parameters
         // String host = "${YourHost}";
         // String sdkKey = "${YourSdkKey}";
         // String sdkSecret = "${YourSdkSecret}";
         // Config.InitSdk(host, sdkKey, sdkSecret);
 
         /**
-         * 本示例展示了节目区域的动态内容模板（配合任务推送使用，内容变化有任务推送接口更新）。
+         * This example demonstrates dynamic content template for program area (used with task push, content changes are updated via task push interface).
          */
 
-        // 2. 创建节目的数据节点和动态模板
+        // 2. Create program data node and dynamic template
         ProgramNode programNode = new ProgramNode(
                 new DynamicNode("大型智能停车场信息<br>当前的温度:{{temperature}} ℃<br>剩余车位:{{parkingSpace}} 个",
                         "temperature,parkingSpace"));
 
-        // 3. 实例化节目接口对象
+        // 3. Instantiate program interface object
         Program program = new Program();
-        // 4. 添加节目到设备
+        // 4. Add program to device
         String jsonResult = program.replace(new String[] { "" }, programNode);
-        // 5. 打印结果
+        // 5. Print result
         System.out.println(jsonResult);
     }
 

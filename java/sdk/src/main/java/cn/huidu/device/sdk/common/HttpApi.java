@@ -32,7 +32,7 @@ public class HttpApi {
     private String fileApiUrl = null;
     private String programApiUrl = null;
 
-    // 环境初始化
+    // Environment initialization
     protected HttpApi() {
         this.sdkKey = Config.sdkKey;
         this.sdkSecret = Config.sdkSecret;
@@ -91,17 +91,17 @@ public class HttpApi {
             }
 
             HttpPost httpRequest = new HttpPost(this.fileApiUrl);
-            // 签名
+            // Sign
             signHeader(httpRequest, null);
 
-            // 构建多部分请求实体
+            // Build multipart request entity
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();
             builder.addPart("file", new FileBody(fileToUpload, ContentType.DEFAULT_BINARY, fileName));
 
             HttpEntity multipart = builder.build();
             httpRequest.setEntity(multipart);
 
-            // 执行请求并获取响应
+            // Execute request and get response
             CloseableHttpResponse response = httpClient.execute(httpRequest);
             try {
                 HttpEntity responseEntity = response.getEntity();
@@ -138,19 +138,19 @@ public class HttpApi {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 
             HttpPost httpRequest = new HttpPost(hostUrl);
-            // 服务端响应超时
+            // Server response timeout
             if (timeoutMs > 0) {
                 httpRequest.addHeader("timeout", Integer.toString(timeoutMs));
             }
 
-            // 签名
+            // Sign
             signHeader(httpRequest, body);
 
-            // 构建Json请求实体
+            // Build JSON request entity
             StringEntity stringEntity = new StringEntity(body, ContentType.APPLICATION_JSON);
             httpRequest.setEntity(stringEntity);
 
-            // 执行请求并获取响应
+            // Execute request and get response
             CloseableHttpResponse response = httpClient.execute(httpRequest);
             try {
                 HttpEntity responseEntity = response.getEntity();
@@ -183,7 +183,7 @@ public class HttpApi {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 
             HttpGet httpRequest = new HttpGet(hostUrl);
-            // 签名
+            // Sign
             signHeader(httpRequest, null);
             CloseableHttpResponse response = httpClient.execute(httpRequest);
             try {
@@ -215,16 +215,16 @@ public class HttpApi {
             return false;
         }
 
-        // 生成唯一标识符
+        // Generate unique identifier
         UUID uuid = UUID.randomUUID();
         String cuid = uuid.toString();
         httpRequest.addHeader("requestId", cuid);
-        // 设置sdkKey头部字段
+        // Set sdkKey header field
         httpRequest.addHeader("sdkKey", this.sdkKey);
-        // 添加时间头部字段
+        // Add time header field
         Date date = new Date();
         httpRequest.addHeader("date", date.toString());
-        // 添加签名头部字段
+        // Add signature header field
         if (null == body) {
             httpRequest.addHeader("sign", hmacmd5(this.sdkKey + date.toString(), this.sdkSecret));
         } else {
@@ -237,21 +237,21 @@ public class HttpApi {
     private String hmacmd5(String data, String key) {
         String md5Hash = null;
         try {
-            // 将密钥转换为字节数组
+            // Convert key to byte array
             byte[] keyBytes = key.getBytes(StandardCharsets.UTF_8);
 
-            // 创建HMAC-MD5算法实例，并初始化为密钥
+            // Create HMAC-MD5 algorithm instance and initialize with key
             Mac hmacMD5 = Mac.getInstance("HmacMD5");
             SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "HmacMD5");
             hmacMD5.init(keySpec);
 
-            // 将数据转换为字节数组
+            // Convert data to byte array
             byte[] dataBytes = data.getBytes(StandardCharsets.UTF_8);
 
-            // 计算HMAC-MD5
+            // Calculate HMAC-MD5
             byte[] hmacResult = hmacMD5.doFinal(dataBytes);
 
-            // 将结果转换为十六进制字符串表示
+            // Convert result to hexadecimal string representation
             StringBuilder sb = new StringBuilder();
             for (byte b : hmacResult) {
                 sb.append(String.format("%02x", b));

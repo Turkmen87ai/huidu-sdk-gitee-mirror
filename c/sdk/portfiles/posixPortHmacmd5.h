@@ -1,6 +1,6 @@
 /**
  * @file   posixPortHmacmd5.h
- * @brief  Huidu hmacmd5模块
+ * @brief  Huidu HMAC-MD5 module
  * @author taixi
  * @date   2024/05/23
  */

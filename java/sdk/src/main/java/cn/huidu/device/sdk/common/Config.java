@@ -8,18 +8,18 @@ public class Config {
     public static String sdkKey = null;
     public static String sdkSecret = null;
 
-    // 环境初始化
+    // Environment initialization
     public static void InitSdk(String host, String sdkKey, String sdkSecret) {
         Config.host = host;
         Config.sdkKey = sdkKey;
         Config.sdkSecret = sdkSecret;
     }
 
-    // 环境初始化
+    // Environment initialization
     protected static void InitSdk() {
         Properties prop = new Properties();
         try {
-            // 读取application.properties文件
+            // Read application.properties file
             FileInputStream fileInputStream = new FileInputStream(
                     "huidusdk\\src\\main\\resources\\application.properties");
             prop.load(fileInputStream);

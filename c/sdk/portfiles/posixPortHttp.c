@@ -140,56 +140,56 @@ char *hdhttpRequest(const char *method, const char *url, const httpHeaderlist *h
         return strdup("{\"message\":\"failed\",\"data\":\"CURL init error\"}");
     }
 
-    curl_easy_setopt(curl, CURLOPT_URL, url);                      // 设置URL
-    curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buf);        // 设置错误缓冲区
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback); // 设置响应回调
+    curl_easy_setopt(curl, CURLOPT_URL, url);                      // Set URL
+    curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, error_buf);        // Set error buffer
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback); // Set response callback
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&response_data);
 
-    // 设置请求方法
+    // Set request method
     if (strcmp(method, "POST") == 0) {
         curl_easy_setopt(curl, CURLOPT_POST, 1L);
     } else {
         curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
     }
 
-    // 处理不同类型的请求
-    // 文件上传处理
+    // Handle different types of requests
+    // File upload handling
     if (filePath) {
         curl_formadd(&post, &last, CURLFORM_COPYNAME, "file", CURLFORM_FILE, filePath, CURLFORM_END);
         curl_easy_setopt(curl, CURLOPT_HTTPPOST, post);
     }
-    // 普通POST请求
+    // Regular POST request
     else if (body && strcmp(method, "POST") == 0) {
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, bodySize);
     }
 
-    // 设置超时
+    // Set timeout
     if (timeoutMs > 0) {
         curl_easy_setopt(curl, CURLOPT_TIMEOUT_MS, (long)timeoutMs);
     }
 
-    // 添加头部信息
+    // Add header information
     const httpHeaderlist *pHeader = header;
     while (NULL != pHeader) {
         headers = curl_slist_append(headers, pHeader->data);
         pHeader = pHeader->next;
     }
 
-    // 设置请求头
+    // Set request headers
     if (headers) {
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
     }
 
-    // 执行请求
+    // Execute request
     CURLcode res = curl_easy_perform(curl);
 
-    // 检查错误
+    // Check for errors
     if ((res == CURLE_OK) && (response_data.data)) {
         result = strdup(response_data.data);
     }
 
-    // 清理
+    // Cleanup
     if (response_data.data)
         hdfree(response_data.data);
     if (post)

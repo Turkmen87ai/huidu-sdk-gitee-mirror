@@ -7,17 +7,17 @@ import cn.huidu.device.sdk.deviceTask.PushStatusTask;
 
 public class PushTask {
     public static void main(String[] args) {
-        // 替换成你自己的参数
+        // Replace with your own parameters
         // String host = "${YourHost}";
         // String sdkKey = "${YourSdkKey}";
         // String sdkSecret = "${YourSdkSecret}";
         // Config.InitSdk(host, sdkKey, sdkSecret);
 
-        // 1. 实例化任务接口对象
+        // 1. Instantiate task interface object
         PushStatusTask pushStatusTask = new PushStatusTask();
 
-        // 2. 调用接口
-        // 恢复到最初状态
+        // 2. Call interface
+        // Restore to initial state
         Map<String, String> keyValues = new HashMap<String, String>() {
             {
                 put("temperature", "0");
@@ -41,7 +41,7 @@ public class PushTask {
         jsonResult = pushStatusTask.PushStatus("", keyValues);
         System.out.println(jsonResult);
 
-        // 设置当前值
+        // Set current value
         for (int count = 6666; count >= 0; count--) {
             jsonResult = pushStatusTask.PushStatus("", "parkingSpace", String.valueOf(count));
             System.out.println(jsonResult);
@@ -52,7 +52,7 @@ public class PushTask {
             }
 
             if (count % 100 == 0) {
-                // 更新温度
+                // Update temperature
                 jsonResult = pushStatusTask.PushStatus("", "temperature", String.valueOf(25 + (6 - count / 100)));
                 System.out.println(jsonResult);
             }

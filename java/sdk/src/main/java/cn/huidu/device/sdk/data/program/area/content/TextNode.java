@@ -13,7 +13,7 @@ public class TextNode extends ContentNode {
 
     public TextNode() {
         super();
-        setType("text"); // 文本内容
+        setType("text"); // Text content
         multiLine = true;
     }
 
@@ -33,9 +33,9 @@ public class TextNode extends ContentNode {
     }
 
     public enum Alignment {
-        center("center"), /// < 居中对齐
-        left("left"), /// < 左对齐
-        right("right"); /// < 右对齐
+        center("center"), /// < Center alignment
+        left("left"), /// < Left alignment
+        right("right"); /// < Right alignment
 
         private final String value;
 
@@ -49,9 +49,9 @@ public class TextNode extends ContentNode {
     }
 
     public enum VAlignment {
-        middle("middle"), /// < 垂直居中
-        top("top"), /// < 上对齐
-        bottom("bottom"); /// < 下对齐
+        middle("middle"), /// < Vertical center
+        top("top"), /// < Top alignment
+        bottom("bottom"); /// < Bottom alignment
 
         private final String value;
 

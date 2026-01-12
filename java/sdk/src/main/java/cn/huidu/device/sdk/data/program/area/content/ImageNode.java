@@ -15,8 +15,8 @@ public class ImageNode extends ContentNode {
 
     public ImageNode() {
         super();
-        setType("image"); // 图片内容
-        fit = Fit.stretch; // 默认值：stretch
+        setType("image"); // Image content
+        fit = Fit.stretch; // Default value: stretch
     }
 
     public ImageNode(String localPath) {
@@ -50,10 +50,10 @@ public class ImageNode extends ContentNode {
     }
 
     public enum Fit {
-        fill("fill"), /// < 填充，先将图片等比放大能覆盖完整区域的比例，再截取中间部分显示。
-        center("center"), /// < 居中，将图片等比缩小至区域大小，比例不一致时会显示黑边
-        stretch("stretch"), /// < 拉伸，可能导致图片变形
-        tile("tile"); /// < 平铺
+        fill("fill"), /// < Fill, first scale the image proportionally to cover the entire area, then crop the middle part for display.
+        center("center"), /// < Center, scale the image proportionally to fit the area size, black borders will appear if aspect ratio is inconsistent
+        stretch("stretch"), /// < Stretch, may cause image distortion
+        tile("tile"); /// < Tile
 
         private final String value;
 

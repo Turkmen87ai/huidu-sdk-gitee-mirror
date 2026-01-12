@@ -164,7 +164,7 @@ cJSON* toJsonProgramNode(const ProgramNode* node) {
         return NULL;
     }
 
-    // 序列化基类
+    // Serialize base class
     // cJSON* baseJson = cJSON_CreateObject();
     // if (!baseJson) return NULL;
     //
@@ -206,7 +206,7 @@ ProgramNode* fromJsonProgramNode(const cJSON* json) {
     ProgramNode* node = createProgramNode();
     if (!node) return NULL;
 
-    // 反序列化基类
+    // Deserialize base class
     //const cJSON* baseJson = cJSON_GetObjectItem(json, "base");
     //if (baseJson) {
     //    fromJsonContentNode(&node->base, baseJson);

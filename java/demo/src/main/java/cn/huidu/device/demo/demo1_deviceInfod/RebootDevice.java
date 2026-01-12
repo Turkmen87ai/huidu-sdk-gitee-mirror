@@ -4,17 +4,17 @@ import cn.huidu.device.sdk.Device;
 
 public class RebootDevice {
     public static void main(String[] args) {
-        // 替换成你自己的参数
+        // Replace with your own parameters
         // String host = "${YourHost}";
         // String sdkKey = "${YourSdkKey}";
         // String sdkSecret = "${YourSdkSecret}";
         // Config.InitSdk(host, sdkKey, sdkSecret);
 
-        // 1. 实例化设备接口对象
+        // 1. Instantiate device interface object
         Device device = new Device();
-        // 2. 调用接口，重启设备
+        // 2. Call interface to reboot device
         String jsonResult = device.device(new String[] { "C16-D21-015BD" }, "rebootDevice");
-        // 3. 打印结果
+        // 3. Print result
         System.out.println(jsonResult);
 
     }

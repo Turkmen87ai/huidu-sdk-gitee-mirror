@@ -6,7 +6,7 @@ public class ScheduledTaskInfo {
     private String dateRange; /// < yyyy-MM-DD~yyyy-MM-DD
     private String weekFilter; /// < Mon,Tue,Wed,Thu,Fri,Sat,Sun
     private String montFilter; /// < Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec
-    private String data; /// < 字段为字符串，具体的协议对应不同的定义，音量、亮度为0-100，开关类为[true/false]
+    private String data; /// < Field is a string, specific protocol corresponds to different definitions, volume and brightness are 0-100, switch types are [true/false]
 
     public ScheduledTaskInfo() {
     }

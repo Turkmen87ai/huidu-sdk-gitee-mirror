@@ -1,6 +1,6 @@
 #include "ScheduledTask.h"
 
-// 创建计划任务对象
+// Create scheduled task object
 ScheduledTask* createScheduledTask() {
     ScheduledTask* task = (ScheduledTask*)hdmalloc(sizeof(ScheduledTask));
     if (!task) {
@@ -14,7 +14,7 @@ ScheduledTask* createScheduledTask() {
     return task;
 }
 
-// 销毁计划任务对象
+// Destroy scheduled task object
 void destroyScheduledTask(ScheduledTask* task) {
     if (!task) {
         return;
@@ -25,18 +25,18 @@ void destroyScheduledTask(ScheduledTask* task) {
     hdfree(task);
 }
 
-// 获取计划任务（单个设备ID）
+// Get scheduled task (single device ID)
 char* getScheduledTaskSingle(ScheduledTask* task, const char* id) {
     return getScheduledTask(task, &id, 1, NULL, 0);
 }
 
-// 获取计划任务（多个设备ID）
+// Get scheduled task (multiple device IDs)
 char* getScheduledTask(ScheduledTask* task, const char** ids, int idCount, const char** taskNames, int taskNameCount) {
     if (!task || !task->baseClient || !ids || idCount <= 0) {
         return toJsonObject("{\"message\":\"failed\",\"data\":\"Invalid parameters\"}");
     }
 
-    // 将任务名称数组转换为JSON数组
+    // Convert task name array to JSON array
     cJSON* taskArray = NULL;
     if (taskNames && taskNameCount > 0) {
         taskArray = cJSON_CreateArray();
@@ -56,12 +56,12 @@ char* getScheduledTask(ScheduledTask* task, const char** ids, int idCount, const
     return result;
 }
 
-// 设置计划任务（单个设备ID）
+// Set scheduled task (single device ID)
 char* setScheduledTaskSingle(ScheduledTask* task, const char* id, const char** keys, ScheduledTaskInfo*** taskInfos, const int* taskInfoCounts, int keyCount) {
     return setScheduledTask(task, &id, 1, keys, taskInfos, taskInfoCounts, keyCount);
 }
 
-// 设置计划任务（多个设备ID）
+// Set scheduled task (multiple device IDs)
 char* setScheduledTask(ScheduledTask* task, const char** ids, int idCount,
     const char** keys, ScheduledTaskInfo*** taskInfos,
     const int* taskInfoCounts, int keyCount) {
@@ -70,10 +70,10 @@ char* setScheduledTask(ScheduledTask* task, const char** ids, int idCount,
         return toJsonObject("{\"message\":\"failed\",\"data\":\"Invalid parameters\"}");
     }
 
-    // 创建主JSON对象
+    // Create main JSON object
     cJSON* root = cJSON_CreateObject();
 
-    // 为每个键添加任务信息数组
+    // Add task information array for each key
     for (int i = 0; i < keyCount; i++) {
         cJSON* taskArray = cJSON_CreateArray();
         for (int j = 0; j < taskInfoCounts[i]; j++) {

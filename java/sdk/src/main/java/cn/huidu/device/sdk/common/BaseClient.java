@@ -33,7 +33,7 @@ public class BaseClient {
         jsonMethod.put("data", data);
 
         if (devIds.length > 0) {
-            // 放在body的id字段
+            // Put in body's id field
             String devId = String.join(",", devIds);
             jsonMethod.put("id", devId);
         }
@@ -56,7 +56,7 @@ public class BaseClient {
         }
 
         if (devIds.length > 0) {
-            // 放在body的id字段
+            // Put in body's id field
             String devId = String.join(",", devIds);
             jsonMethod.put("id", devId);
         }
@@ -80,7 +80,7 @@ public class BaseClient {
                 FileInfo[] files = programNode.getFilesInfo();
                 if (files != null && files.length > 0) {
                     for (FileInfo info : files) {
-                        // 去重
+                        // Deduplicate
                         if (!fileInfos.contains(info)) {
                             fileInfos.add(info);
                         }
@@ -96,7 +96,7 @@ public class BaseClient {
                     files = area.getFilesInfo();
                     if (files != null && files.length > 0) {
                         for (FileInfo info : files) {
-                            // 去重
+                            // Deduplicate
                             if (!fileInfos.contains(info)) {
                                 fileInfos.add(info);
                             }
@@ -112,7 +112,7 @@ public class BaseClient {
                         files = contentNode.getFilesInfo();
                         if (files != null && files.length > 0) {
                             for (FileInfo info : files) {
-                                // 去重
+                                // Deduplicate
                                 if (!fileInfos.contains(info)) {
                                     fileInfos.add(info);
                                 }
@@ -124,10 +124,10 @@ public class BaseClient {
         }
 
         for (FileInfo info : fileInfos) {
-            // 如果插入的是url,那么不需要上传文件
+            // If it's a URL, no need to upload file
             if (isURL(info.localFile) && info.md5.length() > 0 && info.size > 0) {
                 info.url = info.localFile;
-                continue; // 不需要处理
+                continue; // No need to process
             }
 
             String jsonBody = file(info.localFile);
@@ -161,11 +161,11 @@ public class BaseClient {
         if (ret && fileInfos.size() > 0) {
             FileInfo[] files = fileInfos.toArray(new FileInfo[fileInfos.size()]);
             for (ProgramNode programNode : programNodes) {
-                programNode.updateFilesInfo(files); // 更新节目文件
+                programNode.updateFilesInfo(files); // Update program files
                 for (AreaNode area : programNode.getArea()) {
-                    area.updateFilesInfo(files); // 更新区域文件
+                    area.updateFilesInfo(files); // Update area files
                     for (ContentNode contentNode : area.getItem()) {
-                        contentNode.updateFilesInfo(files);// 更新内容文件
+                        contentNode.updateFilesInfo(files);// Update content files
                     }
                 }
             }
@@ -179,23 +179,23 @@ public class BaseClient {
     }
 
     /**
-     * 判断一个字符串是否为url
+     * Determine if a string is a URL
      *
-     * @param str String 字符串
-     * @return boolean 是否为url
+     * @param str String string
+     * @return boolean whether it is a URL
      * @author peng1 chen
      **/
     public static boolean isURL(String str) {
-        // 转换为小写
+        // Convert to lowercase
         str = str.toLowerCase();
         String regex = "^((https|http)?://)" // https、http
-                + "?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?" // http的user@
-                + "(([0-9]{1,3}\\.){3}[0-9]{1,3}" // IP形式的URL- 例如：199.194.52.184
-                + "|" // 允许IP和DOMAIN（域名）
-                + "([0-9a-z_!~*'()-]+\\.)*" // 域名- www.
-                + "([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\\." // 二级域名
+                + "?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?" // http user@
+                + "(([0-9]{1,3}\\.){3}[0-9]{1,3}" // IP format URL - e.g.: 199.194.52.184
+                + "|" // Allow IP and DOMAIN
+                + "([0-9a-z_!~*'()-]+\\.)*" // Domain - www.
+                + "([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\\." // Second level domain
                 + "[a-z]{2,6})" // first level domain- .com or .museum
-                + "(:[0-9]{1,5})?" // 端口号最大为65535,5位数
+                + "(:[0-9]{1,5})?" // Port number maximum 65535, 5 digits
                 + "((/?)|" // a slash isn't required if there is no file name
                 + "(/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+/?)$";
         return str.matches(regex);
