@@ -1,10 +1,10 @@
 # 深圳市灰度科技有限公司设备HTTP API说明
 
 
-| 更新时间   | 修改人 | 说明     | 备注                                            |
-| ---------- | ------ | -------- | ----------------------------------------------- |
-| 2025/08/05        | tanglin    |   3.2 节目通用接口<br>4 API接口说明（xml）    | effect节点新增闪烁特效<br>新增xml格式的通用功能【详细内容见SDK XML帮助文档】<br> 补充支持型号：<br>常规系列 (ARM/Linux平台)： A3, A4, A5, C16L, C08L, D16, D36, ...<br>安卓系列 (Android平台)： A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8, ... <br> 安卓系列需要升级固件MagicPlayer_V2.10.7.400.bin                |
-| 2025/08/07        | tanglin    |   3.2.6 文本节目    | 新增语音播报属性PlayText                |
+| 更新时间   | 修改人  | 说明                                     | 备注                                                                                                                                                                                                                                                            |
+| ---------- | ------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2025/08/05 | tanglin | 3.2 节目通用接口<br>4 API接口说明（xml） | effect节点新增闪烁特效<br>新增xml格式的通用功能【详细内容见SDK XML帮助文档】<br> 补充支持型号：<br>常规系列 (ARM/Linux平台)： C16L, C08L, D16, D36, ...<br>安卓系列 (Android平台)： A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8, ... <br> 安卓系列需要升级最新固件 |
+| 2025/08/07 | tanglin | 3.2.6 文本节目                           | 新增语音播报属性PlayText                                                                                                                                                                                                                                        |
 
 
 # 1 文档简介
@@ -63,11 +63,11 @@ cn/huidu/device/sdk
 # 2 前期准备
 ## 2.1 设备ID中间带 D 的才是工程卡 , 不是工程卡不支持二次开发
 
-例如：C16L-D00-A000F
+例如：常规系列C16L-D00-A000F
 
 ![输入图片说明](doc/images/id.png)
 
-## 2.2 检查HTTP SDK是否生效【安卓系列升级固件MagicPlayer_V2.10.7.400.bin即可，跳过这一步】
+## 2.2 检查HTTP SDK是否生效【安卓系列升级最新固件即可，跳过这一步】
 
 
 通过SDK test工具，发送以下指令，查询状态
@@ -237,9 +237,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -273,9 +273,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -366,9 +366,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -414,9 +414,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -514,9 +514,9 @@ Content-Type：application/json
 
 4.relay : 继电器
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 
 请求(Body)示例：
@@ -608,9 +608,9 @@ Content-Type：application/json
 
 “updateScheduledTask”，更新传输的项
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -700,16 +700,16 @@ Content-Type：application/json
 
 轮询任务，主要是用来获取外部数据来更新设备的相关状态，用来切换节目和区域、更新区域数据等等
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2 | String                |     是 | 暂无描述  |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)说明：
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| url     | xxxxxxxxxxxx     | String                |     是 | 数据源的地址 |
-| rege    |                  | String  默认值：空     |     否 | 正在表达式<br>解析数据成键值对的表达式，键值以逗号“,”隔开<br>多组键值使用换行符“\n”隔开 |
-| interval|                  | Int[3 – 3600秒]默认值：30 |  否 | 轮询间隔，单位位秒 |
+| 参数名   | 示例值       | 参数类型                  | 是否必填 | 参数描述                                                                                |
+| -------- | ------------ | ------------------------- | -------- | --------------------------------------------------------------------------------------- |
+| url      | xxxxxxxxxxxx | String                    | 是       | 数据源的地址                                                                            |
+| rege     |              | String  默认值：空        | 否       | 正在表达式<br>解析数据成键值对的表达式，键值以逗号“,”隔开<br>多组键值使用换行符“\n”隔开 |
+| interval |              | Int[3 – 3600秒]默认值：30 | 否       | 轮询间隔，单位位秒                                                                      |
 
 请求(Body)示例：
 
@@ -733,14 +733,9 @@ Content-Type：application/json
             "message": "ok",
             "data": [
                 {
-                    "url": "xxxxxxxxxxxx",
-                    "rege": "",
-                    "interval": "29"
-                },
-                {
-                    "url": "xxxxxxxxxxxx",
-                    "rege": "",
-                    "interval": "29"
+                    "url": "http://192.168.90.245/1.html",
+		    "rege": "(ParkingSpace),([0-9][0-9]{0,})",
+		    "interval": "30"
                 }
             ]
         }
@@ -759,16 +754,16 @@ Content-Type：application/json
 
 请求头参数说明：主要是用来设置外部数据来更新设备的相关状态，用来切换节目和区域、更新区域数据等等
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)说明：
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| url     | xxxxxxxxxxxx     | String                |     是 | 数据源的地址 |
-| rege    |                  | String  默认值：空     |     否 | 正在表达式<br>解析数据成键值对的表达式，键值以逗号“,”隔开<br>多组键值使用换行符“\n”隔开 |
-| interval|                  | Int[3 – 3600秒]默认值：30 |  否 | 轮询间隔，单位位秒 |
+| 参数名   | 示例值       | 参数类型                  | 是否必填 | 参数描述                                                                                |
+| -------- | ------------ | ------------------------- | -------- | --------------------------------------------------------------------------------------- |
+| url      | xxxxxxxxxxxx | String                    | 是       | 数据源的地址                                                                            |
+| rege     |              | String  默认值：空        | 否       | 正在表达式<br>解析数据成键值对的表达式，键值以逗号“,”隔开<br>多组键值使用换行符“\n”隔开 |
+| interval |              | Int[3 – 3600秒]默认值：30 | 否       | 轮询间隔，单位位秒                                                                      |
 
 请求(Body)示例：
 
@@ -777,14 +772,9 @@ Content-Type：application/json
     "method": "setPeriodicTask",
     "data": [
         {
-            "url": "xxxxxxxxxxxx",
-            "rege": "",
-            "interval": "29"
-        },
-        {
-            "url": "xxxxxxxxxxxx",
-            "rege": "",
-            "interval": "29"
+            "url": "http://192.168.90.245/1.html",
+            "rege": "(ParkingSpace),([0-9][0-9]{0,})",
+	    "interval": "30"
         }
     ]
 }
@@ -816,9 +806,9 @@ Content-Type：application/json
 
 请求头参数说明：主动推送任务，用来切换节目和区域、更新区域数据等等
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -828,9 +818,8 @@ Content-Type：application/json
     "method": "pushStatus",
     "data": [
         {
-            "key1": "value1",
-            "key2": "value2",
-            "key3": "value3"
+            "Temperature": "44",
+            "ParkingSpace": "110"
         }
     ]
 }
@@ -865,9 +854,9 @@ Content-Type：application/json
 
 请求头参数说明：几秒后重启
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -909,9 +898,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -952,9 +941,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -1023,29 +1012,29 @@ Content-Type：application/json
 4.内容对象是最终显示的对象，不同的对象作用不一样，如：text，显示文本内容，image，显示图片内容等等。
 
 effect特效节点说明
-| 参数名  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|
-| type  |  Int <br>0  : 直接显示.<br>1  : 向左平移.<br>2  : 向右平移.<br>3  : 向上平移.<br>4  : 向下平移.<br>5  : 向左覆盖.<br>6  : 向右覆盖.<br>7  : 向上覆盖.<br>8  : 向下覆盖.<br>9  : 左上覆盖.<br>10 : 左下覆盖.<br>11 : 右上覆盖.<br>12 : 右下覆盖.<br>13 : 水平对开.<br>14 : 垂直对开.<br>15 : 水平闭合.<br>16 : 垂直闭合.<br>17 : 淡入淡出.<br>18 : 垂直百叶窗.<br>19 : 水平百叶窗.<br>20 : 不清屏.<br>25 : 随机特效.<br>// 以下特效只有文本插件支持 <br>26 : 首尾相接连续左移.<br>27 : 首尾相接连续右移.<br>28 : 首尾相接连续上移.<br>29 : 首尾相接连续下移.<br>30 : 闪烁.   | 是  | 特效类型 |
-| speed |  Int[0-8] 0最快，8最慢    | 是  | 文件的md5值 |
-| hold |  Int[0-9999999] 单位为毫秒   | 是  | 停留时间 |
+| 参数名 | 参数类型                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是否必填 | 参数描述    |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- |
+| type   | Int <br>0  : 直接显示.<br>1  : 向左平移.<br>2  : 向右平移.<br>3  : 向上平移.<br>4  : 向下平移.<br>5  : 向左覆盖.<br>6  : 向右覆盖.<br>7  : 向上覆盖.<br>8  : 向下覆盖.<br>9  : 左上覆盖.<br>10 : 左下覆盖.<br>11 : 右上覆盖.<br>12 : 右下覆盖.<br>13 : 水平对开.<br>14 : 垂直对开.<br>15 : 水平闭合.<br>16 : 垂直闭合.<br>17 : 淡入淡出.<br>18 : 垂直百叶窗.<br>19 : 水平百叶窗.<br>20 : 不清屏.<br>25 : 随机特效.<br>// 以下特效只有文本插件支持 <br>26 : 首尾相接连续左移.<br>27 : 首尾相接连续右移.<br>28 : 首尾相接连续上移.<br>29 : 首尾相接连续下移.<br>30 : 闪烁. | 是       | 特效类型    |
+| speed  | Int[0-8] 0最快，8最慢                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 是       | 文件的md5值 |
+| hold   | Int[0-9999999] 单位为毫秒                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 是       | 停留时间    |
 
 font字体节点说明
-| 参数名  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|
-| bold |  Bool   | 否  | 粗体 |
-| italic |  Bool   | 否  | 斜体 |
-| underline |  Bool  | 否  | 下划线 |
-| size |  Int   | 否  | 字体大小 |
-| color |  Color #RRGGBB   | 否  | 字体颜色 |
-| name |  String   | 否  | 字体名字 |
+| 参数名    | 参数类型      | 是否必填 | 参数描述 |
+| --------- | ------------- | -------- | -------- |
+| bold      | Bool          | 否       | 粗体     |
+| italic    | Bool          | 否       | 斜体     |
+| underline | Bool          | 否       | 下划线   |
+| size      | Int           | 否       | 字体大小 |
+| color     | Color #RRGGBB | 否       | 字体颜色 |
+| name      | String        | 否       | 字体名字 |
 
 border边框节点说明
 
-| 参数名   | 参数类型   | 是否必填 | 参数描述           |
-|--------|--------|------|--------------|
-| index  | String | 必选   | 内置边框图片索引     |
-| effect | String | 必选   | 边框特效（rotate, twinkle, static）   |
-| speed  | int    | 必选   | 边框速度（1~10）   |
+| 参数名 | 参数类型 | 是否必填 | 参数描述                            |
+| ------ | -------- | -------- | ----------------------------------- |
+| index  | String   | 必选     | 内置边框图片索引                    |
+| effect | String   | 必选     | 边框特效（rotate, twinkle, static） |
+| speed  | int      | 必选     | 边框速度（1~10）                    |
 
 ### 3.2.1 播放控制
 
@@ -1089,9 +1078,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -1138,9 +1127,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -1221,9 +1210,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -1296,9 +1285,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -1346,18 +1335,18 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)说明：
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| type     |   text   | String                |     是 | 文本类型 |
-| PlayText|   false   | Bool  |     否 | 是否语音播报 |
-| multiLine|   false   | Bool  |     否 | 是否是多行文本 |
-| alignment|   left  | String <br>center：居中对齐 <br>left：左对齐 <br>right：右对齐|  否 | 水平对齐方式 |
-| valignment|  top  | String <br>middle：居中对齐 <br>top：顶对齐 <br>bottom：底对齐|  否 | 垂直对齐方式 |
+| 参数名     | 示例值 | 参数类型                                                       | 是否必填 | 参数描述       |
+| ---------- | ------ | -------------------------------------------------------------- | -------- | -------------- |
+| type       | text   | String                                                         | 是       | 文本类型       |
+| PlayText   | false  | Bool                                                           | 否       | 是否语音播报   |
+| multiLine  | false  | Bool                                                           | 否       | 是否是多行文本 |
+| alignment  | left   | String <br>center：居中对齐 <br>left：左对齐 <br>right：右对齐 | 否       | 水平对齐方式   |
+| valignment | top    | String <br>middle：居中对齐 <br>top：顶对齐 <br>bottom：底对齐 | 否       | 垂直对齐方式   |
 
 请求(Body)示例：
 
@@ -1438,18 +1427,18 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)说明：
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| type    |  image    | String | 是 | 图片类型 |
-| fit     |  stretch | String fill: 填充，先将图片等比放大能覆盖完整区域的比例，再截取中间部分显示。<br>center: 居中，将图片等比缩小至区域大小，比例不一致时会显示黑边。<br>stretch: 拉伸，可能导致图片变形。<br>tile: 平铺  |  否 | 图片的填充属性 |
-| file |     |  String   | 是  | 文件在设备中的文件名或者有效的url |
-| fileMd5  |     |  String   | 是  | 文件的md5值 |
-| fileSize|     |  Int   | 否  | 文件大小，已经存在设备中，则不再进行下载 |
+| 参数名   | 示例值  | 参数类型                                                                                                                                                                                             | 是否必填 | 参数描述                                 |
+| -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------- |
+| type     | image   | String                                                                                                                                                                                               | 是       | 图片类型                                 |
+| fit      | stretch | String fill: 填充，先将图片等比放大能覆盖完整区域的比例，再截取中间部分显示。<br>center: 居中，将图片等比缩小至区域大小，比例不一致时会显示黑边。<br>stretch: 拉伸，可能导致图片变形。<br>tile: 平铺 | 否       | 图片的填充属性                           |
+| file     |         | String                                                                                                                                                                                               | 是       | 文件在设备中的文件名或者有效的url        |
+| fileMd5  |         | String                                                                                                                                                                                               | 是       | 文件的md5值                              |
+| fileSize |         | Int                                                                                                                                                                                                  | 否       | 文件大小，已经存在设备中，则不再进行下载 |
 
 请求(Body)示例：
 
@@ -1517,18 +1506,18 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)说明：
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| type    |  video            | String  | 是  | 视频类型 |
-| aspectRatio |  false        | Bool    | 否  | 保持宽高比 |
-| file |     |  String   | 是  | 文件在设备中的文件名或者有效的url |
-| fileMd5  |     |  String   | 是  | 文件的md5值 |
-| fileSize|     |  Int   | 否  | 文件大小，已经存在设备中，则不再进行下载 |
+| 参数名      | 示例值 | 参数类型 | 是否必填 | 参数描述                                 |
+| ----------- | ------ | -------- | -------- | ---------------------------------------- |
+| type        | video  | String   | 是       | 视频类型                                 |
+| aspectRatio | false  | Bool     | 否       | 保持宽高比                               |
+| file        |        | String   | 是       | 文件在设备中的文件名或者有效的url        |
+| fileMd5     |        | String   | 是       | 文件的md5值                              |
+| fileSize    |        | Int      | 否       | 文件大小，已经存在设备中，则不再进行下载 |
 
 请求(Body)示例：
 
@@ -1591,20 +1580,31 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  | 暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)说明：
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| type    |  digitalClock     | String  | 是  | 数字时钟 |
-| timezone |  以 “+8:00” 的格式        | String    | 否  | 时区 |
-| timeOffset | “+00:05:00” 向前调时间 或 “-00:05:00” 向后调时间 <br>默认值：0  | String  | 否  | 时间微调 |
-| title.string|     | String    | 否  | 标题内容 |
-| date.format |   |Int固定取下列值：<br>0、YYYY/MM/DD <br>1、MM/DD/YYYY <br>2、DD/MM/YYYY <br>3、Jan DD, YYYY <br>4、DD Jan, YYYY <br>5、YYYY年MM月DD日 <br>6、MM月DD日| 否  | 日期格式 |
-| week.format |   |Int固定取下列值：<br>0、星期一 <br>1、Monday <br>2、Mon    | 否  | 星期格式|
-| time.format |   |Int固定取下列值: <br>0、hh:mm:ss <br>1、hh:ss <br>2、hh时mm分ss秒 <br>3、hh时mm分| 否  | 时间格式 |
+| 参数名                | 示例值                                                         | 参数类型                                                                                                                                             | 是否必填 | 参数描述     |
+| --------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------ |
+| type                  | digitalClock                                                   | String                                                                                                                                               | 是       | 数字时钟     |
+| timezone              | 以 “+8:00” 的格式                                              | String                                                                                                                                               | 否       | 时区         |
+| timeOffset            | “+00:05:00” 向前调时间 或 “-00:05:00” 向后调时间 <br>默认值：0 | String                                                                                                                                               | 否       | 时间微调     |
+| multiLine             |                                                                | Bool                                                                                                                                                 | 否       | 是否多行显示 |
+| title.string          |                                                                | String                                                                                                                                               | 否       | 标题内容     |
+| title.color           |                                                                | String                                                                                                                                               | 否       | 标题颜色     |
+| title.display         |                                                                | String                                                                                                                                               | 否       | 标题是否显示 |
+| date.format           |                                                                | Int固定取下列值：<br>0、YYYY/MM/DD <br>1、MM/DD/YYYY <br>2、DD/MM/YYYY <br>3、Jan DD, YYYY <br>4、DD Jan, YYYY <br>5、YYYY年MM月DD日 <br>6、MM月DD日 | 否       | 日期格式     |
+| date.color            |                                                                | String                                                                                                                                               | 否       | 日期颜色     |
+| date.display          |                                                                | String                                                                                                                                               | 否       | 日期是否显示 |
+| week.format           |                                                                | Int固定取下列值：<br>0、星期一 <br>1、Monday <br>2、Mon                                                                                              | 否       | 星期格式     |
+| week.color            |                                                                | String                                                                                                                                               | 否       | 星期颜色     |
+| week.display          |                                                                | String                                                                                                                                               | 否       | 星期是否显示 |
+| time.format           |                                                                | Int固定取下列值: <br>0、hh:mm:ss <br>1、hh:ss <br>2、hh时mm分ss秒 <br>3、hh时mm分                                                                    | 否       | 时间格式     |
+| time.color            |                                                                | String                                                                                                                                               | 否       | 时间颜色     |
+| time.display          |                                                                | String                                                                                                                                               | 否       | 时间是否显示 |
+| lunarCalendar.color   |                                                                | String                                                                                                                                               | 否       | 农历颜色     |
+| lunarCalendar.display |                                                                | String                                                                                                                                               | 否       | 农历是否显示 |
 
 请求(Body)示例：
 
@@ -1628,6 +1628,7 @@ Content-Type：application/json
                             "type": "digitalClock",
                             "timezone": "",
                             "timeOffset": "",
+                            "multiLine": "true",
                             "font": {
                                 "name": "宋体",
                                 "size": 8,
@@ -1651,6 +1652,10 @@ Content-Type：application/json
                             "time": {
                                 "format": "0",
                                 "color": "#ff0000"
+                            },
+                            "lunarCalendar": {
+                                "display": "true",
+                                "color": "#ff00ff"
                             }
                         }
                     ]
@@ -1689,25 +1694,25 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2    | String  | 是  | 暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)说明：
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| type    |  dialClock          | String  | 是  | 模拟时钟 |
-| timezone |  以 “+8:00” 的格式        | String    | 否  | 时区 |
-| timeOffset | “+00:05:00” 向前调时间 或 “-00:05:00” 向后调时间 <br>默认值：0  | String  | 否  | 时间微调 |
-| title.string|     | String    | 否  | 标题内容 |
-| date.format |   |Int固定取下列值：<br>0、YYYY/MM/DD <br>1、MM/DD/YYYY <br>2、DD/MM/YYYY <br>3、Jan DD, YYYY <br>4、DD Jan, YYYY <br>5、YYYY年MM月DD日 <br>6、MM月DD日| 否  | 日期格式 |
-| week.format |   |Int固定取下列值：<br>0、星期一 <br>1、Monday <br>2、Mon    | 否  | 星期格式|
-| time.format |   |Int固定取下列值: <br>0、hh:mm:ss <br>1、hh:ss <br>2、hh时mm分ss秒 <br>3、hh时mm分| 否  | 时间格式 |
-| style.hourHandColor |  #ffffff   |  String   | 否  | 时间格式 |
-| style.minuteHandColor |  #ffffff   |  String   | 否  | 分针颜色 |
-| style.secondHandColor |  #ffffff   |  String   | 否  | 秒针颜色 |
-| style.hourScaleColor  |  #ffffff   |  String   | 否  | 时钟刻度颜色 |
-| style.minuteScaleColor|  #ffffff   |  String   | 否  | 分钟刻度颜色 |
+| 参数名                 | 示例值                                                         | 参数类型                                                                                                                                             | 是否必填 | 参数描述     |
+| ---------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------ |
+| type                   | dialClock                                                      | String                                                                                                                                               | 是       | 模拟时钟     |
+| timezone               | 以 “+8:00” 的格式                                              | String                                                                                                                                               | 否       | 时区         |
+| timeOffset             | “+00:05:00” 向前调时间 或 “-00:05:00” 向后调时间 <br>默认值：0 | String                                                                                                                                               | 否       | 时间微调     |
+| title.string           |                                                                | String                                                                                                                                               | 否       | 标题内容     |
+| date.format            |                                                                | Int固定取下列值：<br>0、YYYY/MM/DD <br>1、MM/DD/YYYY <br>2、DD/MM/YYYY <br>3、Jan DD, YYYY <br>4、DD Jan, YYYY <br>5、YYYY年MM月DD日 <br>6、MM月DD日 | 否       | 日期格式     |
+| week.format            |                                                                | Int固定取下列值：<br>0、星期一 <br>1、Monday <br>2、Mon                                                                                              | 否       | 星期格式     |
+| time.format            |                                                                | Int固定取下列值: <br>0、hh:mm:ss <br>1、hh:ss <br>2、hh时mm分ss秒 <br>3、hh时mm分                                                                    | 否       | 时间格式     |
+| style.hourHandColor    | #ffffff                                                        | String                                                                                                                                               | 否       | 时间格式     |
+| style.minuteHandColor  | #ffffff                                                        | String                                                                                                                                               | 否       | 分针颜色     |
+| style.secondHandColor  | #ffffff                                                        | String                                                                                                                                               | 否       | 秒针颜色     |
+| style.hourScaleColor   | #ffffff                                                        | String                                                                                                                                               | 否       | 时钟刻度颜色 |
+| style.minuteScaleColor | #ffffff                                                        | String                                                                                                                                               | 否       | 分钟刻度颜色 |
 
 请求(Body)示例：
 
@@ -1792,9 +1797,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -1815,11 +1820,9 @@ Content-Type：application/json
                     "item": [
                         {
                             "type": "dynamic",
-                            "string": "{{ParkingSpace}}个",
-                            "keys": "ParkingSpace",
+                            "string": "停车场信息<br>温度:{{Temperature}} ℃<br>车位:{{ParkingSpace}} 个",
+                            "keys": "Temperature,ParkingSpace",
                             "alignment": "center",
-                            "dataSource": "ParkingSpace",
-                            "dataSourceDefault": "002",
                             "font": {
                                 "name": "宋体",
                                 "size": 14,
@@ -1897,9 +1900,9 @@ Content-Type：application/json
 
 请求头参数说明：上传文件，主要是用来操作资源文件相关内容
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求 **(form-data)** 示例：
 
@@ -1934,9 +1937,9 @@ Content-Type：application/json
 
 请求头参数说明：
 
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
+| 参数名 | 示例值           | 参数类型 | 是否必填 | 参数描述 |
+| ------ | ---------------- | -------- | -------- | -------- |
+| sdkKey | a7fa6795aaa891e2 | String   | 是       | 暂无描述 |
 
 请求(Body)示例：
 
@@ -1956,201 +1959,15 @@ Content-Type：application/json
 ```
 
 
-# 4 API接口说明（xml）
-
-- 获取开机画面GetBootLogo【安卓系列不支持】
-- 设置开机画面SetBootLogoName【安卓系列不支持】
-- 清除开机画面ClearBootLogo【安卓系列不支持】
-- 获取网络信息GetNetworkInfo
-- 仅获取eth0信息GetEth0Info
-- 仅获取pppoe(3/4G)信息GetPppoeInfo
-- 仅获取wifi信息GetWifiInfo
-- 设置eth0信息SetEth0Info【慎操作，导致网络断开】
-- 设置wifi信息SetWifiInfo【慎操作，导致网络断开】
-- 设置Apn SetApn（慎操作）
-- 获取设备信息GetDeviceInfo
-- 获取设备名GetDeviceName
-- 设置设备名SetDeviceName
-- 设置系统音量SetSystemVolume
-- 获取系统音量GetSystemVolume
-- 重启设备Reboot
-- 获取Tcp服务器信息GetSDKTcpServer
-- 设置Tcp服务器SetSDKTcpServer
-- 获取Socket信息GetSocketTimeInfo
-- 设置Socket信息SetSocketTimeInfo【慎操作，导致网络断开】
-- 获取许可证GetLicense
-- 获取亮度配置GetLuminancePloy
-- 设置亮度配置SetLuminancePloy
-- 获取时间校正数据GetTimeInfo
-- 设置时间校正数据SetTimeInfo【安卓系列支持部分，时区协议不通用】
-- 固件升级ExcuteUpgradeShell
-- 固件升级ExcuteUpgradeShellHttp
-- 固件升级FirmwareUpgrade
-- 获取固件升级状态GetUpgradeResult
-- 删除设备文件DeleteFiles
-- 添加设备文件AddFiles
-- 获取设备文件GetFiles
-- 获取字体信息GetAllFontInfo
-- 重新加载所有字体ReloadAllFonts
-- 屏幕旋转ScreenRotation
-- 异步操作截图GetScreenshot2
-- 获取开关屏信息GetSwitchTime
-- 设置开关屏信息SetSwitchTime
-- 开屏OpenScreen
-- 关屏CloseScreen
-- 获取传感器信息GetSensorInfo
-- 获取GPS信息GetGPSInfo
-- 获取当前传感器的值GetCurrentSensorValue【安卓系列不支持】
-- 获取串口SDK配置GetSerialSDK【安卓系列不支持】
-- 设置串口SDK配置SetSerialSDK【安卓系列不支持】
-- 获取继电器信息GetRelayInfo
-- 设置继电器信息SetRelayInfo
-- 检查U盘是否接入CheckUDiskInsert【安卓系列不支持】
-- 获取U盘功能配置GetEnableUDiskFunction【安卓系列不支持】
-- 开启或设置U盘功能配置SetEnableUDiskFunction【安卓系列不支持】
-- 关闭U盘功能配置DisableUDiskFunction【安卓系列不支持】
-- 获取GPS信息上报使能标志GetGpsRespondEnable
-- 设置GPS信息上报使能标志SetGpsRespondEnable
-- 获取多屏同步标志GetMulScreenSync
-- 设置多屏同步标志SetMulScreenSync
-- 获取节目播放统计标志GetPlayProgramCountsEnable【安卓系列不支持】
-- 设置节目播放统计SetPlayProgramCountsEnable【安卓系列不支持】
-- 获取节目播放统计文件名GetPlayProgramCountsFileName【安卓系列不支持】
-
- **xml内容详情请参考SDK XML帮助文档** 
-
-## 4.1 获取开机画面
-
-接口URL：127.0.0.1:30080/raw/{{Id}}
-
-Content-Type：application/xml
-
-请求方式：POST
-
-请求头参数说明：
-
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  暂无描述 |
-
-请求(Body)示例：
-
-
-```
-<?xml version='1.0' encoding='utf-8'?>
-<sdk guid="##GUID">
-    <in method="GetBootLogo"/>
-</sdk>
-```
-
-
-返回示例：
-
-```
-{
-    "message": "ok",
-    "data": [
-        {
-            "id": "C16-D00-A000F",
-            "message": "ok",
-            "data": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"b1c8d8d5f6bc49791147d584150996ff\">\n    <out method=\"GetBootLogo\" result=\"kSuccess\">\n        <logo md5=\"\" exist=\"true\" name=\"\"/>\n    </out>\n</sdk>\n"
-        }
-    ]
-}
-```
-
-## 4.2 设置开机画面
-
-接口URL：127.0.0.1:30080/raw/{{Id}}
-
-Content-Type：application/xml
-
-请求方式：POST
-
-请求头参数说明：
-
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  ##md5 开机图片的md5值, 可为空<br>##name 开机图片名 |
-
-请求(Body)示例：
-
-
-```
-<?xml version='1.0' encoding='utf-8'?>
-<sdk guid="##GUID">
-   <in method="SetBootLogoName">
-        <logo md5="##value" name="##name"/>
-   </in>
-</sdk>
-```
-
-
-返回示例：
-
-```
-{
-    "message": "ok",
-    "data": [
-        {
-            "id": "C16-D00-A000F",
-            "message": "ok",
-            "data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="SetBootLogoName" result="kSuccess"/>\n</sdk>\n"
-        }
-    ]
-}
-```
-
-## 4.3 清除开机画面
-
-接口URL：127.0.0.1:30080/raw/{{Id}}
-
-Content-Type：application/xml
-
-请求方式：POST
-
-请求头参数说明：
-
-| 参数名  | 示例值  | 参数类型  | 是否必填  | 参数描述  |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | 是  |  ##md5 开机图片的md5值, 可为空<br>##name 开机图片名 |
-
-请求(Body)示例：
-
-
-```
-<?xml version='1.0' encoding='utf-8'?>
-<sdk guid="##GUID">
-    <in method="ClearBootLogo"/>
-</sdk>
-```
-
-
-返回示例：
-
-```
-{
-    "message": "ok",
-    "data": [
-        {
-            "id": "C16-D00-A000F",
-            "message": "ok",
-            "data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="ClearBootLogo" result="kSuccess"/>\n</sdk>\n"
-        }
-    ]
-}
-```
-
-
-# 5 接口模拟调试
+# 4 接口模拟调试
 
 接口示例：https://console-docs.apipost.cn/preview/07ce80dbc607d40d/7b80fbbde771e7ba
 
-## 5.1 配置Apipost 环境
+## 4.1 配置Apipost 环境
 
 下载网址：https://www.apipost.cn/
 
-## 5.2 导入项目文件
+## 4.2 导入项目文件
 
 选择json文件【HD_HttpApi1.0_Apipost_Collection.json】
 
@@ -2158,15 +1975,15 @@ Content-Type：application/xml
 
 ![输入图片说明](doc/images/import2.png)
 
-## 5.3 配置环境变量
+## 4.3 配置环境变量
 
 ![输入图片说明](doc/images/Apipost1.png)
 
-## 5.4 配置服务器ip,端口以及密钥
+## 4.4 配置服务器ip,端口以及密钥
 
 ![输入图片说明](doc/images/Apipost2.png)
 
-## 5.5 编辑预操作
+## 4.5 编辑预操作
 
 ![输入图片说明](doc/images/Apipost3.png)
 
