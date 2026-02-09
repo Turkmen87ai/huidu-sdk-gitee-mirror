@@ -3,7 +3,7 @@
 
 | Update Time| Modified by | illustrate                               | Remark                                            |
 | ---------- | ------      | --------                                 | ----------------------------------------------- |
-| 2025/08/05 | tanglin     |   3.2 Program General Interface<br>4 API Interface Description (xml)   | Added blinking effect to effect node<br>Added general functions in xml format [See SDK XML help document for details]<br>Supplementary supported models:<br>Regular series (ARM/Linux platform): A3, A4, A5, C16L, C08L, D16, D36, ...<br>Android series (Android platform): A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8, ...<br>Android series requires firmware upgrade MagicPlayer_V2.10.7.400.bin |
+| 2025/08/05 | tanglin     |   3.2 Program General Interface   | Added blinking effect to effect node<br>Supplementary supported models:<br>Regular series (ARM/Linux platform): C16L, C08L, D16, D36, ...<br>Android series (Android platform): A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8, ...<br>Android series needs to upgrade to the latest firmware |
 | 2025/08/07 | tanglin     |   3.2.6 Text Program                          | Added a new voice broadcast attribute, PlayText|
 
 
@@ -31,7 +31,7 @@ Huidu Technology's equipment secondary development, the flow chart is as follows
 ## 1.3 Directory structure
 ~~~
 cn/huidu/device/sdk
-├── doc                                              // Help documentation, debugging interface project files
+├── doc                                              // interface debugging project files
 ├── java                                             // Java Development Kit
 │       └── demo/src/main/java/cn/huidu/device/demo  // Sample Code
 │           └── demo0_based                          // Get online equipment
@@ -64,11 +64,11 @@ cn/huidu/device/sdk
 # 2 Preliminary preparation
 ## 2.1 Devices with a D in the middle of their ID are engineering cards. Non-engineering cards do not support secondary development.
 
-例如：C16L-D00-A000F
+例如：Standard Series C16L-D00-A000F
 
 ![输入图片说明](doc/images/id.png)
 
-## 2.2 Verify HTTP SDK functionality [Skip this step if you've upgraded the Android firmware to MagicPlayer_V2.10.7.400.bin]
+## 2.2 Verify HTTP SDK functionality [Just upgrade to the latest firmware for the Android series and skip this step.]
 
 
 Using the SDK test tool, send the following command to query the status.
@@ -1595,10 +1595,21 @@ Request (Body) Description:
 | type    |  digitalClock     | String  | Yes | Digital Clock |
 | timezone |  In the format of "+8:00"     | String    | No | Time Zone |
 | timeOffset |"+00:05:00" moves the time forward or "-00:05:00" moves the time backward <br>Default value: 0 | String | No | Time fine-tuning |
-| title.string|     | String | No | Title Content |
-| date.format |   |Int has the following fixed values: 0, YYYY/MM/DD 1, MM/DD/YYYY 2, DD/MM/YYYY 3, Jan DD, YYYY 4, DD Jan, YYYY 5, YYYY-MM-DD-dd 6, MM-DD-dd | No | Date format |
-| week.format |   |Int has the following fixed values: <br>0, Monday <br>1, Monday <br>2, Mon | No | Week format |
-| time.format |   |Int has the following fixed values: <br>0, hh:mm:ss <br>1, hh:ss <br>2, hh hour, mm minute, ss second <br>3, hh hour, mm minute | No | Time format |
+| multiLine|       | Bool   | No | Multi-line display |
+| title.string|    | String | No | Title Content |
+| title.color|     | String | No | Title Color |
+| title.display|   | String | No | Title Display|
+| date.format |    | Int has the following fixed values: <br>0, YYYY/MM/DD <br>1, MM/DD/YYYY <br>2, DD/MM/YYYY <br>3, Jan DD, YYYY <br>4, DD Jan, YYYY <br>5, YYYY-MM-DD-dd <br>6, MM-DD-dd | No | Date format |
+| date.color|     | String | No | Date Color |
+| date.display|   | String | No | Date Display|
+| week.format |    | Int has the following fixed values: <br>0, Monday <br>1, Monday <br>2, Mon | No | Week format |
+| week.color|      | String | No | Week Color |
+| week.display|    | String | No | Week Display|
+| time.format |    | Int has the following fixed values: <br>0, hh:mm:ss <br>1, hh:ss <br>2, hh hour, mm minute, ss second <br>3, hh hour, mm minute | No | Time format |
+| time.color|      | String | No | Time Color |
+| time.display|    | String | No | Time Display|
+| lunarCalendar.color|      | String | No | lunarCalendar Color |
+| lunarCalendar.display|    | String | No | lunarCalendar Display|
 
 Request (Body) example:
 
@@ -1622,6 +1633,7 @@ Request (Body) example:
 							"type": "digitalClock",
 							"timezone": "",
 							"timeOffset": "",
+                                                        "multiLine": "true",
 							"font": {
 								"name": "宋体",
 								"size": 8,
@@ -1646,6 +1658,10 @@ Request (Body) example:
 								"format": "0",
 								"color": "#ff0000"
 							}
+                                                        "lunarCalendar": {
+                                                                "display": "true",
+                                                                "color": "#ff00ff"
+                                                        }
 						}
 					]
 				}
@@ -1809,11 +1825,9 @@ Request (Body) example:
                     "item": [
                         {
                             "type": "dynamic",
-                            "string": "{{ParkingSpace}}个",
-                            "keys": "ParkingSpace",
+                            "string": "停车场信息<br>温度:{{Temperature}} ℃<br>车位:{{ParkingSpace}} 个",
+                            "keys": "Temperature,ParkingSpace",
                             "alignment": "center",
-                            "dataSource": "ParkingSpace",
-                            "dataSourceDefault": "002",
                             "font": {
                                 "name": "宋体",
                                 "size": 14,
@@ -1949,202 +1963,15 @@ Return example:
 **When taking a screenshot using the device universal interface, the base64 data of the image is returned**
 ```
 
-
-# 4 API interface description (xml)
-
-- Get the boot logo (GetBootLogo) [Not supported on Android devices]
-- Set the boot logo (SetBootLogoName) [Not supported on Android devices]
-- Clear the boot logo (ClearBootLogo) [Not supported on Android devices]
-- Get network information (GetNetworkInfo)
-- Get only eth0 information (GetEth0Info)
-- Get only PPPoE (3/4G) information (GetPppoeInfo)
-- Get only Wi-Fi information (GetWifiInfo)
-- Set eth0 information (SetEth0Info) [Operate with caution, as this may cause network disconnection]
-- Set Wi-Fi information (SetWifiInfo) [Operate with caution, as this may cause network disconnection]
-- Set the Apn (SetApn)
-- Get device information (GetDeviceInfo)
-- Get the device name (GetDeviceName)
-- Set the device name (SetDeviceName)
-- Set the system volume (SetSystemVolume)
-- Get the system volume (GetSystemVolume)
-- Reboot the device (Reboot)
-- Get TCP server information (GetSDKTcpServer)
-- Set the TCP server (SetSDKTcpServer)
-- Get socket information (GetSocketTimeInfo)
-- Set socket information (SetSocketTimeInfo) [Operate with caution, as this may cause network disconnection]
-- Get a license (GetLicense)
-- Get brightness configuration (GetLuminancePloy)
-- Set brightness configuration (SetLuminancePloy)
-- Get time correction data (GetTimeInfo)
-- Set time correction data (SetTimeInfo) [Partially supported on Android devices, time zone protocols are not universal]
-- Firmware upgrade (ExcuteUpgradeShell)
-- Firmware upgrade (ExcuteUpgradeShellHttp)
-- Firmware upgrade (FirmwareUpgrade)
-- Get firmware upgrade status (GetUpgradeResult)
-- Delete device files (DeleteFiles)
-- Add device files (AddFiles)
-- Get device files (GetFiles)
-- Get font information (GetAllFontInfo)
-- Reload all fonts (ReloadAllFonts)
-- Screen rotation (ScreenRotation)
-- Asynchronous screenshot (GetScreenshot2)
-- Get screen on/off information (GetSwitchTime)
-- Set screen on/off information (SetSwitchTime)
-- Open screen (OpenScreen)
-- Close the screen CloseScreen
-- Get sensor information GetSensorInfo
-- Get GPS information GetGPSInfo
-- Get the current sensor value GetCurrentSensorValue [Not supported on Android devices]
-- Get the serial port SDK configuration GetSerialSDK [Not supported on Android devices]
-- Set the serial port SDK configuration SetSerialSDK [Not supported on Android devices]
-- Get relay information GetRelayInfo
-- Set relay information SetRelayInfo
-- Check if a USB drive is connected CheckUDiskInsert [Not supported on Android devices]
-- Get the USB drive function configuration GetEnableUDiskFunction [Not supported on Android devices]
-- Enable or set the USB drive function Configuration SetEnableUDiskFunction [Not supported on Android devices]
-- Disable the USB drive function Configuration DisableUDiskFunction [Not supported on Android devices]
-- Get the GPS information reporting enable flag GetGpsRespondEnable
-- Set the GPS information reporting enable flag SetGpsRespondEnable
-- Get the multi-screen synchronization flag GetMulScreenSync
-- Set the multi-screen synchronization flag (SetMulScreenSync)
-- Get the program playback statistics flag (GetPlayProgramCountsEnable) [Not supported on Android devices]
-- Set program playback statistics (SetPlayProgramCountsEnable) [Not supported on Android devices]
-- Get the program playback statistics file name (GetPlayProgramCountsFileName) [Not supported on Android devices]
-
-**For details of xml content, please refer to the SDK XML help document**
-
-## 4.1 Get the boot screen
-
-Interface URL：127.0.0.1:30080/raw/{{Id}}
-
-Content-Type：application/xml
-
-Request method：POST
-
-Request header parameter description：
-
-| Parameter Name | Example Value | Parameter Type | Required | Parameter Description |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | Yes | No description available |
-
-Request (Body) example:
-
-
-```
-<?xml version='1.0' encoding='utf-8'?>
-<sdk guid="##GUID">
-    <in method="GetBootLogo"/>
-</sdk>
-```
-
-
-Return example:
-
-```
-{
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16-D00-A000F",
-			"message": "ok",
-			"data": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<sdk guid=\"b1c8d8d5f6bc49791147d584150996ff\">\n    <out method=\"GetBootLogo\" result=\"kSuccess\">\n        <logo md5=\"\" exist=\"true\" name=\"\"/>\n    </out>\n</sdk>\n"
-		}
-	]
-}
-```
-
-## 4.2 Set the startup screen
-
-Interface URL：127.0.0.1:30080/raw/{{Id}}
-
-Content-Type：application/xml
-
-Request method：POST
-
-Request header parameter description:
-
-| Parameter Name | Example Value | Parameter Type | Required | Parameter Description |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | Yes | ##md5 MD5 value of the boot image, can be empty<br>##name boot image name |
-
-Request (Body) example:
-
-
-```
-<?xml version='1.0' encoding='utf-8'?>
-<sdk guid="##GUID">
-   <in method="SetBootLogoName">
-        <logo md5="##value" name="##name"/>
-   </in>
-</sdk>
-```
-
-
-Return example:
-
-```
-{
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16-D00-A000F",
-			"message": "ok",
-			"data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="SetBootLogoName" result="kSuccess"/>\n</sdk>\n"
-		}
-	]
-}
-```
-
-## 4.3 Clear the startup screen
-
-Interface URL：127.0.0.1:30080/raw/{{Id}}
-
-Content-Type：application/xml
-
-Request method：POST
-
-Request header parameter description：
-
-| Parameter Name | Example Value | Parameter Type | Required | Parameter Description |
-|---|---|---|---|---|
-| sdkKey  | a7fa6795aaa891e2  | String  | Yes | ##md5 MD5 value of the boot image, can be empty<br>##name boot image name |
-
-Request (Body) example:
-
-
-```
-<?xml version='1.0' encoding='utf-8'?>
-<sdk guid="##GUID">
-    <in method="ClearBootLogo"/>
-</sdk>
-```
-
-
-Return example:
-
-```
-{
-	"message": "ok",
-	"data": [
-		{
-			"id": "C16-D00-A000F",
-			"message": "ok",
-			"data": "<?xml version='1.0' encoding='utf-8'?>\n<sdk guid="0a35b47e0821c4ec26d3075b9737a3b5">\n<out method="ClearBootLogo" result="kSuccess"/>\n</sdk>\n"
-		}
-	]
-}
-```
-
-
-# 5 Interface simulation debugging
+# 4 Interface simulation debugging
 
 Interface Example：https://console-docs.apipost.cn/preview/07ce80dbc607d40d/7b80fbbde771e7ba
 
-## 5.1 Configure the Apipost environment
+## 4.1 Configure the Apipost environment
 
 Download URL：https://www.apipost.cn/
 
-## 5.2 Importing Project Files
+## 4.2 Importing Project Files
 
 Select the json file【HD_HttpApi1.0_Apipost_Collection.json】
 
@@ -2152,15 +1979,15 @@ Select the json file【HD_HttpApi1.0_Apipost_Collection.json】
 
 ![输入图片说明](doc/images/import2.png)
 
-## 5.3 Configure environment variables
+## 4.3 Configure environment variables
 
 ![输入图片说明](doc/images/Apipost1.png)
 
-## 5.4 Configure server ip, port and key
+## 4.4 Configure server ip, port and key
 
 ![输入图片说明](doc/images/Apipost2.png)
 
-## 5.5 Edit Pre-Action
+## 4.5 Edit Pre-Action
 
 ![输入图片说明](doc/images/Apipost3.png)
 
