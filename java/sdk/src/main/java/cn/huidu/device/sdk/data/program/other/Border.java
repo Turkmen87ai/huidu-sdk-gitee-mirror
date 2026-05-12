@@ -1,13 +1,13 @@
-package cn.huidu.device.sdk.data.program.other;
+package cn.huidu.device.api.sdk.data.program.other;
 
 public class Border {
     private int type;
-    private Speed speed;
+    private int speed;
     private Effect effect;
 
     public Border() {
         type = 0;
-        speed = Speed.Middle;
+        speed = 5;
         effect = Effect.Static;
     }
 
@@ -16,12 +16,12 @@ public class Border {
         this.type = type;
     }
 
-    public Border(int type, Speed speed) {
+    public Border(int type, int speed) {
         this(type);
         this.speed = speed;
     }
 
-    public Border(int type, Speed speed, Effect effect) {
+    public Border(int type, int speed, Effect effect) {
         this(type, speed);
         this.effect = effect;
     }
@@ -30,26 +30,10 @@ public class Border {
         this(other.type, other.speed, other.effect);
     }
 
-    public enum Speed {
-        Slow("slow"), /// < Slow
-        Middle("middle"), /// < Medium
-        Fast("fast"); /// < Fast
-
-        private final String value;
-
-        public String getValue() {
-            return value;
-        }
-
-        Speed(String value) {
-            this.value = value;
-        }
-    }
-
     public enum Effect {
-        Rotate("rotate"), /// < Rotate
-        Blink("blink"), /// < Blink
-        Static("null"); /// < Static
+        Rotate("rotate"),/// < 旋转
+        Blink("blink"),  /// < 闪烁
+        Static("null");  /// < 静止
 
         private final String value;
 
@@ -70,11 +54,11 @@ public class Border {
         this.type = type;
     }
 
-    public Speed getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Speed speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 
