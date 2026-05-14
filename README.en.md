@@ -555,7 +555,7 @@ Return example:
             {
                 "timeRange": "18:00:00~08:00:00",
                 "dateRange": "2023-10-01~2023-10-11",
-                "WeekFilter": "Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+                "WeekFilter": "Mon,Tue,Wed,Thur,Fri,Sat,Sun",
                 "MonthFilter": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
                 "data": "60"
             }
@@ -632,7 +632,7 @@ Request (Body) example:
             {
                 "timeRange": "18:00:00~08:00:00",
                 "dateRange": "2023-10-01~2023-10-11",
-                "WeekFilter": "Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+                "WeekFilter": "Mon,Tue,Wed,Thur,Fri,Sat,Sun",
                 "MonthFilter": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
                 "data": "60"
             }
@@ -1057,7 +1057,7 @@ border node description
         "end": "06:00:00"
     },
     "week": {
-        "enable": "Mon, Tue, Wed, Thur"
+        "enable": "Mon,Tue,Wed,Thur,Fri,Sat,Sun"
     },
     "date": [
         {
