@@ -77,19 +77,24 @@ Yani şu an Huidu'nun **otomatik bir self-service kayıt sayfası yok**. Anahtar
 
 > ⭐ **En hızlı ve en pratik yol:** Huidu'nun resmi teknik servis sayfasından doğrudan yetkili teknisyenlere WhatsApp veya WeChat ile yazışmaktır. Aşağıdaki tablonun ilk satırına bakın.
 
-| Kanal | Adres / Detay | İletişim Dili |
-|---|---|---|
-| 💬 **Huidu Yetkili Teknisyenler (WhatsApp / WeChat) — ÖNERİLEN** | **https://www.hdwell.com/service/Technician.html** — Sayfada Huidu'nun resmi teknik servis personelinin **WhatsApp ve WeChat** iletişim bilgileri (QR kodlar dahil) listelenmektedir. Bir teknisyen seçip QR kodu okutarak veya numarayı kaydederek doğrudan yazışabilirsiniz | **İngilizce** (teknisyenler Türkçe bilmiyor; Çince bilmiyorsanız İngilizce yazın, dosya / form / ekran görüntüsü ile destekleyebilirsiniz) |
-| 🛒 **Cihazı satın aldığınız bayi / distribütör** | Türkiye'de cihazı satan firma genelde anahtarları alma sürecinde aracılık yapar — bayinin Çinli muhatabı varsa süreç daha hızlı işler | Bayi → Huidu arasında Çince; siz bayiyle Türkçe |
-| 🌐 **Resmi web sitesi** | http://www.huidu.cn — "Contact Us / 联系我们" bölümü | İngilizce / Çince |
-| 📧 **E-posta (genel)** | Resmi sitedeki iletişim formundan | İngilizce |
-| 📞 **Telefon (Çin)** | +86 (Shenzhen) — resmi sitede listeli | Çince ağırlıklı, kısmen İngilizce |
-| 🐙 **Gitee Issue** | https://gitee.com/szhuidu/cn.huidu.device.sdk/issues — son çare, yanıt yavaş olabilir | İngilizce / Çince |
+> [!NOTE]
+> Aşağıdaki tüm kanallarda **iletişim dili İngilizcedir.** Huidu'nun teknik ekibinin tamamı Çince konuşur, ancak teknisyenler ve satış ekibi İngilizce yazışma konusunda günlük olarak çalışır — siz İngilizce yazarsınız, karşınızdaki çalışan Çinceye çevirip yanıtını yine İngilizce yazar. Türkçe konuşan kimse yoktur. (Çince üzerinden yazışmaya çalışmak realistik bir seçenek değildir; Türkiye'de Çince bilen kullanıcı sayısı çok düşüktür.)
 
-> 💡 **Türkiye'den pratik tavsiye:**
-> - **Acele ediyorsanız** → `hdwell.com/service/Technician.html` üzerinden WhatsApp'ı tıklayıp İngilizce kısa bir mesajla başlayın. Yanıt genelde aynı/ertesi iş günü gelir
-> - **Toplu / kurumsal alımda** → Cihazı aldığınız bayiyle gidin. Bayi Çince yazışacağı için süreç daha hızlı olur
-> - **Resmi yazışma kaydı gerekiyorsa** → E-posta tercih edin (aşağıdaki şablon)
+| Kanal | Adres / Detay |
+|---|---|
+| 💬 **Huidu Yetkili Teknisyenler (WhatsApp / WeChat) — ÖNERİLEN** | **https://www.hdwell.com/service/Technician.html** — Sayfada Huidu'nun resmi teknik servis personelinin **WhatsApp ve WeChat** iletişim bilgileri (QR kodlar dahil) listelenmektedir. Bir teknisyen seçip QR kodu okutarak veya numarayı kaydederek doğrudan İngilizce yazışabilirsiniz. Ekran görüntüsü, kayıt formu fotoğrafı ve API loglarını ekleyerek desteklemeniz iletişimi hızlandırır |
+| 🇹🇷 **Türkiye'deki yetkili / yetkin entegratörler** | Türkiye'de Huidu kontrol kartları üzerine **doğrudan firmayla çalışan**, kurumsal müşterilere teknik destek sağlayan birden fazla entegratör/distribütör vardır. Bu firmalar Huidu ile **doğrudan İngilizce yazışır**, kayıt başvurularınızı sizin adınıza ileterek anahtarlarınızın çıkarılmasında aracılık edebilirler. Cihazı satın aldığınız yerin teknik destek hattını arayıp **"SDK Key başvurusunda yardım edebilir misiniz?"** diye sormak, en az çaba ile sonuç veren yoldur |
+| 🌐 **Resmi web sitesi** | http://www.huidu.cn — "Contact Us / 联系我们" bölümü, formdan İngilizce mesaj gönderilebilir |
+| 📧 **E-posta** | Resmi sitedeki iletişim formundan veya teknisyen sayfasında verilen adreslere İngilizce |
+| 📞 **Telefon (Çin)** | +86 (Shenzhen) — resmi sitede listeli; canlı destek için İngilizce konuşan personele yönlendirilmenizi isteyin |
+| 🐙 **Gitee Issue** | https://gitee.com/szhuidu/cn.huidu.device.sdk/issues — son çare, İngilizce yazın, yanıt yavaş olabilir |
+
+> 💡 **Türkiye'den pratik tavsiye sırası:**
+> 1. **Önce yerel destek** → Cihazı aldığınız Türkiye'deki entegratöre/distribütöre haber verin. Onlar Huidu ile düzenli yazıştıkları için ortalama 1-2 iş günü içinde anahtarlarınızı temin edebilir
+> 2. **Aceleyse veya bayiniz konuya hakim değilse** → `hdwell.com/service/Technician.html` üzerinden bir teknisyenin WhatsApp'ına İngilizce kısa bir mesaj atın. Yanıt genelde aynı/ertesi iş günü gelir
+> 3. **Resmi yazışma kaydı gerekiyorsa** → E-posta (aşağıdaki şablon) — daha yavaş ama belgelenmiş kanal
+>
+> ⚠️ **Çince üzerinden yazışmayı denemeyin.** Google Translate ile Çince mesaj atmak çoğu zaman karşı tarafta anlam karmaşası yaratır. Doğrudan İngilizce yazın; teknisyenler İngilizce yazışmaya alışkındır.
 
 ---
 
