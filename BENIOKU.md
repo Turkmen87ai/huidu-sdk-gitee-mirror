@@ -8,7 +8,7 @@
 >
 > Rehberde bulacaklarınız:
 > - `sdkKey` ve `sdkSecret` nedir, neden zorunludur
-> - Huidu / Huayu ile nasıl iletişime geçilir (kanallar, Türkiye için önerilen yol)
+> - Huidu ile nasıl iletişime geçilir (resmi WhatsApp/WeChat teknisyen sayfası `hdwell.com`, bayi yolu, e-posta)
 > - Kayıt formundaki Çince alanların Türkçe karşılıkları (`电话号码` = Telefon, `开发者` = Geliştirici, `公司名称` = Şirket adı)
 > - Hazır Türkçe / İngilizce başvuru e-posta şablonu
 > - Anahtarları aldıktan sonra cihaza yazma (Web arayüzü + HTTP API, ⚠️ sadece bir kere yapılabilir!)

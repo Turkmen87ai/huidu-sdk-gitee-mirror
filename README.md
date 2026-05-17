@@ -6,7 +6,7 @@
 >
 > ➡️ **Detaylı Türkçe başlangıç rehberi (resimli):** **[docs-tr/01-sdk-kayit-ve-baslangic.md](docs-tr/01-sdk-kayit-ve-baslangic.md)**
 >
-> Rehber kapsamı: kayıt prosedürü, Huidu/Huayu iletişim, kayıt formundaki Çince alanların Türkçesi, başvuru e-posta şablonu, cihaza anahtar yazma (web + API), HMACMD5 imza üretimi, güvenlik kuralları, yaygın hatalar.
+> Rehber kapsamı: kayıt prosedürü, Huidu iletişim kanalları (WhatsApp/WeChat yetkili teknisyenler), kayıt formundaki Çince alanların Türkçesi, başvuru e-posta şablonu, cihaza anahtar yazma (web + API), saha riskleri, HMACMD5 imza üretimi, güvenlik kuralları, yaygın hatalar.
 
 > [!IMPORTANT]
 > ## 🔍 Orijinal SDK Kodunu mu Arıyorsunuz? / Looking for the actual SDK code?

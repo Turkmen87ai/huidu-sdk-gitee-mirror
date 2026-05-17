@@ -12,7 +12,7 @@
 
 1. [SDK Key ve SDK Secret Nedir?](#1-sdk-key-ve-sdk-secret-nedir)
 2. [Niye Bu İki Bilgi Olmadan Hiçbir Şey Yapılamaz?](#2-niye-bu-iki-bilgi-olmadan-hiçbir-şey-yapılamaz)
-3. [Kayıt: Huidu / Huayu ile İletişime Geçme](#3-kayıt-huidu--huayu-ile-iletişime-geçme)
+3. [Kayıt: Huidu ile İletişime Geçme](#3-kayıt-huidu-ile-iletişime-geçme)
 4. [Kayıt Formunda İstenen Bilgiler (Türkçe)](#4-kayıt-formunda-i̇stenen-bilgiler-türkçe)
 5. [Anahtarları Aldıktan Sonra: Cihaza Yazma](#5-anahtarları-aldıktan-sonra-cihaza-yazma)
 6. [İmza Mekanizması (HMACMD5) Özeti](#6-i̇mza-mekanizması-hmacmd5-özeti)
@@ -62,29 +62,34 @@ Yani:
 
 ---
 
-## 3. Kayıt: Huidu / Huayu ile İletişime Geçme
+## 3. Kayıt: Huidu ile İletişime Geçme
 
 > [!WARNING]
 > Resmi dokümandan birebir alıntı:
 >
-> **"The platform is not yet open for early access. Please provide the following information to contact Huayu to obtain your SDK Key and SDK Secret."**
+> **"The platform is not yet open for early access. Please provide the following information to contact Huidu to obtain your SDK Key and SDK Secret."**
 >
-> **Türkçesi:** *"Geliştirici platformu henüz erken erişime açık değildir. SDK Key ve SDK Secret'inizi almak için lütfen aşağıdaki bilgileri sağlayarak Huayu ile iletişime geçin."*
+> **Türkçesi:** *"Geliştirici platformu henüz erken erişime açık değildir. SDK Key ve SDK Secret'inizi almak için lütfen aşağıdaki bilgileri sağlayarak Huidu ile iletişime geçin."*
 
 Yani şu an Huidu'nun **otomatik bir self-service kayıt sayfası yok**. Anahtarlarınızı almak için **manuel olarak Huidu firmasının yetkilileriyle iletişime geçmeniz** gerekiyor.
 
 ### İletişim Yolları
 
-| Kanal | Adres / Detay |
-|---|---|
-| 🌐 **Resmi web sitesi** | http://www.huidu.cn — "Contact Us / 联系我们" bölümü |
-| 📧 **E-posta (genel)** | Resmi sitedeki iletişim formundan |
-| 🛒 **Cihazı satın aldığınız bayi / distribütör** | Türkiye'de cihazı satan firma genelde anahtarları alma sürecinde aracılık yapar — en hızlı yol budur |
-| 💬 **WeChat / QQ** | Çince konuşan ekipler için resmi sitedeki QR kodlar |
-| 📞 **Telefon (Çin)** | +86 (Shenzhen) — resmi sitede listeli |
-| 🐙 **Gitee Issue** | https://gitee.com/szhuidu/cn.huidu.device.sdk/issues — son çare, yanıt yavaş olabilir |
+> ⭐ **En hızlı ve en pratik yol:** Huidu'nun resmi teknik servis sayfasından doğrudan yetkili teknisyenlere WhatsApp veya WeChat ile yazışmaktır. Aşağıdaki tablonun ilk satırına bakın.
 
-> 💡 **Türkiye'den önerilen yol:** Cihazı aldığınız bayiyle konuşun. Bayi genelde Huidu ile Çince yazışıp anahtarları kısa sürede temin eder. Doğrudan İngilizce/Türkçe yazışmak günler sürebilir.
+| Kanal | Adres / Detay | İletişim Dili |
+|---|---|---|
+| 💬 **Huidu Yetkili Teknisyenler (WhatsApp / WeChat) — ÖNERİLEN** | **https://www.hdwell.com/service/Technician.html** — Sayfada Huidu'nun resmi teknik servis personelinin **WhatsApp ve WeChat** iletişim bilgileri (QR kodlar dahil) listelenmektedir. Bir teknisyen seçip QR kodu okutarak veya numarayı kaydederek doğrudan yazışabilirsiniz | **İngilizce** (teknisyenler Türkçe bilmiyor; Çince bilmiyorsanız İngilizce yazın, dosya / form / ekran görüntüsü ile destekleyebilirsiniz) |
+| 🛒 **Cihazı satın aldığınız bayi / distribütör** | Türkiye'de cihazı satan firma genelde anahtarları alma sürecinde aracılık yapar — bayinin Çinli muhatabı varsa süreç daha hızlı işler | Bayi → Huidu arasında Çince; siz bayiyle Türkçe |
+| 🌐 **Resmi web sitesi** | http://www.huidu.cn — "Contact Us / 联系我们" bölümü | İngilizce / Çince |
+| 📧 **E-posta (genel)** | Resmi sitedeki iletişim formundan | İngilizce |
+| 📞 **Telefon (Çin)** | +86 (Shenzhen) — resmi sitede listeli | Çince ağırlıklı, kısmen İngilizce |
+| 🐙 **Gitee Issue** | https://gitee.com/szhuidu/cn.huidu.device.sdk/issues — son çare, yanıt yavaş olabilir | İngilizce / Çince |
+
+> 💡 **Türkiye'den pratik tavsiye:**
+> - **Acele ediyorsanız** → `hdwell.com/service/Technician.html` üzerinden WhatsApp'ı tıklayıp İngilizce kısa bir mesajla başlayın. Yanıt genelde aynı/ertesi iş günü gelir
+> - **Toplu / kurumsal alımda** → Cihazı aldığınız bayiyle gidin. Bayi Çince yazışacağı için süreç daha hızlı olur
+> - **Resmi yazışma kaydı gerekiyorsa** → E-posta tercih edin (aşağıdaki şablon)
 
 ---
 
@@ -94,11 +99,11 @@ Kayıt için Huidu size aşağıdaki bilgileri gönderecektir. Çince formun Tü
 
 ![Kayıt formu — orijinal Çince](images/registered.png)
 
-| Çince alan | Pinyin / Okunuş | Türkçe karşılığı | Açıklama |
+| Çince alan | Pinyin / Okunuş | Türkçe karşılığı | Açıklama ve örnek |
 |---|---|---|---|
-| **电话号码** | diànhuà hàomǎ | **Telefon numarası** | Ulaşabilecekleri telefon — uluslararası formatta verin (örn. `+90 5XX XXX XX XX`) |
-| **开发者** | kāifāzhě | **Geliştirici adı** | Yazılımı geliştirecek kişinin adı veya ekip adı |
-| **公司名称** | gōngsī míngchēng | **Şirket adı** | Tam yasal şirket unvanı (örn. *XYZ Reklam A.Ş.*) |
+| **电话号码** | diànhuà hàomǎ | **Telefon numarası** | Ulaşabilecekleri telefon — uluslararası formatta verin. Örn: `+90 532 XXX XX XX` |
+| **开发者** | kāifāzhě | **Geliştirici adı** | Yazılımı geliştirecek kişinin tam adı (ekip adı değil, kişi). Örn: **İsmail Türkmen** |
+| **公司名称** | gōngsī míngchēng | **Şirket adı** | Tam yasal şirket unvanı — kısaltmadan yazın. Örn: **Mom Bilgisayar Hizmetleri İç ve Dış Tic. Ltd. Şti.** |
 
 ### Genellikle Ek Olarak İstenebilecekler
 
@@ -111,27 +116,29 @@ Kayıt için Huidu size aşağıdaki bilgileri gönderecektir. Çince formun Tü
 | 设备数量 | Cihaz sayısı | Yaklaşık |
 | 国家 / 地区 | Ülke / bölge | Türkiye |
 
-### Türkçe Örnek E-posta Şablonu (İngilizce — Çinli destek personelinin anlayacağı şekilde)
+### Hazır E-posta / WhatsApp Şablonu (İngilizce — Huidu destek personeli için)
 
 ```
 Subject: Request for SDK Key and SDK Secret
 
-Hello Huidu / Huayu Team,
+Hello Huidu Team,
 
 We are integrating Huidu LED controllers into our software in Turkey.
 Could you please issue an SDK Key and SDK Secret for our developer account?
 
-Phone:        +90 5XX XXX XX XX
-Developer:    [Geliştirici adı]
-Company:      [Şirket tam adı]
-Email:        [E-posta]
+Phone:        +90 532 XXX XX XX
+Developer:    Ismail Turkmen
+Company:      Mom Bilgisayar Hizmetleri Ic ve Dis Tic. Ltd. Sti.
+Email:        turkmen87ai@gmail.com
 Country:      Turkey
 Devices:      [Model: C16L / A3 / H4K ...]  approx. [adet]
 Use case:     [Örn. Indoor digital signage / outdoor LED billboards / queue display]
 
 Thank you.
-[İmza]
+Ismail Turkmen
 ```
+
+> 💡 **WhatsApp ile kullanırken:** Yukarıdaki şablonu kısaltıp tek mesaj olarak yazabilirsiniz. Türkçe karakterler (`ç`, `ş`, `ğ`, `ı`, `ü`, `ö`) Çinli teknisyenler için bazen okunamayan kareler olarak görünebilir; bu yüzden adı ve şirket unvanını **ASCII karşılıklarıyla** (`Ismail Turkmen`, `Mom Bilgisayar Hizmetleri Ic ve Dis Tic. Ltd. Sti.`) yazmak daha güvenlidir.
 
 ---
 
@@ -147,6 +154,28 @@ Thank you.
 > **Türkçesi:** *"Bir kez başlatıldıktan sonra tekrar başlatılamaz. Keyfi eklemeleri önlemek için yalnızca bir kez eklemeye izin verilir."*
 >
 > Yani yanlış `sdkKey/sdkSecret` yazarsanız, **cihazı fabrika ayarlarına döndürmeden** düzeltemezsiniz.
+
+### ⚠️ Bu Kısıtlamanın Saha Etkisini Hafife Almayın
+
+Bu tasarım kararı küçük bir teknik detay gibi görünebilir, ama saha tarafında **çok pahalıya patlayan** bir senaryoya dönüşebilir. Aşağıdaki noktaları lütfen dikkate alın:
+
+- 🛰️ **Uzak konum:** Cihazlarınız fiziksel olarak uzakta — başka bir şehir, kırsal alan, bir tabela direği üstünde, bir AVM ekranı içinde — olabilir. Anahtarda hata olursa **gidip yerinde sıfırlamak** gerekir
+- 📶 **Kapalı ağ / GSM modem üzerinden uzaktan yönetim:** Cihaz Wi-Fi'sı kapalı, sadece GSM (3G/4G/5G modem) üzerinden sunucu moduyla yönetiliyorsa, yanlış yazılan bir secret cihaza **uzaktan erişim hakkınızı tamamen koparabilir**. O an itibarıyla cihaz "sağır" hale gelir; sıfırlamak için fiziksel temas zorunludur
+- 🔩 **Tabela içine gömülü kart:** Kontrol kartı reklam tabelasının iç gövdesine montelenmişse, dış kapağı sökmek, kabloları işaretlemek, kartı çıkarıp resetlemek, geri takmak — her cihaz için **saatlerce** sürebilir. Tabela direk üstündeyse vinç/sepet gerekir
+- 💸 **Toplu hata riski:** Bir entegrasyon scriptinde yanlış `sdkSecret` değişkeni yazıldığında **tek seferlik** bir hata onlarca/yüzlerce cihaza dağıtılabilir. Hata fark edildiğinde geri dönüş yok
+
+> 💬 **Saha hikayesi:** Daha eski bir Huidu SDK (V3.0) döneminde benzer bir tek-seferlik konfigürasyon (statik IP atama) yüzünden bir firma, **yaklaşık 100 reklam tabelasındaki kontrol kartını tek tek söküp** yerinde manuel müdahale etmek zorunda kalmıştı. Hem işçilik hem cihaz indirme süresi (downtime) önemli bir maliyet oluşturdu. Aynı senaryo `sdkKey/sdkSecret` için de mümkündür.
+
+### 🛡️ Bu Riski Azaltmak İçin Tavsiyeler
+
+| Önlem | Açıklama |
+|---|---|
+| **1. Önce 1 cihazda test edin** | Anahtarları aldıktan sonra önce **lab ortamında bir cihaza** yazın, API'leri test edin. Doğrulamadan önce **asla saha cihazlarına basmayın** |
+| **2. Anahtarları kayıt altına alın** | `sdkKey/sdkSecret`'i parola yöneticisine (1Password, Bitwarden, Windows Credential Manager) **iki yedekli** olarak kaydedin. Aynı zamanda hangi cihaza yazıldığı, ne zaman yazıldığı bir Excel/CRM kaydı tutulmalı |
+| **3. Otomasyona koymadan önce dry-run** | Toplu yazma scriptinizi **önce `--dry-run` / `-WhatIf` modunda** çalıştırın. Her cihaza gerçekten basmadan önce neyi nereye yazacağını görün |
+| **4. Sahadan önce demo birimde sınayın** | İlk üretim partisinden 1-2 cihazı laboratuvarda tutun. Yeni anahtarları önce orada deneyin |
+| **5. Reset planı hazır olsun** | Her cihaz modeli (C16L, A3, H4K, H8 vb.) için **fabrika ayarlarına döndürme prosedürünü** önceden öğrenin ve dokümante edin. Tuş kombinasyonu, jumper pinler, USB reset stick vb. |
+| **6. Sahaya kurmadan önce Wi-Fi açık tutun** | Cihazı tabelaya monte etmeden önce Wi-Fi modülünü etkin bırakın. GSM yedek olarak kullanılsın, birincil değil; bu, ileride uzaktan erişim için **acil çıkış kapısıdır** |
 
 ### Yöntem 1: Web Arayüzü ile (Önerilen — daha güvenli)
 
