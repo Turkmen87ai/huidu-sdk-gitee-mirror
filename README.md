@@ -1,9 +1,33 @@
 # Huidu SDK — Türkçe Mirror & Notlar
 
-**Read-only mirror** of the official Huidu Technology (Shenzhen) Gitee SDK, plus Turkish notes and example code.
-
-> 📌 **Resmi kaynak / Official source:** https://gitee.com/szhuidu/cn.huidu.device.sdk
+> [!IMPORTANT]
+> ## 🔍 Orijinal SDK Kodunu mu Arıyorsunuz? / Looking for the actual SDK code?
+>
+> Şu an gördüğünüz **`main` branch'i** sadece **Türkçe dokümantasyon** içerir.
+> **Huidu firmasının orijinal SDK kodu (Java / Go / C / Python kaynakları, protokol dokümanları, demo projeler) bu repo'nun `master` branch'indedir.**
+>
+> 📂 **Doğrudan SDK koduna git:** [→ `master` branch'ini aç](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master)
+>
+> Veya komut satırından:
+> ```bash
+> # 1) Bu mirror üzerinden SDK indir (Gitee'den günlük sync'lenir)
+> git clone -b master https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror.git
+>
+> # 2) VEYA doğrudan RESMİ KAYNAKTAN — üretim için önerilen yol
+> git clone https://gitee.com/szhuidu/cn.huidu.device.sdk.git
+> ```
+>
+> | Aradığınız şey | Nereye gidin |
+> |---|---|
+> | SDK kaynak kodu, demo projeler, protokol dokümanı | **[`master` branch](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master)** veya resmi Gitee |
+> | Türkçe açıklamalar, kullanım rehberi, hukuki notlar | Bu sayfa (`main` branch) — [BENIOKU.md](BENIOKU.md) |
+> | Resmi destek, ürün satın alma, sorun bildirme | Huidu'nun kendi kanalları (aşağıda) |
+>
+> 📌 **Resmi / orijinal kaynak:** https://gitee.com/szhuidu/cn.huidu.device.sdk
 > 📌 **Hak sahibi / Copyright:** Shenzhen Huidu Technology Co., Ltd. (深圳市灰度科技有限公司)
+> 📌 **Üretici web sitesi:** http://www.huidu.cn
+
+**Read-only mirror** of the official Huidu Technology (Shenzhen) Gitee SDK, plus Turkish notes and example code.
 
 ---
 

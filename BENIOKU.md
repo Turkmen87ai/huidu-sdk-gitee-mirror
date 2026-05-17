@@ -1,5 +1,43 @@
 # Huidu SDK — Türkçe Notlar ve Örnek Kodlar
 
+> [!IMPORTANT]
+> ## 🔍 Önce Bunu Okuyun: Orijinal SDK Kodu Nerede?
+>
+> Şu an `main` branch'indesiniz ve bu branch **sadece Türkçe dokümanları** içerir (BENIOKU.md, README.md). Orijinal Huidu SDK'sının kaynak dosyaları burada **yoktur**.
+>
+> **Orijinal SDK kodu — Java, Go, C, Python kaynak kodları, demo projeler, HTTP API protokol dokümanları, örnek konfigürasyonlar — bu repo'nun `master` branch'inde durmaktadır.**
+>
+> ### SDK Koduna Nasıl Ulaşırım?
+>
+> **🅐 GitHub üzerinden (web tarayıcı):**
+> [`master` branch'ini aç →](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master)
+>
+> **🅑 Komut satırından (yerel klon):**
+> ```bash
+> # Sadece SDK kodunu (master branch'ini) klonla:
+> git clone -b master https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror.git
+>
+> # VEYA: doğrudan resmi Gitee deposundan klonla (üretim sistemleri için önerilen):
+> git clone https://gitee.com/szhuidu/cn.huidu.device.sdk.git
+> ```
+>
+> **🅒 Hem main hem master birlikte:**
+> ```bash
+> git clone https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror.git
+> cd huidu-sdk-gitee-mirror
+> git checkout master   # SDK koduna geç
+> git checkout main     # Türkçe notlara geri dön
+> ```
+>
+> ### Hangi Branch'te Ne Var?
+>
+> | Branch | İçerik | Nasıl Bakarsınız | Durum |
+> |---|---|---|---|
+> | **`master`** | 🇨🇳 Orijinal SDK kodu (Huidu'nun resmi Gitee deposunun **birebir kopyası**): Java SDK, Go SDK, C SDK, Python SDK, demo projeler, protocol.html, README.md (Çince), README.en.md (İngilizce), tüm dokümanlar | [GitHub'da görüntüle](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master) | Her gün otomatik olarak Gitee'den sync'lenir |
+> | **`main`** *(varsayılan, bu sayfa)* | 🇹🇷 Türkçe BENIOKU.md, Türkçe README.md, ileride eklenecek Türkçe örnek kodlar ve çevirmeler | [GitHub'da görüntüle](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror) | Manuel güncellenir, otomasyon dokunmaz |
+>
+> **Neden iki branch?** Çünkü SDK kodu Huidu'nun, ona dokunmuyoruz (master = saf kopya). Türkçe ek içerikler ise ayrı bir branch'te tutuluyor ki SDK koduyla karıştırılmasın ve günlük sync'te silinmesin.
+
 > **Bu repository, Shenzhen Huidu Technology Co., Ltd. (深圳市灰度科技有限公司) firmasının resmi Gitee deposunun yalnızca okuma amaçlı bir aynasıdır (read-only mirror).**
 >
 > **Resmi / orijinal kaynak:** **https://gitee.com/szhuidu/cn.huidu.device.sdk**
