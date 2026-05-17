@@ -362,7 +362,7 @@ HUIDU_SDK_SECRET=...gercek-secret...
 
 - [BENIOKU.md](../BENIOKU.md) — Ana belge
 - [README.md](../README.md) — Hızlı özet
-- [`master` branch'inde orijinal SDK kodu](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master)
+- [`master` branch'inde orijinal SDK kodu](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/blob/master/README.en.md)
 - [Resmi Gitee deposu](https://gitee.com/szhuidu/cn.huidu.device.sdk)
 
 ---

@@ -19,7 +19,7 @@
 > ### SDK Koduna Nasıl Ulaşırım?
 >
 > **🅐 GitHub üzerinden (web tarayıcı):**
-> [`master` branch'ini aç →](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master)
+> [`master` branch'ini aç →](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/blob/master/README.en.md)
 >
 > **🅑 Komut satırından (yerel klon):**
 > ```bash
@@ -42,7 +42,7 @@
 >
 > | Branch | İçerik | Nasıl Bakarsınız | Durum |
 > |---|---|---|---|
-> | **`master`** | 🇨🇳 Orijinal SDK kodu (Huidu'nun resmi Gitee deposunun **birebir kopyası**): Java SDK, Go SDK, C SDK, Python SDK, demo projeler, protocol.html, README.md (Çince), README.en.md (İngilizce), tüm dokümanlar | [GitHub'da görüntüle](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master) | Her gün otomatik olarak Gitee'den sync'lenir |
+> | **`master`** | 🇨🇳 Orijinal SDK kodu (Huidu'nun resmi Gitee deposunun **birebir kopyası**): Java SDK, Go SDK, C SDK, Python SDK, demo projeler, protocol.html, README.md (Çince), README.en.md (İngilizce), tüm dokümanlar | [GitHub'da görüntüle](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/blob/master/README.en.md) | Her gün otomatik olarak Gitee'den sync'lenir |
 > | **`main`** *(varsayılan, bu sayfa)* | 🇹🇷 Türkçe BENIOKU.md, Türkçe README.md, ileride eklenecek Türkçe örnek kodlar ve çevirmeler | [GitHub'da görüntüle](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror) | Manuel güncellenir, otomasyon dokunmaz |
 >
 > **Neden iki branch?** Çünkü SDK kodu Huidu'nun, ona dokunmuyoruz (master = saf kopya). Türkçe ek içerikler ise ayrı bir branch'te tutuluyor ki SDK koduyla karıştırılmasın ve günlük sync'te silinmesin.

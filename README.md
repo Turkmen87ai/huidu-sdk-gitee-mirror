@@ -14,7 +14,7 @@
 > Şu an gördüğünüz **`main` branch'i** sadece **Türkçe dokümantasyon** içerir.
 > **Huidu firmasının orijinal SDK kodu (Java / Go / C / Python kaynakları, protokol dokümanları, demo projeler) bu repo'nun `master` branch'indedir.**
 >
-> 📂 **Doğrudan SDK koduna git:** [→ `master` branch'ini aç](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master)
+> 📂 **Doğrudan SDK koduna git:** [→ `master` branch'ini aç](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/blob/master/README.en.md)
 >
 > Veya komut satırından:
 > ```bash
@@ -27,7 +27,7 @@
 >
 > | Aradığınız şey | Nereye gidin |
 > |---|---|
-> | SDK kaynak kodu, demo projeler, protokol dokümanı | **[`master` branch](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master)** veya resmi Gitee |
+> | SDK kaynak kodu, demo projeler, protokol dokümanı | **[`master` branch](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/blob/master/README.en.md)** veya resmi Gitee |
 > | Türkçe açıklamalar, kullanım rehberi, hukuki notlar | Bu sayfa (`main` branch) — [BENIOKU.md](BENIOKU.md) |
 > | Resmi destek, ürün satın alma, sorun bildirme | Huidu'nun kendi kanalları (aşağıda) |
 >

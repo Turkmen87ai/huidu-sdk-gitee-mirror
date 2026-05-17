@@ -509,7 +509,7 @@ Tüm maddeler ✅ ise SDK üretime hazır.
 - **Cihaz parlaklık / zamanlama** → (gelecek rehber: 04-cihaz-yonetimi.md)
 - **Server Mode / uzaktan yönetim** → (gelecek rehber: 05-server-mode.md)
 
-📂 **Orijinal SDK kaynak kodu:** [`master` branch](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/tree/master)
+📂 **Orijinal SDK kaynak kodu:** [`master` branch](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/blob/master/README.en.md)
 🔗 **Resmi Gitee deposu:** https://gitee.com/szhuidu/cn.huidu.device.sdk
 
 ---
