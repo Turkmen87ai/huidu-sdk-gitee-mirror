@@ -1,5 +1,13 @@
 # Huidu SDK — Türkçe Mirror & Notlar
 
+> [!CAUTION]
+> ## 🚀 SDK'ya Başlamadan Önce — Mutlaka Okuyun
+> Huidu SDK'sında **her API çağrısı imza gerektirir**. İmza için **`sdkKey`** ve **`sdkSecret`** zorunludur. Bu iki bilgi olmadan cihaza komut gönderemezsiniz.
+>
+> ➡️ **Detaylı Türkçe başlangıç rehberi (resimli):** **[docs-tr/01-sdk-kayit-ve-baslangic.md](docs-tr/01-sdk-kayit-ve-baslangic.md)**
+>
+> Rehber kapsamı: kayıt prosedürü, Huidu/Huayu iletişim, kayıt formundaki Çince alanların Türkçesi, başvuru e-posta şablonu, cihaza anahtar yazma (web + API), HMACMD5 imza üretimi, güvenlik kuralları, yaygın hatalar.
+
 > [!IMPORTANT]
 > ## 🔍 Orijinal SDK Kodunu mu Arıyorsunuz? / Looking for the actual SDK code?
 >

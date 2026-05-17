@@ -1,5 +1,21 @@
 # Huidu SDK — Türkçe Notlar ve Örnek Kodlar
 
+> [!CAUTION]
+> ## 🚀 SDK'yı İlk Kez mi Kullanıyorsunuz? Buradan Başlayın
+> SDK ile **tek bir API çağrısı bile yapmadan önce**, Huidu'dan **`sdkKey` ve `sdkSecret`** almalısınız. Bu iki bilgi olmadan **cihaza hiçbir komut iletemezsiniz** — kart pahalı olsa bile sadece "tuğla" gibi durur.
+>
+> 📖 **Detaylı Türkçe rehber (resimli):** **[docs-tr/01-sdk-kayit-ve-baslangic.md](docs-tr/01-sdk-kayit-ve-baslangic.md)**
+>
+> Rehberde bulacaklarınız:
+> - `sdkKey` ve `sdkSecret` nedir, neden zorunludur
+> - Huidu / Huayu ile nasıl iletişime geçilir (kanallar, Türkiye için önerilen yol)
+> - Kayıt formundaki Çince alanların Türkçe karşılıkları (`电话号码` = Telefon, `开发者` = Geliştirici, `公司名称` = Şirket adı)
+> - Hazır Türkçe / İngilizce başvuru e-posta şablonu
+> - Anahtarları aldıktan sonra cihaza yazma (Web arayüzü + HTTP API, ⚠️ sadece bir kere yapılabilir!)
+> - İmza mekanizması (HMACMD5) ve Türkçe yorumlu PowerShell örneği
+> - Güvenlik uyarıları (`sdkSecret`'i nereye koymamalı)
+> - Yaygın hatalar tablosu (401, 403, "already initialized" vb.)
+
 > [!IMPORTANT]
 > ## 🔍 Önce Bunu Okuyun: Orijinal SDK Kodu Nerede?
 >
@@ -168,6 +184,13 @@ Hak sahibinin tutumuna karşı saygı gösterilecektir — bu repo onların izni
 ---
 
 ## 6. Türkçe Örnek Kodlar — Yapılacaklar Listesi
+
+### Başlangıç Rehberleri
+
+- [x] **[SDK Kaydı ve Başlangıç — SDK Key & Secret Alma](docs-tr/01-sdk-kayit-ve-baslangic.md)** *(resimli, detaylı)*
+- [ ] Cihaz IP keşfi (ağda Huidu kartlarını bulma)
+- [ ] Postman / Apipost ile SDK'yı denemek (imza scripti dahil)
+
 
 > Aşağıdaki örnekler zaman içinde bu branch'e eklenecektir. Tamamlananlar `[x]` ile işaretlenir.
 
