@@ -1,12 +1,12 @@
 # Huidu SDK — Türkçe Mirror & Notlar
 
 > [!CAUTION]
-> ## 🚀 SDK'ya Başlamadan Önce — Mutlaka Okuyun
-> Huidu SDK'sında **her API çağrısı imza gerektirir**. İmza için **`sdkKey`** ve **`sdkSecret`** zorunludur. Bu iki bilgi olmadan cihaza komut gönderemezsiniz.
+> ## 🚀 SDK'ya Başlamadan Önce — Adım Adım Türkçe Rehberler
 >
-> ➡️ **Detaylı Türkçe başlangıç rehberi (resimli):** **[docs-tr/01-sdk-kayit-ve-baslangic.md](docs-tr/01-sdk-kayit-ve-baslangic.md)**
+> Huidu SDK'sında her API çağrısı imza gerektirir. Cihaza komut gönderebilmek için aşağıdaki rehberleri sırayla takip edin:
 >
-> Rehber kapsamı: kayıt prosedürü, Huidu iletişim kanalları (WhatsApp/WeChat yetkili teknisyenler), kayıt formundaki Çince alanların Türkçesi, başvuru e-posta şablonu, cihaza anahtar yazma (web + API), saha riskleri, HMACMD5 imza üretimi, güvenlik kuralları, yaygın hatalar.
+> 1. **[docs-tr/01-sdk-kayit-ve-baslangic.md](docs-tr/01-sdk-kayit-ve-baslangic.md)** — `sdkKey` ve `sdkSecret` almak (Huidu iletişim kanalları, başvuru şablonu, cihaza anahtar yazma, HMACMD5 imza üretimi, saha riskleri, güvenlik)
+> 2. **[docs-tr/02-sdk-test-ve-cihaz-baglantisi.md](docs-tr/02-sdk-test-ve-cihaz-baglantisi.md)** — Cihazı bulup ilk API çağrısını yapmak (IP keşfi, port testi, HTTP API'yi cihazda etkinleştirme, Apipost/Postman koleksiyonu, Pre-Request imza scripti, PowerShell test, troubleshooting, 12 maddelik checklist)
 
 > [!IMPORTANT]
 > ## 🔍 Orijinal SDK Kodunu mu Arıyorsunuz? / Looking for the actual SDK code?

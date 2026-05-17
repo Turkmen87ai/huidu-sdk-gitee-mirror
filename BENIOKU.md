@@ -1,20 +1,13 @@
 # Huidu SDK — Türkçe Notlar ve Örnek Kodlar
 
 > [!CAUTION]
-> ## 🚀 SDK'yı İlk Kez mi Kullanıyorsunuz? Buradan Başlayın
-> SDK ile **tek bir API çağrısı bile yapmadan önce**, Huidu'dan **`sdkKey` ve `sdkSecret`** almalısınız. Bu iki bilgi olmadan **cihaza hiçbir komut iletemezsiniz** — kart pahalı olsa bile sadece "tuğla" gibi durur.
+> ## 🚀 SDK'yı İlk Kez mi Kullanıyorsunuz? Adım Adım Türkçe Rehberler
 >
-> 📖 **Detaylı Türkçe rehber (resimli):** **[docs-tr/01-sdk-kayit-ve-baslangic.md](docs-tr/01-sdk-kayit-ve-baslangic.md)**
+> **Adım 1 — Anahtar alma:** [docs-tr/01-sdk-kayit-ve-baslangic.md](docs-tr/01-sdk-kayit-ve-baslangic.md)
+> SDK ile **tek bir API çağrısı bile yapmadan önce**, Huidu'dan **`sdkKey` ve `sdkSecret`** almalısınız. Bu iki bilgi olmadan **cihaza hiçbir komut iletemezsiniz**. Rehber içeriği: `sdkKey/sdkSecret` nedir; Huidu ile iletişim (WhatsApp/WeChat `hdwell.com`, Türkiye'deki entegratörler, e-posta); kayıt formundaki Çince alanların Türkçesi; hazır başvuru şablonu; cihaza anahtar yazma (⚠️ sadece bir kere); HMACMD5 imza üretimi; güvenlik kuralları; yaygın hatalar.
 >
-> Rehberde bulacaklarınız:
-> - `sdkKey` ve `sdkSecret` nedir, neden zorunludur
-> - Huidu ile nasıl iletişime geçilir (resmi WhatsApp/WeChat teknisyen sayfası `hdwell.com`, bayi yolu, e-posta)
-> - Kayıt formundaki Çince alanların Türkçe karşılıkları (`电话号码` = Telefon, `开发者` = Geliştirici, `公司名称` = Şirket adı)
-> - Hazır Türkçe / İngilizce başvuru e-posta şablonu
-> - Anahtarları aldıktan sonra cihaza yazma (Web arayüzü + HTTP API, ⚠️ sadece bir kere yapılabilir!)
-> - İmza mekanizması (HMACMD5) ve Türkçe yorumlu PowerShell örneği
-> - Güvenlik uyarıları (`sdkSecret`'i nereye koymamalı)
-> - Yaygın hatalar tablosu (401, 403, "already initialized" vb.)
+> **Adım 2 — Test ve bağlantı:** [docs-tr/02-sdk-test-ve-cihaz-baglantisi.md](docs-tr/02-sdk-test-ve-cihaz-baglantisi.md)
+> Anahtarları aldıktan sonra **ilk başarılı API çağrısını** yapana kadar olan süreç. Rehber içeriği: cihaz model ID kontrolü (engineering card / `D` harfi); firmware güncelleme; cihazın IP'sini bulma (HDPlayer, router DHCP, ARP); ağ ve port testi (`Test-NetConnection 30080`); HTTP API'yi cihazda etkinleştirme (ARM/Linux serisi için `SetHttpApiEnable` XML komutu); Apipost kurulumu; hazır API koleksiyonunu içe aktarma; environment variables; Pre-Request Script (otomatik imza); ilk `getDeviceInfo` çağrısı; Postman alternatifi; PowerShell manuel test; troubleshooting; 12 maddelik checklist.
 
 > [!IMPORTANT]
 > ## 🔍 Önce Bunu Okuyun: Orijinal SDK Kodu Nerede?
@@ -187,9 +180,11 @@ Hak sahibinin tutumuna karşı saygı gösterilecektir — bu repo onların izni
 
 ### Başlangıç Rehberleri
 
-- [x] **[SDK Kaydı ve Başlangıç — SDK Key & Secret Alma](docs-tr/01-sdk-kayit-ve-baslangic.md)** *(resimli, detaylı)*
-- [ ] Cihaz IP keşfi (ağda Huidu kartlarını bulma)
-- [ ] Postman / Apipost ile SDK'yı denemek (imza scripti dahil)
+- [x] **[01 — SDK Kaydı ve Başlangıç (SDK Key & Secret Alma)](docs-tr/01-sdk-kayit-ve-baslangic.md)** *(resimli, detaylı)*
+- [x] **[02 — SDK Testi Açmak ve Cihaza Bağlanmak (Apipost / Postman / PowerShell)](docs-tr/02-sdk-test-ve-cihaz-baglantisi.md)** *(resimli, 12 bölüm)*
+- [ ] 03 — Program / sayfa gönderme (text, image, video)
+- [ ] 04 — Cihaz yönetimi (parlaklık, zamanlama, restart)
+- [ ] 05 — Server Mode / uzaktan yönetim
 
 
 > Aşağıdaki örnekler zaman içinde bu branch'e eklenecektir. Tamamlananlar `[x]` ile işaretlenir.

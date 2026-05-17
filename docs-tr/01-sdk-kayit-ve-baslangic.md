@@ -78,7 +78,7 @@ Yani şu an Huidu'nun **otomatik bir self-service kayıt sayfası yok**. Anahtar
 > ⭐ **En hızlı ve en pratik yol:** Huidu'nun resmi teknik servis sayfasından doğrudan yetkili teknisyenlere WhatsApp veya WeChat ile yazışmaktır. Aşağıdaki tablonun ilk satırına bakın.
 
 > [!NOTE]
-> Aşağıdaki tüm kanallarda **iletişim dili İngilizcedir.** Huidu'nun teknik ekibinin **tamamı İngilizce bilir** ve uluslararası müşterilerle günlük olarak İngilizce yazışır; rahatça İngilizce yazabilirsiniz. Türkçe konuşan kimse yoktur. (Çince üzerinden yazışmaya çalışmak realistik bir seçenek değildir; Türkiye'de Çince bilen kullanıcı sayısı çok düşüktür.)
+> Aşağıdaki tüm kanallarda **iletişim dili İngilizcedir.** Huidu'nun teknik ekibinin **tamamı İngilizce bilir** ve uluslararası müşterilerle günlük olarak İngilizce yazışır; rahatça İngilizce yazabilirsiniz.
 
 | Kanal | Adres / Detay |
 |---|---|
