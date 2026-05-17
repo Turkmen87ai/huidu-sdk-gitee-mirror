@@ -150,17 +150,59 @@ http://192.168.1.50:30080/login/
 > | **Android serisi** (A3L, A4L, A5L, A6L, H4K, H8, B8L, A7, A8 ...) | ❌ Gerek yok — sadece firmware'i en son sürüme güncelleyin | HTTP API zaten varsayılan olarak açık geliyor (yeni firmware'larda) |
 > | **Standart seri (ARM/Linux)** (C16L, C08L, D16, D36 ...) | ✅ Manuel etkinleştirme zorunlu | Varsayılan kapalı; aşağıdaki XML komutu ile açılmalı |
 
-### 4.1 Önce SDK_Test Aracını İndirin
+### 4.1 SDK_Test Aracını Açma
 
-Resmi SDK içinde `tools/SDK_Test.rar` olarak gelir. Çıkartınca içinde **SDK_Test.exe** olur. Bu eski tip TCP/XML tabanlı SDK — yeni HTTP API'yi etkinleştirmek için kullanılır (chicken-and-egg: HTTP API kapalıyken HTTP üzerinden açamazsınız).
+`SDK_Test.exe`, eski tip TCP/XML tabanlı bir Huidu test programıdır. Yeni HTTP API'yi açabilmek için bu eski kanal kullanılır (HTTP API kapalıyken HTTP üzerinden açamazsınız — *chicken-and-egg* sorunu).
 
-> **Yerinden ulaşmak:** [`master` branch'inde `tools/SDK_Test.rar`](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/blob/master/tools/SDK_Test.rar) (orijinal kaynak: Huidu Gitee)
->
-> Aynı klasörde Çince operasyon kılavuzu da var: `SDK_Test操作说明.docx`
+**Adımlar:**
 
-### 4.2 HTTP API Durumunu Sorgulama
+1. SDK_Test.rar dosyasını edinin:
+   - **GitHub mirror (önerilen):** [tools/SDK_Test.rar](https://github.com/Turkmen87ai/huidu-sdk-gitee-mirror/blob/master/tools/SDK_Test.rar)
+   - **Resmi Gitee:** https://gitee.com/szhuidu/cn.huidu.device.sdk/blob/master/tools/SDK_Test.rar
+   - **Yerel klonunuzdaysa:** `cn.huidu.device.sdk\tools\SDK_Test.rar`
+2. RAR dosyasını **WinRAR / 7-Zip / WinZip** ile çıkartın (`Sağ tık → Extract Here`)
+3. Çıkan klasörde **`SDKTest.exe`** dosyasını çift tıklayarak çalıştırın
+4. Üst başlığı **"SDKTest - V5.0"** olan bir pencere açılır
+5. Aynı klasördeki Çince operasyon kılavuzu (`SDK_Test操作说明.docx`) referans niteliğindedir — gerek duyarsanız çevirisini alın
 
-SDK_Test'i açın, cihaza bağlanın (cihazın IP'sini girin), aşağıdaki XML'i gönderin:
+<!-- TODO-RESIM: docs-tr/images/sdktest-main.png — SDKTest.exe ana ekran (sol panel cihaz listesi, orta XML editör, sağ method listesi) -->
+
+### 4.2 Cihazı Tespit Etme ve Bağlanma
+
+SDKTest.exe açıldığında **otomatik olarak ağdaki Huidu cihazlarını tarar** ve sol paneldeki listede gösterir.
+
+**Sol panelde** cihazlar şu formatta görünür:
+```
+A4L-25-XXXXXX  <---> 192.168.1.22
+```
+
+- 🟢 **Yeşil zeminli satır** = cihaz aktif ve ulaşılabilir, **bağlanabilirsiniz**
+- ⚪ Renksiz satır = cihaz görüldü ama yanıt vermiyor
+
+**Bağlanma:**
+
+1. Yeşil zeminli cihaz satırının üzerine **çift tıklayın** (iki kez hızlı tıklama)
+2. Alt orta paneldeki log bölmesinde bağlantı izleri görünür:
+   ```
+   2026/05/17 17:27:16.305   (send-kSDKServiceAsk)
+   2026/05/17 17:27:16.309   (read-kSDKServiceAnswer)
+   2026/05/17 17:27:16.310   (send-kSDKCmdAsk)
+   2026/05/17 17:27:16.326   (read-kSDKCmdAnswer)
+   connect A4L-25-XXXXXX
+   ```
+3. Sol alt köşedeki **IP** (örn. `A4L-25-XXXXX`), **Port** (varsayılan `10001`), **Proto** (`SDK2.0`), **Net** (`TCP`) alanları otomatik dolar
+4. Aynı köşedeki **"断开" (Bağlantıyı kes)** butonu aktif olur — bu, bağlantınızın canlı olduğunun göstergesi
+
+> 💡 **Cihaz listede yeşil görünmüyorsa veya hiç çıkmıyorsa:**
+> - Sol alttaki **IP** alanına cihaz IP'sini elle yazın, **Port** `10001`, **Proto** `SDK2.0`, **Net** `TCP` seçili olsun
+> - Üst tarafta beliren **"连接" (Bağlan)** butonuna tıklayın
+> - Yanıt gelirse log'da `connect ...` satırı görürsünüz
+
+<!-- TODO-RESIM: docs-tr/images/sdktest-connect.png — SDKTest.exe cihaza bağlı durum (yeşil cihaz + connect log) -->
+
+### 4.3 GetHttpApiEnable Komutunu Gönderme
+
+Cihaza bağlandıktan sonra ekranın **üst orta kısmındaki XML editör kutusuna** aşağıdaki XML'i yapıştırın:
 
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
@@ -169,7 +211,15 @@ SDK_Test'i açın, cihaza bağlanın (cihazın IP'sini girin), aşağıdaki XML'
 </sdk>
 ```
 
-Cevap eğer `enable="true"` ise HTTP API zaten açık, devam edebilirsiniz:
+Sağ tarafta listeden de **GetDeviceInfo / GetHttpApiEnable** gibi hazır methodları çift tıklayarak XML'i otomatik kutuya getirebilirsiniz.
+
+Sağ alttaki **"发送" (Gönder)** butonuna tıklayın. Cevap, ekranın **alt orta XML kutusunda** belirir.
+
+### 4.4 Cevabı Yorumlama — Üç Olası Senaryo
+
+Cihazın döndüğü cevaba göre üç farklı durum olur:
+
+#### ✅ Senaryo A — HTTP API zaten açık (en iyi durum)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -180,9 +230,129 @@ Cevap eğer `enable="true"` ise HTTP API zaten açık, devam edebilirsiniz:
 </sdk>
 ```
 
-### 4.3 HTTP API'yi Etkinleştirme
+`result="kSuccess"` **ve** `enable="true"` → her şey hazır. SDKTest'i kapatabilir, **Bölüm 5'e geçebilirsiniz**.
 
-Eğer `enable="false"` döndüyse aşağıdaki komutla açın:
+#### 🟡 Senaryo B — Method çalışıyor ama HTTP API kapalı
+
+```xml
+<sdk guid="..."><out result="kSuccess" method="GetHttpApiEnable">
+    <func enable="false"/>
+</out></sdk>
+```
+
+`result="kSuccess"` fakat `enable="false"` → cihaz HTTP API'yi destekliyor, sadece kapalı. **Bölüm 4.6**'ya geçip `SetHttpApiEnable` ile açın.
+
+#### ❌ Senaryo C — `kUnsupportMethod` (firmware çok eski)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?><sdk guid="2146899e-4d69-44e2-bff9-c65b0433653e"><out method="GetHttpApiEnable" result="kUnsupportMethod"/></sdk>
+```
+
+`result="kUnsupportMethod"` → **firmware sürümünüz çok eski.** Cihaz HTTP API methodlarını tanımıyor. Çözüm: firmware'i en son sürüme yükseltmek. **Bölüm 4.5**'e geçin.
+
+<!-- TODO-RESIM: docs-tr/images/sdktest-kunsupportmethod.png — kUnsupportMethod cevabının XML kutusundaki görünümü -->
+
+### 4.5 Firmware Güncellemesi (Senaryo C — `kUnsupportMethod` aldıysanız)
+
+Firmware güncellemesi **HDPlayer** üzerinden yapılır (Huidu'nun resmi ücretsiz yazılımı). HDPlayer kurulu değilse Huidu resmi sitesinden veya bayinizden temin edebilirsiniz.
+
+> ℹ️ Aşağıdaki adımlar **HDPlayer Türkçe arayüzü** içindir. İngilizce/Çince arayüz farklı dil etiketleri kullanır ama menü konumları aynıdır.
+
+#### Adım 1: HDPlayer'ı Açın, Cihazı Seçin
+
+HDPlayer açılınca otomatik olarak ağdaki Huidu cihazlarını listeler. Güncelleyeceğiniz cihazın üzerine tıklayın.
+
+#### Adım 2: Firmware Yükseltme Menüsüne Girin
+
+Üst menü çubuğundan:
+
+**`Kontrol (C)`** → **`Firmware Yükseltme`**
+
+> 🔑 **Şifre sorulacak: `168`** (Türkçe arayüzde de şifre `168` olarak kalır)
+> Şifreyi yazıp Tamam'a basın.
+
+<!-- TODO-RESIM: docs-tr/images/hdplayer-kontrol-menu.png — HDPlayer Kontrol menusu, Firmware Yukseltme satiri isaretli -->
+
+#### Adım 3: Firmware Yükseltme Penceresi Açılır
+
+Açılan **"Firmware Yükseltme"** penceresinin yapısı:
+
+| Bölüm | İçerik |
+|---|---|
+| **yükseltme dosyası** | Üst kısımda boş bir metin kutusu — buraya dosya yolunu yapıştıracaksınız |
+| **Select** butonu | Dosyayı manuel seçmek için |
+| **Manage** butonu | İndirilen dosyaları yöneten pencereyi açar (bizim kullanacağımız) |
+| **dosya bilgileri** | Yapıştırılan dosyanın türü, sürümü ve desteklediği cihaz modelleri burada görünür |
+| **cihaz listesi** | Aşağıda — güncellenecek cihazlar tablo halinde (`aygıt adı`, `cihaz kimliği`, `Ana sürüm numarası`, `FPGA sürüm numarası`, `OTAVersion`, `yükseltme Bilgiler`) |
+| **Listeyi yenile** | Cihaz listesini tazeler |
+| **Update** butonu | Sağ altta — yükseltmeyi başlatır |
+
+<!-- TODO-RESIM: docs-tr/images/hdplayer-firmware-yukseltme.png — Firmware Yukseltme ana penceresi -->
+
+#### Adım 4: "Manage" Butonuna Tıklayın
+
+Sağ üstteki **`Manage`** butonuna tıklayın → **"Download management"** penceresi açılır.
+
+Bu pencerede iki sekme vardır:
+
+- **`Firmware download`** — ana firmware paketleri (örn. `V2.8.5.10`)
+- **`FPGA download`** — Box + Magic player paketleri (örn. `Box_V7_11_18_0;Magic_V2.12.8.0`)
+
+Tabloda her satırda `firmwareVertion`, `describeVertion` (Regular), `statu`, **`operation`** sütunları görünür.
+
+`operation` sütununda iki buton vardır:
+
+| Buton | İşlevi |
+|---|---|
+| **`Downloaded, click Copy path`** | Dosya **zaten indirilmişse** → bu butona tıklayınca dosya yolu Windows panosuna kopyalanır |
+| **`Tekrar yükle`** | Dosyayı **yeniden indir** (eski/bozuk indirme varsa) |
+
+<!-- TODO-RESIM: docs-tr/images/hdplayer-download-management.png — Download management penceresi, Firmware download + FPGA download sekmeleri, Operation sütunundaki iki buton -->
+
+#### Adım 5: Dosya Yolunu Kopyalayıp Yapıştırın ve Update'leyin
+
+1. **`Firmware download`** sekmesinde ilk satırın `operation` sütunundaki **`Downloaded, click Copy path`** butonuna tıklayın → dosya yolu panoya kopyalanır
+2. Download management penceresini kapatın veya arka plana alın
+3. **Firmware Yükseltme** penceresine geri dönün
+4. **`yükseltme dosyası`** alanına yapıştırın (`Ctrl + V`)
+5. **`dosya bilgileri`** bölümünde dosya bilgileri otomatik dolar:
+   - **Dosya Türü:** `FPGA|BoxPlayer|MagicPlayer`
+   - **Sürüm numarası Dosya:** örn. `7.11.18.0|2.12.8.0`
+   - **Support Device Type:** uzun model listesi (`A3, C15, C35, A4, A5, A6, D15, D35, B6, C16, C36, D16, D36, C16L, C08L, A7, A8, A3L, A4L, A5L, A6L, B6L, H4K, ...`) — buradaki listede **kendi model adınızın olduğunu** doğrulayın
+6. **`cihaz listesi`**nde güncellenecek cihazın **checkbox'ı işaretli** olsun
+7. Sağ alttaki **`Update`** butonuna tıklayın
+8. **`yükseltme Bilgiler`** sütununda yüzde ve durum güncellenir — yeşil dolgu **%100** ve **"Arama tamamlandı"** görene kadar bekleyin
+
+<!-- TODO-RESIM: docs-tr/images/hdplayer-update-progress.png — Update sirasinda %100 yesil bar + Arama tamamlandi -->
+
+#### Adım 6: İkinci Paketi de Yükleyin
+
+Genelde iki paket vardır ve **ikisini de güncellemek gerekir**:
+
+| Paket | Açıklama | Örnek Sürüm Adı |
+|---|---|---|
+| **Firmware** | Ana firmware paketi | `V2.8.5.10` gibi |
+| **Box + Magic** (FPGA tarafında listelenir) | Box player + Magic player paketi | `Box_V7_11_18_0;Magic_V2.12.8.0` gibi |
+
+İlk paket yüklendikten sonra:
+
+1. Tekrar **`Manage`** → Download management
+2. Bu sefer diğer satırın (veya `FPGA download` sekmesinin) **`Downloaded, click Copy path`** butonuna tıklayın
+3. Aynı 5. adımı tekrarlayın (yapıştır → Update)
+
+#### Adım 7: Cihazı Yeniden Başlatın ve Tekrar Test Edin
+
+Güncelleme bittikten sonra cihaz büyük ihtimalle **otomatik restart** olur. Restart sonrası:
+
+1. SDKTest.exe'yi tekrar açın, cihaza bağlanın (Bölüm 4.2)
+2. Aynı `GetHttpApiEnable` XML'ini gönderin (Bölüm 4.3)
+3. Artık `result="kSuccess"` cevabı almalısınız → 4.4'teki Senaryo A veya B'ye düşersiniz, oradan devam edin
+
+> 🚧 **Eğer hâlâ `kUnsupportMethod` alıyorsanız:** Cihazınız bu HTTP API'yi destekleyen donanım sürümü değildir. Bayinizle iletişime geçin ve **engineering card** (`D` harfli model — Bölüm 1.1) olduğunuzu doğrulayın. Eski donanımlarda yalnızca TCP/XML SDK çalışır, HTTP API mevcut değildir.
+
+### 4.6 HTTP API'yi Etkinleştirme (Senaryo B için — `enable="false"`)
+
+`result="kSuccess"` aldınız ama `enable="false"` döndüyse, açmak için şu komutu gönderin (SDKTest.exe içinde, üst XML kutusuna yapıştırıp "发送" / Gönder):
 
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
@@ -202,6 +372,10 @@ Başarı cevabı:
 </sdk>
 ```
 
+Doğrulamak için **4.3**'teki `GetHttpApiEnable` komutunu tekrar gönderin — bu sefer `enable="true"` dönmelidir.
+
+### 4.7 Yan Etki Uyarısı — Önemli!
+
 > [!WARNING]
 > ### 🚨 HTTP SDK Etkinleştirmenin Yan Etkisi
 >
@@ -209,7 +383,7 @@ Başarı cevabı:
 >
 > **Türkçesi:** HTTP SDK'yı etkinleştirmek, tam HTTP kontrolünü sağlamak için **bazı standart işlevleri devralır.** Bu işlemden sonra **HDPlayer gibi diğer yazılımlardaki bazı ayarlar** (ör. zamanlı aç/kapa) **artık etki etmeyebilir.**
 >
-> Yani: bu cihazı bundan sonra **sadece SDK üzerinden** yöneteceksiniz. HDPlayer + SDK karışık kullanımı yapacaksanız öncesinde test edin.
+> Yani: bu cihazı bundan sonra **sadece SDK üzerinden** yöneteceksiniz. HDPlayer + SDK karışık kullanımı yapacaksanız öncesinde test edin — özellikle parlaklık zamanlaması ve aç/kapa programlarını.
 
 ---
 
