@@ -122,9 +122,9 @@ Response:
 
 When customers need to operate the equipment, they must register through the GrayScale Technology Developer Platform to obtain the corresponding SDK Key and SDK Secret.
 
- **The platform is not yet open for early access. Please provide the following information to contact Huayu to obtain your SDK Key and SDK Secret.** 
+ **The platform is not yet open. Please provide the following information to contact Huidu technical support to obtain the sdkKey and sdkSecret.** 
 
-![输入图片说明](doc/images/registered.png)
+![输入图片说明](doc/images/registeredNew.png)
 
 
 ## 2.4 Signature Mechanism
