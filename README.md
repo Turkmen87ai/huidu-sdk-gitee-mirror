@@ -107,7 +107,7 @@ cn/huidu/device/sdk
     </in>
 </sdk>
 ```
-响应：
+响应：![输入图片说明](doc/images/registeredNew.png)
 ```js
 <?xml version="1.0" encoding="utf-8"?>
 <sdk guid="7b1b1e7dba5363fc651dc1dc72f949d5">
@@ -120,9 +120,9 @@ cn/huidu/device/sdk
 
 当客户需要操作设备时，需要通过灰度科技开发者平台进行注册，获取相应的sdkKey和sdkSecret。
 
- **前期平台尚未开放，提供以下信息，联系灰度获取sdkKey和sdkSecret** 
+ **平台尚未开放，提供以下信息，联系灰度技术支持获取sdkKey和sdkSecret** 
 
-![输入图片说明](doc/images/registered.png)
+![输入图片说明](doc/images/registeredNew.png)
 
 
 ## 2.4 签名机制
